@@ -1,0 +1,3478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Waseem — AI &amp; Security Portfolio</title>
+<meta name="description" content="AI and cybersecurity portfolio of Muhammad Waseem. Documented lab work, verifiable certifications, and a study plan. Applicant, Global Korea Scholarship (Undergraduate).">
+
+<!-- ══ SOCIAL ══
+     og:image must be an ABSOLUTE url — Facebook and LinkedIn will not resolve
+     a relative one, which is the usual reason a shared link renders as a bare
+     grey box. Replace https://muhammadwaseem5131.github.io/portfolio with wherever this ends up, e.g.
+     https://muhammadwaseem.github.io/portfolio — no trailing slash. -->
+<link rel="canonical" href="https://muhammadwaseem5131.github.io/portfolio/">
+<meta property="og:title" content="Muhammad Waseem — AI &amp; Security Portfolio">
+<meta property="og:description" content="Machine learning applied to security. Documented lab work, verifiable certifications, and a study plan. GKS Undergraduate applicant.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://muhammadwaseem5131.github.io/portfolio/">
+<meta property="og:image" content="https://muhammadwaseem5131.github.io/portfolio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Muhammad Waseem beside a layered classifier with one node flagged. Headline: teaching machines to notice what people miss.">
+<meta property="og:locale" content="en_GB">
+<meta property="profile:first_name" content="Muhammad">
+<meta property="profile:last_name" content="Waseem">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhammad Waseem — AI &amp; Security Portfolio">
+<meta name="twitter:description" content="Machine learning applied to security. Documented lab work, verifiable certifications, and a study plan.">
+<meta name="twitter:image" content="https://muhammadwaseem5131.github.io/portfolio/og.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Muhammad Waseem">
+
+<!-- The browser chrome is part of the page. Both values are the actual
+     --ground token, so the address bar joins the design rather than
+     bracketing it in a colour nothing else uses. -->
+<meta name="theme-color" content="#F6F6F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<script>
+/* Before first paint: resolve theme (no flash), mark JS alive.
+   Content only hides for scroll-reveal if this ran — see `.js .rise`. */
+(() => {
+  const r = document.documentElement;
+  r.classList.add("js");
+  // Reading storage throws outright when it is blocked — private mode, a
+  // sandboxed frame, a data: URL. Losing the saved theme is fine; throwing
+  // here is not, so it stays contained.
+  let s = null;
+  try { s = localStorage.getItem("theme"); } catch (e) {}
+  if (s) r.setAttribute("data-theme", s);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- One superfamily. IBM Plex Sans KR draws Latin and Hangul as a matched design:
+     open apertures, low stroke contrast, unambiguous I / l / 1 — which is what makes
+     English readable to a Korean reader. Plex Mono is its sibling, for data. -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   TOKENS
+   Colour: The Guardian's editorial palette.
+     --cheong  brand blue   primary        (var names kept from the
+     --jeok    news red     the bold note   earlier palette; the three
+     --hwang   culture tan  support         roles did not change)
+   ═══════════════════════════════════════════════════════════════════════ */
+:root{
+  --f-sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",
+           system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+
+  /* Fluid type. Keep the spaces around `+` — `1.7rem+6vw` is a parse error
+     that silently collapses the token to 16px. */
+  --t-xs:clamp(.6875rem, .665rem + .1vw, .75rem);
+  --t-sm:clamp(.8125rem, .79rem + .1vw, .875rem);
+  --t-base:clamp(1rem, .975rem + .12vw, 1.0625rem);
+  --t-md:clamp(1.0625rem, 1.01rem + .28vw, 1.3125rem);
+  --t-lg:clamp(1.3125rem, 1.16rem + .77vw, 1.9375rem);
+  --t-xl:clamp(1.75rem, 1.4rem + 1.75vw, 3.125rem);
+  --t-2xl:clamp(2.375rem, 1.62rem + 3.8vw, 5.5rem);
+
+  /* Fluid spacing. Fixed rem gaps are what make a desktop layout feel
+     cavernous on a 375px screen — these collapse with the viewport. */
+  --sp-1:.5rem;
+  --sp-2:1rem;
+  --sp-3:clamp(1.125rem, .95rem + .85vw, 1.75rem);
+  --sp-4:clamp(1.625rem, 1.25rem + 1.85vw, 2.75rem);
+  --sp-5:clamp(2.25rem, 1.6rem + 3.2vw, 4.5rem);
+  --sp-6:clamp(3rem, 1.9rem + 5.4vw, 7rem);
+
+  --rail:clamp(0px, 6vw, 84px);
+  --measure:66ch;
+  --maxw:1240px;
+  --gutter:clamp(1.15rem, 4vw, 3rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:.34s;
+
+  --lx:50vw; --ly:0px;   /* pointer, px — dark theme only */
+
+  /* ── light ground (백 baek) — DAYTIME ────────────────────────────────
+     Sun overhead and slightly left. Two things make daylight read as real:
+     the shadow is never neutral grey — it is filled by blue sky, so it
+     carries a cool cast; and the lit top edge picks up the sun's warmth.
+     Elevation is a contact shadow (tight, darkest), a form shadow, and a
+     far ambient cast that softens as the object rises. ─────────────── */
+  /* Guardian palette. Their three editorial hues land on the same three
+     roles the page already used: brand blue → 청, news red → 적,
+     culture tan → 황. Tan is darkened for text (#A1845C measures 3.25:1
+     on this ground and fails); the bright tan survives only as keyline. */
+  --ground:#F6F6F6;
+  --ground-2:#EDEDEC;
+  --raised:#FFFFFF;
+  --ink:#121212;
+  --ink-soft:#4D4D4D;
+  --cheong:#052962;
+  --jeok:#C70000;
+  --key-tan:#A1845C;
+  --on-accent:#FFFFFF;
+  --net:5,41,98;
+  --net-hot:199,0,0;
+
+  /* ── the sun ────────────────────────────────────────────────────────
+     One light, one vector. --sun-x is the horizontal component of every
+     cast shadow, as a fraction of its vertical drop: 0.34 puts the key
+     light about 19° off vertical, up and to the LEFT, so shadows fall
+     down and to the RIGHT. Every elevation below is that one number
+     scaled by height, which is what makes three separate blurs read as
+     one scene lit by one thing.
+
+     This was the bug. The model was written down but never implemented —
+     every shadow in the file had an x-offset of zero, i.e. a light source
+     directly overhead, while the rim highlight claimed it was off to the
+     left. Two contradictory light positions in the same scene is the kind
+     of thing you cannot name when you look at it but do not believe.
+
+     --shade is the shadow's colour, and it is NOT grey. Daylight shadow is
+     filled by blue sky, so it carries a cool cast; neutral grey is what
+     makes a light UI read as printed rather than lit. ─────────────────── */
+  --sun-x:.34;
+  --shade:41 50 68;
+  --a1a:.055; --a1b:.06;                       /* contact, form         */
+  --a2a:.05;  --a2b:.09;  --a2c:.13;           /* contact, form, ambient */
+  --a3a:.06;  --a3b:.11;  --a3c:.20;
+  --edge:inset 0 1px 0 rgba(255,253,246,.95),
+         inset 1px 0 0 rgba(255,253,246,.5);   /* lit top AND lit left   */
+
+  /* how much accent to lay into each tinted surface, per theme */
+  --p-wash:7%;  --p-wash2:4.5%;
+  --p-fa:10%;   --p-fb:5%;    --p-fv:4.5%;
+  --p-rule:16%; --p-rule2:8%;
+  /* the tan re-lit for this ground — see DERIVED */
+  --tan-l:.48;
+
+  /* ── glass + the coloured field it sits on ──────────────────────────
+     The gradient stops are deliberately high-opacity. Glass that is truly
+     transparent inherits whatever passes behind it and its text contrast
+     becomes unpredictable; these keep the substrate controlled, so the
+     panel still reads as glass but the copy never drops below AA. */
+  /* Field kept light enough that text sitting directly on it — the section
+     intro, which is NOT on glass — still clears AA. Measured: at the first
+     values I tried, muted copy on this field came out at 3.59:1. */
+  /* Two glass surfaces, deliberately different.
+     --page-glass-*  sits WITH the page: light on light, dark on dark. Used by
+                     the work, credential, skills and contact cards.
+     --glass-*       sits AGAINST it: near-black on light, near-white on dark.
+                     Reserved for the ask panel, where opposing the page marks
+                     it as an overlay rather than part of the document.
+     Everything inside the inverted panel inverts with it, so ink, rules and
+     accents are re-pointed there and descendants follow. Opacity stays high:
+     the composite carries text contrast, thin glass drops it below AA. */
+  --page-glass-a:rgba(255,255,255,.88);
+  --page-glass-b:rgba(255,255,255,.68);
+  --page-glass-brd:rgba(255,255,255,.85);
+  --page-glass-rim:rgba(255,255,255,.95);
+  --glass-a:rgba(18,18,18,.93);
+  --glass-b:rgba(18,18,18,.86);
+  --glass-brd:rgba(255,255,255,.14);
+  --glass-rim:rgba(255,255,255,.10);
+  --glass-spec:rgba(255,255,255,.16);
+  --glass-ink:#F6F6F6;
+  --glass-ink-soft:#C2C6CD;
+  --glass-rule:rgba(246,246,246,.20);
+  --glass-rule-soft:rgba(246,246,246,.10);
+  --glass-cheong:#00B2FF;
+  --glass-jeok:#FF6E5B;   /* #FF5943 measured 4.34:1 on the dark card */
+  --glass-hwang:#C4A883;
+  --glass-on-accent:#121212;
+
+  /* Muted copy that sits on the coloured field rather than on glass. Mixed
+     from the theme's own ink, so it stays correct in both. Plain --ink-soft
+     measured 4.09:1 there, under AA. */
+  --ink-field:color-mix(in srgb, var(--ink) 86%, var(--ground));
+}
+
+/* ── dark ground (흑 heuk) — NIGHT. No sun; emissive carries the page. ── */
+/* Night. The sun is switched off — --sun-x:0 — so nothing casts sideways.
+   What is left is occlusion, not a cast shadow, which is why the alphas are
+   an order of magnitude heavier and the colour goes to true black. Scaling
+   the daylight ramp would have been tidier and wrong: these are two
+   different phenomena, not one phenomenon at two strengths. */
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#121212; --ground-2:#1A1A1A; --raised:#202020;
+    --ink:#F6F6F6; --ink-soft:#ABABAB;
+    --cheong:#00B2FF; --jeok:#FF5943; --key-tan:#C4A883;
+    --on-accent:#121212;
+    --net:0,178,255; --net-hot:255,89,67;
+    --sun-x:0;
+    --shade:0 0 0;
+    --a1a:.45; --a1b:.35;
+    --a2a:.45; --a2b:.55; --a2c:.70;
+    --a3a:.50; --a3b:.60; --a3c:.90;
+    --edge:inset 0 1px 0 rgba(255,255,255,.06);
+    --p-wash:9%;  --p-wash2:6%;
+    --p-fa:11%;   --p-fb:7%;   --p-fv:5%;
+    --p-rule:16%; --p-rule2:8%;
+    --tan-l:.747;
+    --page-glass-a:rgba(32,32,32,.88);
+    --page-glass-b:rgba(20,20,20,.70);
+    --page-glass-brd:rgba(255,255,255,.15);
+    --page-glass-rim:rgba(255,255,255,.11);
+    --glass-a:rgba(255,255,255,.95);
+    --glass-b:rgba(255,255,255,.88);
+    --glass-brd:rgba(255,255,255,.55);
+    --glass-rim:rgba(255,255,255,.90);
+    --glass-spec:rgba(255,255,255,.50);
+    --glass-ink:#121212;
+    --glass-ink-soft:#4D4D4D;
+    --glass-rule:rgba(18,18,18,.16);
+    --glass-rule-soft:rgba(18,18,18,.08);
+    --glass-cheong:#052962;
+    --glass-jeok:#C70000;
+    --glass-hwang:#6E5A3C;
+    --glass-on-accent:#FFFFFF;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121212; --ground-2:#1A1A1A; --raised:#202020;
+  --ink:#F6F6F6; --ink-soft:#ABABAB;
+  --cheong:#00B2FF; --jeok:#FF5943; --key-tan:#C4A883;
+  --on-accent:#121212;
+  --net:0,178,255; --net-hot:255,89,67;
+  --sun-x:0;
+  --shade:0 0 0;
+  --a1a:.45; --a1b:.35;
+  --a2a:.45; --a2b:.55; --a2c:.70;
+  --a3a:.50; --a3b:.60; --a3c:.90;
+  --edge:inset 0 1px 0 rgba(255,255,255,.06);
+  --p-wash:9%;  --p-wash2:6%;
+  --p-fa:11%;   --p-fb:7%;   --p-fv:5%;
+  --p-rule:16%; --p-rule2:8%;
+  --tan-l:.747;
+  --page-glass-a:rgba(32,32,32,.88);
+  --page-glass-b:rgba(20,20,20,.70);
+  --page-glass-brd:rgba(255,255,255,.15);
+  --page-glass-rim:rgba(255,255,255,.11);
+  --glass-a:rgba(255,255,255,.95);
+  --glass-b:rgba(255,255,255,.88);
+  --glass-brd:rgba(255,255,255,.55);
+  --glass-rim:rgba(255,255,255,.90);
+  --glass-spec:rgba(255,255,255,.50);
+  --glass-ink:#121212;
+  --glass-ink-soft:#4D4D4D;
+  --glass-rule:rgba(18,18,18,.16);
+  --glass-rule-soft:rgba(18,18,18,.08);
+  --glass-cheong:#052962;
+  --glass-jeok:#C70000;
+  --glass-hwang:#6E5A3C;
+  --glass-on-accent:#FFFFFF;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --ground:#F6F6F6; --ground-2:#EDEDEC; --raised:#FFFFFF;
+  --ink:#121212; --ink-soft:#4D4D4D;
+  --cheong:#052962; --jeok:#C70000; --key-tan:#A1845C;
+  --on-accent:#FFFFFF;
+  --net:5,41,98; --net-hot:199,0,0;
+  --sun-x:.34;
+  --shade:41 50 68;
+  --a1a:.055; --a1b:.06;
+  --a2a:.05;  --a2b:.09;  --a2c:.13;
+  --a3a:.06;  --a3b:.11;  --a3c:.20;
+  --edge:inset 0 1px 0 rgba(255,253,246,.95),
+         inset 1px 0 0 rgba(255,253,246,.5);
+  --p-wash:7%;  --p-wash2:4.5%;
+  --p-fa:10%;   --p-fb:5%;    --p-fv:4.5%;
+  --p-rule:16%; --p-rule2:8%;
+  --tan-l:.48;
+  /* Two glass surfaces, deliberately different.
+     --page-glass-*  sits WITH the page: light on light, dark on dark. Used by
+                     the work, credential, skills and contact cards.
+     --glass-*       sits AGAINST it: near-black on light, near-white on dark.
+                     Reserved for the ask panel, where opposing the page marks
+                     it as an overlay rather than part of the document.
+     Everything inside the inverted panel inverts with it, so ink, rules and
+     accents are re-pointed there and descendants follow. Opacity stays high:
+     the composite carries text contrast, thin glass drops it below AA. */
+  --page-glass-a:rgba(255,255,255,.88);
+  --page-glass-b:rgba(255,255,255,.68);
+  --page-glass-brd:rgba(255,255,255,.85);
+  --page-glass-rim:rgba(255,255,255,.95);
+  --glass-a:rgba(18,18,18,.93);
+  --glass-b:rgba(18,18,18,.86);
+  --glass-brd:rgba(255,255,255,.14);
+  --glass-rim:rgba(255,255,255,.10);
+  --glass-spec:rgba(255,255,255,.16);
+  --glass-ink:#F6F6F6;
+  --glass-ink-soft:#C2C6CD;
+  --glass-rule:rgba(246,246,246,.20);
+  --glass-rule-soft:rgba(246,246,246,.10);
+  --glass-cheong:#00B2FF;
+  --glass-jeok:#FF6E5B;   /* #FF5943 measured 4.34:1 on the dark card */
+  --glass-hwang:#C4A883;
+  --glass-on-accent:#121212;
+  color-scheme:light;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DERIVED — everything below is computed from the primitives above.
+
+   Declared once, on :root, and deliberately NOT repeated in any theme
+   block. A theme block would out-specify this one (:root[data-theme] beats
+   :root) and silently win, which is exactly how the old file ended up with
+   ten hand-written rgba() values that were copies of the accents and had
+   to be kept in sync by hand. Change --cheong now and every wash, field
+   and rule that depends on it moves with it.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root{
+  /* One ramp, three parts: contact (tight, darkest), form, far ambient.
+     Each x-offset is its own y-offset times --sun-x, so the whole set
+     shares one light angle. At night --sun-x is 0 and they all collapse
+     to straight down, which is the correct behaviour for occlusion. */
+  --e1:calc(1px * var(--sun-x)) 1px 1.5px rgb(var(--shade) / var(--a1a)),
+       calc(2px * var(--sun-x)) 2px 4px -1px rgb(var(--shade) / var(--a1b));
+  --e2:calc(1px * var(--sun-x)) 1px 2px rgb(var(--shade) / var(--a2a)),
+       calc(8px * var(--sun-x)) 8px 12px -4px rgb(var(--shade) / var(--a2b)),
+       calc(16px * var(--sun-x)) 16px 28px -12px rgb(var(--shade) / var(--a2c));
+  --e3:calc(2px * var(--sun-x)) 2px 3px rgb(var(--shade) / var(--a3a)),
+       calc(18px * var(--sun-x)) 18px 26px -10px rgb(var(--shade) / var(--a3b)),
+       calc(40px * var(--sun-x)) 40px 60px -22px rgb(var(--shade) / var(--a3c));
+
+  /* Tints, mixed straight from the accent they are a tint OF. Mixing with
+     `transparent` is exact — premultiplied interpolation leaves the colour
+     alone and only scales alpha — so these are numerically identical to the
+     rgba() literals they replace, but they now track the accent. */
+  --wash:color-mix(in oklab, var(--cheong) var(--p-wash), transparent);
+  --wash-2:color-mix(in oklab, var(--jeok) var(--p-wash2), transparent);
+  --field-a:color-mix(in oklab, var(--cheong) var(--p-fa), transparent);
+  --field-b:color-mix(in oklab, var(--jeok) var(--p-fb), transparent);
+  --field-veil:color-mix(in oklab, var(--cheong) var(--p-fv), transparent);
+  --rule:color-mix(in oklab, var(--ink) var(--p-rule), transparent);
+  --rule-soft:color-mix(in oklab, var(--ink) var(--p-rule2), transparent);
+
+  /* Emissive. No shadow — these are the source, so they bloom instead. */
+  --glow-jeok:0 0 0 1px color-mix(in srgb, var(--jeok) 32%, transparent),
+              0 0 24px -4px color-mix(in srgb, var(--jeok) 62%, transparent);
+  --glow-cheong:0 0 0 1px color-mix(in srgb, var(--cheong) 30%, transparent),
+                0 0 24px -4px color-mix(in srgb, var(--cheong) 55%, transparent);
+
+  /* The tan, and the hover step, both stated as relationships rather than
+     as second hex codes that happen to look right. Fallbacks first. */
+  --cheong-hi:var(--cheong);
+  --jeok-hi:var(--jeok);
+  --lift:.055;
+}
+/* Fallback tans, one per ground, for browsers without relative colour. */
+:root{--hwang:#6E5A3C}
+:root[data-theme="light"]{--hwang:#6E5A3C}
+:root[data-theme="dark"]{--hwang:#C4A883}
+@media (prefers-color-scheme:dark){:root{--hwang:#C4A883}}
+
+/* Relative colour syntax. The tan is ONE tan — a keyline colour re-lit for
+   whichever ground it lands on. #A1845C measures 3.25:1 as text on the
+   light ground and fails; holding its hue and chroma and setting lightness
+   to .48 yields 6.11:1, against 6.09:1 for the hex that used to be typed
+   in by hand. The relationship was always there; it just wasn't written
+   down anywhere the browser could see it.
+
+   Hover is the same idea: one perceptual lightness step, so it behaves
+   identically on navy and on cyan. filter:brightness() does not — it
+   scales in sRGB, so it shifts saturation and lands somewhere different
+   on every hue. */
+@supports (color:oklch(from red l c h)){
+  /* Each of these has to restate the selector of the fallback it replaces,
+     or the fallback out-specifies it and this whole block does nothing. */
+  :root,
+  :root[data-theme="light"],
+  :root[data-theme="dark"]{--hwang:oklch(from var(--key-tan) var(--tan-l) c h)}
+  @media (prefers-color-scheme:dark){:root{--hwang:oklch(from var(--key-tan) var(--tan-l) c h)}}
+  :root{
+    --cheong-hi:oklch(from var(--cheong) calc(l + var(--lift)) c h);
+    --jeok-hi:oklch(from var(--jeok) calc(l + var(--lift)) c h);
+  }
+}
+
+/* Wide gamut. Same OKLCH lightness and hue, chroma pushed to the P3
+   boundary — so the colour is more saturated on a display that can show it
+   and identical everywhere else. Lightness is held precisely because WCAG
+   luminance is the Y of XYZ: hold Y, hold the contrast ratio. Measured:
+   every pairing stays within 0.15 of its sRGB value, worst case 5.10:1.
+   The canvas keeps reading the sRGB --net triple — it composites its own
+   alpha and has no business in a wider gamut. */
+@media (color-gamut:p3){
+  @supports (color:oklch(0 0 0)){
+    :root,:root[data-theme="light"]{
+      --cheong:oklch(.2967 .1516 259.77);
+      --jeok:oklch(.5210 .2389 29.23);
+      --key-tan:oklch(.6308 .0781 75.05);
+    }
+    :root[data-theme="dark"]{
+      --cheong:oklch(.7254 .1748 238.33);
+      --jeok:oklch(.6841 .2602 30.56);
+      --key-tan:oklch(.7470 .0713 74.40);
+    }
+    @media (prefers-color-scheme:dark){
+      :root:not([data-theme="light"]){
+        --cheong:oklch(.7254 .1748 238.33);
+        --jeok:oklch(.6841 .2602 30.56);
+        --key-tan:oklch(.7470 .0713 74.40);
+      }
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box}
+html{
+  -webkit-text-size-adjust:100%;scroll-behavior:smooth;
+  /* Without this an anchor lands at y=0 and the sticky header sits on top of
+     the heading it just jumped to — the page moves but the target is hidden,
+     which reads as the nav being broken. Header is bar + mobile chip row. */
+  scroll-padding-top:8rem;
+}
+@media (min-width:900px){
+  html{scroll-padding-top:5rem}   /* chip row is hidden, so the bar alone */
+}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--f-sans);font-size:var(--t-base);font-weight:400;
+  line-height:1.65;letter-spacing:-.003em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+ul,ol,dl,dd{margin:0;padding:0}
+li{list-style:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--jeok);outline-offset:3px;border-radius:3px}
+::selection{background:var(--jeok);color:var(--on-accent)}
+
+.shell{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--jeok);
+  color:var(--on-accent);padding:.8rem 1.3rem;font-weight:600}
+.skip:focus{left:0}
+.mono{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.09em;text-transform:uppercase}
+.num{font-variant-numeric:tabular-nums}
+.dsp{font-weight:600;letter-spacing:-.033em;line-height:1.04}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   RAIL — desktop only
+   ═══════════════════════════════════════════════════════════════════════ */
+.rail{
+  position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:40;
+  display:none;flex-direction:column;align-items:center;justify-content:space-between;
+  padding-block:1.15rem;border-right:1px solid var(--rule-soft);
+  background:color-mix(in srgb, var(--ground) 82%, transparent);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+@media (min-width:1080px){
+  .rail{display:flex}
+  body{padding-left:var(--rail)}
+}
+.rail__mark{width:10px;height:10px;background:var(--jeok);flex:none}
+.rail__now{writing-mode:vertical-rl;font-family:var(--f-mono);font-size:var(--t-xs);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.rail__pct{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HEADER + MOBILE NAV
+   ═══════════════════════════════════════════════════════════════════════ */
+.bar{
+  position:sticky;top:0;z-index:50;
+  padding-top:env(safe-area-inset-top);
+  background:color-mix(in srgb, var(--ground) 84%, transparent);
+  backdrop-filter:blur(12px) saturate(1.3);-webkit-backdrop-filter:blur(12px) saturate(1.3);
+  border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease);
+}
+.bar.pinned{border-bottom-color:var(--rule-soft)}
+.bar__in{display:flex;align-items:center;gap:var(--sp-2);min-height:56px}
+.sig{display:inline-flex;align-items:center;min-height:44px;font-size:var(--t-md);
+  font-weight:600;letter-spacing:-.028em;text-decoration:none;margin-right:auto}
+.sig span{color:var(--jeok)}
+.menu{display:none;gap:.15rem}
+@media (min-width:900px){.menu{display:flex}}
+.menu a{
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink-soft);
+  padding:.6rem .7rem;position:relative;transition:color var(--dur) var(--ease);
+}
+.menu a::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.35rem;height:1px;
+  background:var(--jeok);transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease)}
+.menu a:hover,.menu a[aria-current="true"]{color:var(--ink)}
+.menu a:hover::after,.menu a[aria-current="true"]::after{transform:scaleX(1)}
+
+/* On phones the desktop menu is hidden, which previously left no navigation
+   at all. A single-row scroller keeps every section one thumb-tap away
+   without a modal, an overlay, or any extra JavaScript. */
+.mnav{
+  display:flex;gap:.4rem;overflow-x:auto;overscroll-behavior-x:contain;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  padding:0 var(--gutter) .6rem;
+  scroll-snap-type:x proximity;
+  border-bottom:1px solid var(--rule-soft);
+}
+.mnav::-webkit-scrollbar{display:none}
+@media (min-width:900px){.mnav{display:none}}
+.mnav a{
+  flex:none;scroll-snap-align:start;
+  display:inline-flex;align-items:center;min-height:44px;padding:0 .9rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.07em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-soft);background:var(--raised);
+  border:1px solid var(--rule);border-radius:999px;box-shadow:var(--e1), var(--edge);
+  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.mnav a[aria-current="true"]{color:var(--jeok);border-color:var(--jeok)}
+
+.tgl{
+  min-width:44px;min-height:44px;display:grid;place-items:center;
+  background:var(--raised);border:1px solid var(--rule);color:var(--ink);
+  border-radius:10px;cursor:pointer;box-shadow:var(--e1), var(--edge);
+  transition:border-color var(--dur) var(--ease), color var(--dur) var(--ease),
+             box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.tgl:hover{border-color:var(--jeok);color:var(--jeok);box-shadow:var(--e2), var(--edge);transform:translateY(-1px)}
+.tgl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.i-sun{display:none}
+@media (prefers-color-scheme:dark){.i-sun{display:block}.i-moon{display:none}}
+:root[data-theme="dark"] .i-sun{display:block}
+:root[data-theme="dark"] .i-moon{display:none}
+:root[data-theme="light"] .i-sun{display:none}
+:root[data-theme="light"] .i-moon{display:block}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════════════ */
+.hero{position:relative;isolation:isolate;overflow:clip}
+#net{
+  position:absolute;inset:0;width:100%;height:100%;z-index:-2;
+  mask-image:linear-gradient(to bottom,#000 46%,transparent 96%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 46%,transparent 96%);
+  touch-action:pan-y;
+}
+/* Dark theme only: a moving light is a torch, which reads as night.
+   In daylight the sun does not follow your cursor, so it must not here. */
+/* ── pointer light: ONE shared layer, every section ─────────────────────
+   Each zone owns a ::after at z-index:-1 inside its own stacking context —
+   above the section's background, below every in-flow card. Coordinates are
+   section-local, set from JS. Kept off ::before because that already carries
+   the colour field, and a background is a single property. */
+:is(.hero,#about,#work,#credentials,#skills,#research,#plan,#contact)::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(26rem 26rem at var(--lx, 50%) var(--ly, -30%),
+             var(--wash), transparent 68%);
+  opacity:0;transition:opacity .7s var(--ease);
+}
+body.lit-pointer :is(.hero,#about,#work,#credentials,#skills,#research,#plan,#contact)::after{
+  opacity:1;
+}
+.hero__in{padding-block:clamp(2rem, 6vh, 6rem) var(--sp-6)}
+
+.tagline{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--sp-3);
+}
+.tagline b{color:var(--jeok);font-weight:500}
+/* Small enough to read as a byline mark rather than a portrait. Deliberately
+   static: a pulsing halo round a face reads as a notification, and the hero
+   already has the canvas moving. */
+.tagline__me{
+  width:30px;height:30px;flex:none;border-radius:50%;
+  object-fit:cover;object-position:50% 18%;
+  border:1px solid var(--rule);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--jeok) 16%, transparent);
+}
+.tagline i{width:6px;height:6px;background:var(--jeok);display:block;flex:none;transform:rotate(45deg)}
+@media (prefers-reduced-motion:no-preference){.tagline i{animation:beat 3s var(--ease) infinite}}
+@keyframes beat{0%,100%{opacity:1}50%{opacity:.25}}
+
+h1.hero__h{font-size:var(--t-2xl);max-width:16ch;perspective:1000px}
+h1.hero__h .ln{display:block;overflow:hidden}
+h1.hero__h .ln > span{display:block;transform-origin:50% 100%}
+h1.hero__h em{font-style:normal;color:var(--jeok)}
+@media (prefers-reduced-motion:no-preference){
+  .js h1.hero__h .ln > span{
+    transform:translateY(103%) rotateX(-52deg);opacity:0;
+    transition:transform .95s var(--ease), opacity .7s var(--ease);
+    transition-delay:var(--d, 0ms);
+  }
+  .js h1.hero__h.lit .ln > span{transform:none;opacity:1}
+}
+.hero__lede{margin-top:var(--sp-3);max-width:50ch;font-size:var(--t-md);color:var(--ink-soft);line-height:1.55}
+.hero__ko{margin-top:.5rem;font-size:var(--t-base);color:var(--ink-soft);opacity:.85}
+
+.acts{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:var(--sp-4)}
+.act{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:48px;padding:0 1.35rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.09em;
+  text-transform:uppercase;text-decoration:none;font-weight:500;
+  border:1px solid var(--rule);border-radius:10px;cursor:pointer;
+  transition:background var(--dur) var(--ease), color var(--dur) var(--ease),
+             border-color var(--dur) var(--ease), transform var(--dur) var(--ease),
+             box-shadow var(--dur) var(--ease);
+}
+/* on the narrowest screens the actions go full width rather than wrapping
+   into a ragged two-up that leaves a stranded button */
+@media (max-width:420px){.acts{flex-direction:column;align-items:stretch}}
+.act--solid{background:var(--jeok);border-color:var(--jeok);color:var(--on-accent);box-shadow:var(--e2)}
+.act--solid:hover{transform:translateY(-2px);box-shadow:var(--e3), var(--glow-jeok)}
+/* .act uppercases its label, which is wrong for an address — an email should
+   read exactly as it is typed. Also let a long address wrap on a phone. */
+.act--mail{text-transform:none;letter-spacing:0;overflow-wrap:anywhere}
+.act--line{background:var(--raised);color:var(--ink);box-shadow:var(--e1), var(--edge)}
+.act--line:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--e2), var(--edge)}
+.act svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.ledger{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));
+  margin-top:var(--sp-5);border-top:1px solid var(--rule)}
+@media (min-width:720px){.ledger{grid-template-columns:repeat(4, minmax(0,1fr))}}
+.ledger div{padding:var(--sp-2) 0;border-bottom:1px solid var(--rule-soft)}
+.ledger div:nth-child(even){padding-left:var(--sp-2);border-left:1px solid var(--rule-soft)}
+@media (min-width:720px){
+  .ledger div:nth-child(even){padding-left:0;border-left:0}
+  .ledger div + div{border-left:1px solid var(--rule-soft);padding-left:var(--sp-2)}
+}
+.ledger b{display:block;font-size:var(--t-lg);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.ledger span{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════════════════════════════════ */
+section{padding-block:var(--sp-6);position:relative}
+.head{display:flex;align-items:baseline;gap:var(--sp-2);flex-wrap:wrap;
+  padding-bottom:var(--sp-2);border-bottom:1px solid var(--rule);margin-bottom:var(--sp-4)}
+.head h2{font-size:var(--t-xl);margin-right:auto}
+.head .mono{color:var(--ink-soft)}
+.intro{max-width:var(--measure);color:var(--ink-soft);font-size:var(--t-md);line-height:1.6}
+
+.two{display:grid;gap:var(--sp-4)}
+@media (min-width:920px){.two{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--sp-5)}}
+/* ── portrait ────────────────────────────────────────────────────────
+   aspect-ratio + explicit width/height reserve the box before the file
+   arrives, so the text below never jumps when it decodes. */
+.portrait{margin:0 0 var(--sp-3);max-width:330px}
+/* If the file is genuinely missing the figure collapses, so a reviewer never
+   meets a broken-image icon. It is hidden, never removed — a destroyed node
+   cannot recover when a late or retried load succeeds. */
+.portrait[data-failed]{display:none}
+.portrait__frame{
+  position:relative;aspect-ratio:1;overflow:hidden;
+  border-radius:14px;border:1px solid var(--rule);
+  background:var(--ground-2);box-shadow:var(--e2), var(--edge);
+}
+/* display:contents so <picture> does not become a layout box between the
+   frame and the image — otherwise the img's height:100% resolves against an
+   inline wrapper with no height and the portrait collapses. */
+.portrait picture{display:contents}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.portrait figcaption{
+  display:flex;flex-wrap:wrap;gap:.2rem .6rem;margin-top:.7rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.portrait figcaption b{color:var(--ink);font-weight:500}
+@media (max-width:919px){.portrait{max-width:220px}}
+
+.pull{font-size:var(--t-lg);font-weight:500;line-height:1.3;letter-spacing:-.022em;max-width:24ch}
+.pull::before{content:"“";color:var(--jeok)}
+.pull::after{content:"”";color:var(--jeok)}
+.prose{color:var(--ink-soft);max-width:var(--measure)}
+.prose p + p{margin-top:var(--sp-2)}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PROJECT RECORDS — container queries, so they answer to their own width
+   ═══════════════════════════════════════════════════════════════════════ */
+/* the Work section sits on its own coloured field, so the glass has
+   something to refract instead of hovering over flat paper */
+/* ── the coloured field behind About + Work ──────────────────────────
+   A solid section background stops dead at the section edge and reads as
+   a ruled line across the page. This paints the colour on a layer that is
+   masked to nothing at both ends, so it fades in and out of the page
+   instead of cutting. About and Work carry the same two hues at different
+   weights, so the two sections read as one continuous wash. */
+#about,#work,#credentials,#skills,#research,#plan,#contact{position:relative;isolation:isolate}
+#about::before,#work::before,
+#credentials::before,#skills::before,#research::before,#plan::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image:linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+}
+/* The wash continues through every section, alternating which side each hue
+   enters from, so the colour reads as one field running down the page rather
+   than two tinted blocks with untinted gaps between them. */
+#credentials::before{
+  background:
+    radial-gradient(46rem 32rem at 92% 10%, var(--field-a), transparent 64%),
+    radial-gradient(38rem 28rem at 4% 90%, var(--field-b), transparent 64%);
+  opacity:.5;
+}
+#skills::before{
+  background:
+    radial-gradient(44rem 30rem at 8% 12%, var(--field-a), transparent 64%),
+    radial-gradient(36rem 26rem at 96% 88%, var(--field-b), transparent 64%);
+  opacity:.42;
+}
+#research::before{
+  background:
+    radial-gradient(50rem 34rem at 94% 10%, var(--field-a), transparent 64%),
+    radial-gradient(40rem 28rem at 4% 90%, var(--field-b), transparent 64%);
+  opacity:.52;
+}
+#plan::before{
+  background:
+    radial-gradient(50rem 34rem at 90% 8%, var(--field-a), transparent 64%),
+    radial-gradient(40rem 28rem at 6% 92%, var(--field-b), transparent 64%);
+  opacity:.5;
+}
+#about::before{
+  background:
+    radial-gradient(52rem 34rem at 88% 12%, var(--field-a), transparent 64%),
+    radial-gradient(40rem 30rem at 6% 88%, var(--field-b), transparent 64%);
+  opacity:.55;
+}
+#work::before{
+  background:
+    radial-gradient(58rem 40rem at 10% 6%, var(--field-a), transparent 62%),
+    radial-gradient(48rem 36rem at 92% 94%, var(--field-b), transparent 62%),
+    var(--field-veil);
+}
+/* Without mask support the layer would paint to its own edges and the hard
+   line comes straight back. Fall back to a tint that fades itself out. */
+@supports not ((mask-image:linear-gradient(#000,transparent)) or (-webkit-mask-image:linear-gradient(#000,transparent))){
+  #about::before,#work::before{
+    background:linear-gradient(to bottom,
+      transparent 0%, var(--field-veil) 22%, var(--field-veil) 78%, transparent 100%);
+  }
+}
+/* text directly on the field, not on glass, needs the stronger tone */
+#work .intro,#work .head .mono{color:var(--ink-field)}
+.deck{display:grid;gap:var(--sp-3);perspective:1500px;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 330px), 1fr))}
+
+/* ── page cards: glass that sits WITH the page ──────────────────────────
+   Light on the light theme, dark on the dark one. The inverted treatment
+   is reserved for the ask panel, where a card that opposes the page is
+   what marks it as an overlay rather than part of the document. */
+.rec,.cred,.col,.contact,.aim{
+  color:var(--ink);
+  background:linear-gradient(158deg, var(--page-glass-a), var(--page-glass-b));
+  border:1px solid var(--page-glass-brd);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:var(--e2), inset 0 1px 0 var(--page-glass-rim);
+}
+/* Without backdrop-filter the panel is plain translucent and whatever passes
+   behind shows straight through the text — so go effectively opaque. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .rec,.cred,.col,.contact,.aim{
+    background:linear-gradient(158deg, var(--raised), var(--raised));
+    backdrop-filter:none;
+  }
+}
+
+.rec{
+  container-type:inline-size;
+  position:relative;isolation:isolate;
+  /* same Guardian keyline as credentials, skills and direction — the coloured
+     rule states the section, the square top edge carries it */
+  border-top:4px solid var(--key, var(--cheong));
+  border-radius:0 0 14px 14px;
+  padding:var(--sp-3);
+  transform-style:preserve-3d;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  will-change:transform;
+}
+@media (hover:hover){
+  .rec:hover{box-shadow:var(--e3), inset 0 1px 0 var(--glass-rim)}
+}
+.rec__id{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--jeok)}
+.rec h3{font-size:var(--t-lg);font-weight:600;letter-spacing:-.028em;margin-top:.45rem;max-width:22ch}
+.rec__ctx{font-size:var(--t-sm);color:var(--ink-soft);margin-top:.5rem;
+  padding-bottom:var(--sp-2);border-bottom:1px solid var(--rule-soft)}
+.rec .pao{margin-top:var(--sp-2)}
+
+.pao{display:grid;gap:.85rem}
+.pao > div{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:1rem;align-items:baseline}
+@container (max-width: 560px){.pao > div{grid-template-columns:1fr;gap:.15rem}}
+.pao dt{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.35rem}
+@container (max-width: 560px){.pao dt{border:0;padding:0;color:var(--jeok)}}
+.pao dd{font-size:var(--t-sm);color:var(--ink);line-height:1.6}
+
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:var(--sp-2)}
+.chip{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.04em;
+  border:1px solid var(--rule);border-radius:6px;padding:.28rem .55rem;color:var(--ink-soft)}
+.chip--role{border-color:var(--jeok);color:var(--jeok);transition:box-shadow var(--dur) var(--ease)}
+@media (hover:hover){.rec:hover .chip--role{box-shadow:var(--glow-jeok)}}
+
+.go{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;align-self:start;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;margin-top:var(--sp-2);border-bottom:1px solid var(--jeok)}
+.go svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;
+  stroke-linejoin:round;transition:transform var(--dur) var(--ease);flex:none}
+.go:hover svg{transform:translate(3px,-3px)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CREDENTIALS — Guardian-style keyline cards.
+   No flip. A reviewer checking credentials wants the issuer, the date and
+   the ID visible at a glance; hiding half of that behind a hover was the
+   wrong call, and it never worked on touch anyway.
+   ═══════════════════════════════════════════════════════════════════════ */
+.certs{display:grid;gap:var(--sp-2);grid-template-columns:repeat(auto-fit, minmax(min(100%, 258px), 1fr))}
+.cred{
+  position:relative;display:flex;flex-direction:column;
+  border-top:4px solid var(--key, var(--cheong));
+  border-radius:0 0 14px 14px;
+  padding:var(--sp-3);
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+@media (hover:hover){
+  .cred:hover{transform:translateY(-3px);box-shadow:var(--e3), var(--edge)}
+}
+.cred:focus-within{box-shadow:var(--e2), var(--glow-cheong)}
+.cred__kicker{
+  display:flex;align-items:center;gap:.45rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--key, var(--cheong));
+}
+.cred__kicker svg{width:13px;height:13px;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.cred h3{font-size:var(--t-md);font-weight:600;letter-spacing:-.022em;margin-top:.6rem}
+.cred__issuer{font-size:var(--t-sm);color:var(--ink-soft);margin-top:.25rem}
+.cred__facts{
+  margin-top:var(--sp-3);padding-top:.75rem;
+  border-top:1px solid var(--rule-soft);display:grid;gap:.4rem;
+}
+.cred__facts > div{display:flex;justify-content:space-between;align-items:baseline;gap:.9rem}
+.cred__facts dt{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-soft);flex:none}
+.cred__facts dd{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--ink);
+  font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.cred .go{margin-top:var(--sp-2)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TOOLSET STRIP
+   ═══════════════════════════════════════════════════════════════════════ */
+.strip{border-block:1px solid var(--rule);padding-block:var(--sp-2);overflow:hidden;
+  mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)}
+.strip__row{display:flex;width:max-content}
+.strip ul{display:flex;gap:var(--sp-3);padding-right:var(--sp-3);flex:none}
+.strip li{font-size:var(--t-md);font-weight:500;color:var(--ink-soft);white-space:nowrap;letter-spacing:-.015em}
+.strip li::after{content:"·";margin-left:var(--sp-3);color:var(--jeok)}
+@media (prefers-reduced-motion:no-preference){
+  .strip__row{animation:slide 48s linear infinite}
+  .strip:hover .strip__row{animation-play-state:paused}
+}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SKILLS
+   ═══════════════════════════════════════════════════════════════════════ */
+.cols{display:grid;gap:var(--sp-2);grid-template-columns:repeat(auto-fit, minmax(min(100%, 210px), 1fr))}
+.col{border-top:4px solid var(--key, var(--cheong));border-radius:0 0 14px 14px;
+  padding:var(--sp-3)}
+.col h3{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
+.col ul{margin-top:var(--sp-2);display:grid;gap:.3rem}
+.col li{font-size:var(--t-sm);padding-bottom:.3rem;border-bottom:1px solid var(--rule-soft)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PLAN
+   ═══════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════
+   RESEARCH DIRECTION — the numbering is real here: these are ranked by how
+   much they shaped the study plan, not decoration.
+   ═══════════════════════════════════════════════════════════════════════ */
+.aims{display:grid;gap:var(--sp-2);
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 290px), 1fr))}
+.aim{
+  display:flex;flex-direction:column;
+  border-top:4px solid var(--key, var(--cheong));
+  border-radius:0 0 14px 14px;padding:var(--sp-3);
+}
+.aim__n{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.12em;
+  color:var(--key, var(--cheong))}
+.aim h3{font-size:var(--t-md);font-weight:600;letter-spacing:-.022em;
+  margin-top:.5rem;max-width:22ch}
+.aim__why{font-size:var(--t-sm);color:var(--ink-soft);margin-top:.6rem;line-height:1.6}
+.aim__need{margin-top:auto;padding-top:var(--sp-2);
+  border-top:1px solid var(--rule-soft)}
+.aim__need > div{display:grid;gap:.25rem}
+.aim__need dt{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.aim__need dd{font-size:var(--t-sm);color:var(--ink);line-height:1.55}
+
+.seq{counter-reset:step}
+.step{counter-increment:step;display:grid;grid-template-columns:2.4rem minmax(0,1fr);
+  gap:var(--sp-2);padding-block:var(--sp-3);border-top:1px solid var(--rule)}
+.step::before{content:counter(step, decimal-leading-zero);font-family:var(--f-mono);
+  font-size:var(--t-xs);color:var(--jeok);letter-spacing:.08em;padding-top:.4rem}
+.step time{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.step h3{font-size:var(--t-md);font-weight:600;letter-spacing:-.022em;margin-top:.25rem}
+.step p{font-size:var(--t-sm);color:var(--ink-soft);margin-top:.3rem;max-width:54ch}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════════════════════════════════ */
+.contact{
+  border-top:4px solid var(--key, var(--jeok));
+  border-radius:0 0 14px 14px;
+  padding:clamp(1.35rem, 5vw, var(--sp-5));
+}
+.contact h2{font-size:var(--t-xl);max-width:18ch}
+.reach{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-3);margin-top:var(--sp-3);
+  padding-top:var(--sp-3);border-top:1px solid var(--rule)}
+.reach a{display:inline-flex;align-items:center;min-height:44px;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.09em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;
+  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease)}
+.reach a:hover{color:var(--ink);border-bottom-color:var(--jeok)}
+.reach a{gap:.5rem}
+.reach__i{width:17px;height:17px;flex:none}
+/* the mark leads the eye before the word does, so it lifts on hover */
+.reach__i{transition:transform var(--dur) var(--ease)}
+@media (hover:hover){.reach a:hover .reach__i{transform:translateY(-2px)}}
+
+footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
+  padding-bottom:calc(var(--sp-3) + env(safe-area-inset-bottom))}
+.foot{display:flex;flex-wrap:wrap;gap:.5rem var(--sp-2);justify-content:space-between;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCROLL MOTION
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion:no-preference){
+  .js .rise{opacity:0;transform:translateY(22px);
+    transition:opacity .75s var(--ease), transform .75s var(--ease);transition-delay:var(--d, 0ms)}
+  .js .rise.seen{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ASK — the conversational layer
+
+   One composer at a time, deliberately. The hero carries the real ask bar
+   because that is the first thing a reviewer sees; once it scrolls away a
+   compact launcher takes over, and the panel owns the composer from then
+   on. Two live text fields on one page is a choice the visitor has to
+   make for no reason.
+
+   The panel is NOT glass. Glass inherits whatever passes behind it and a
+   transcript is the one surface where unpredictable contrast is least
+   affordable — so it sits on --raised, and only the mobile scrim blurs.
+   ═══════════════════════════════════════════════════════════════════════ */
+.ask{margin-top:var(--sp-4);max-width:44rem}
+.ask__form{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.4rem .4rem .4rem .95rem;
+  background:var(--raised);border:1px solid var(--rule);border-radius:14px;
+  box-shadow:var(--e2), var(--edge);
+  transition:box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.ask__form:focus-within{
+  border-color:color-mix(in srgb, var(--cheong) 55%, var(--rule));
+  box-shadow:var(--e2), var(--glow-cheong);
+}
+.ask__spark{width:17px;height:17px;flex:none;color:var(--jeok);
+  fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ask__in{
+  flex:1 1 auto;min-width:0;min-height:44px;border:0;background:none;
+  color:var(--ink);font-family:var(--f-sans);font-size:var(--t-base);
+  letter-spacing:-.003em;
+}
+.ask__in:focus{outline:none}
+.ask__in::placeholder{color:var(--ink-soft)}
+.ask__go{
+  flex:none;width:44px;height:44px;display:grid;place-items:center;
+  border:0;border-radius:10px;cursor:pointer;
+  background:var(--cheong);color:var(--on-accent);
+  transition:transform .18s var(--ease), background-color .18s var(--ease);
+}
+.ask__go svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.ask__go:hover{background:var(--cheong-hi)}}
+.ask__go:active{transform:scale(.94)}
+.ask__hints{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.hint{
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.03em;
+  min-height:32px;padding:.3rem .65rem;cursor:pointer;
+  background:none;color:var(--ink-soft);
+  border:1px solid var(--rule);border-radius:20px;
+  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease),
+             background-color var(--dur) var(--ease);
+}
+@media (hover:hover){
+  .hint:hover{color:var(--ink);border-color:var(--jeok);background:var(--wash-2)}
+}
+/* No opacity here. Fading --ink-soft to 75% composites to #777 on the light
+   ground and measures 4.14:1 — under AA, on 11px uppercase mono, which is
+   the worst possible place to lose it. Small print is where contrast has to
+   be strongest, not weakest. */
+.ask__note{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:.7rem}
+
+/* ── launcher: liquid-metal pill, shown once the hero ask bar scrolls away.
+   Ported from the React/@paper-design/shaders component. That version runs a
+   WebGL fragment shader; the metal here is a conic gradient rotated through a
+   registered custom property, so it needs no GL context, no bundler and no
+   dependency. The rim IS the metal — same as the original, where the shader
+   only showed through a 2px margin around a dark inner pill. */
+@property --metal-ang{ syntax:"<angle>"; initial-value:0deg; inherits:false }
+
+.launch{
+  position:fixed;z-index:110;
+  right:var(--gutter);bottom:calc(var(--gutter) + env(safe-area-inset-bottom));
+  display:inline-flex;align-items:center;gap:.6rem;
+  min-height:48px;padding:.6rem 1.35rem;cursor:pointer;
+  font-family:var(--f-mono);font-size:var(--t-sm);font-weight:500;
+  letter-spacing:-.01em;text-transform:none;
+  /* the reference used #666 on near-black — 3.66:1, below AA. Lifted. */
+  color:#D6DBE2;
+  text-shadow:0 1px 2px rgba(0,0,0,.55);
+  border:2px solid transparent;border-radius:100px;
+  background:
+    linear-gradient(180deg,#242424 0%,#050505 100%) padding-box,
+    conic-gradient(from var(--metal-ang),
+      #5F6B78, #E9EEF5, #7C8794, #FFFFFF, #4A545F,
+      #CFD6DE, #8B96A3, #FFFFFF, #5F6B78) border-box;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.3), 0 36px 14px rgba(0,0,0,.02),
+    0 20px 12px rgba(0,0,0,.08), 0 9px 9px rgba(0,0,0,.12),
+    0 2px 5px rgba(0,0,0,.15);
+  overflow:hidden;                       /* clips the click ripple */
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.94);
+  transition:opacity .3s var(--ease), transform .24s var(--ease),
+             visibility .38s, box-shadow .15s cubic-bezier(.4,0,.2,1);
+}
+@media (prefers-reduced-motion:no-preference){
+  .launch{animation:metal 7s linear infinite}
+}
+@keyframes metal{ to{ --metal-ang:360deg } }
+
+.launch[data-show="1"]{opacity:1;visibility:visible;transform:none}
+/* After [data-show="1"] so it wins the transform — equal specificity. */
+@media (hover:hover){
+  .launch:hover{
+    transform:translateY(-2px);
+    animation-duration:2.6s;             /* the metal flows faster */
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.4), 0 12px 6px rgba(0,0,0,.05),
+      0 8px 5px rgba(0,0,0,.1), 0 4px 4px rgba(0,0,0,.15),
+      0 1px 2px rgba(0,0,0,.2);
+  }
+}
+.launch:active{
+  transform:translateY(1px) scale(.98);
+  animation-duration:1.1s;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.3),
+    inset 0 2px 4px rgba(0,0,0,.4), inset 0 1px 2px rgba(0,0,0,.3);
+}
+/* click ripple, as in the original component */
+.launch__ripple{
+  position:absolute;width:20px;height:20px;border-radius:50%;
+  pointer-events:none;transform:translate(-50%,-50%) scale(0);
+  background:radial-gradient(circle,
+    rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 70%);
+  animation:launch-ripple .6s ease-out forwards;
+}
+@keyframes launch-ripple{
+  to{ transform:translate(-50%,-50%) scale(4); opacity:0 }
+}
+/* the dot rides on dark metal, so it pulses in a bright steel tone */
+.launch__dot{width:7px;height:7px;flex:none;border-radius:50%;
+  background:#E9EEF5;--pulse:#E9EEF5}
+@media (prefers-reduced-motion:no-preference){
+  .launch__dot{animation:beat 2.6s var(--ease) infinite}
+}
+/* --pulse lets an element on a coloured ground override the ring tone
+   without redefining --jeok, which other elements still rely on. */
+@keyframes beat{
+  0%,72%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--pulse, var(--jeok)) 60%, transparent)}
+  36%{box-shadow:0 0 0 7px color-mix(in srgb, var(--pulse, var(--jeok)) 0%, transparent)}
+}
+
+/* ── scrim (mobile sheet only) ── */
+.scrim{
+  position:fixed;inset:0;z-index:115;background:rgba(10,12,16,.5);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  opacity:0;visibility:hidden;transition:opacity .3s var(--ease), visibility .3s;
+}
+.scrim[data-open="1"]{opacity:1;visibility:visible}
+@media (min-width:720px){.scrim{display:none}}
+
+/* ── the panel ── */
+.chat{
+  /* The one inverted surface: it opposes the page, which is what tells you
+     it is an overlay and not part of the document. Every token used inside
+     is re-pointed here, so the panel's own rules need no changes. */
+  --ink:var(--glass-ink);
+  --ink-soft:var(--glass-ink-soft);
+  --rule:var(--glass-rule);
+  --rule-soft:var(--glass-rule-soft);
+  --cheong:var(--glass-cheong);
+  --jeok:var(--glass-jeok);
+  --hwang:var(--glass-hwang);
+  --on-accent:var(--glass-on-accent);
+  --raised:var(--glass-a);
+  --ground-2:var(--glass-b);
+  position:fixed;z-index:120;inset:auto 0 0 0;
+  display:flex;flex-direction:column;overflow:hidden;
+  height:min(86dvh, 720px);
+  /* This panel is a <section>, so the global section{padding-block:--sp-6}
+     applied to it and ate ~169px of the panel — a quarter of its height —
+     as invisible padding above and below the conversation. */
+  padding-block:0;
+  color:var(--ink);
+  background:linear-gradient(158deg, var(--glass-a), var(--glass-b));
+  backdrop-filter:blur(22px) saturate(1.6);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  border-top:1px solid var(--glass-brd);
+  border-radius:18px 18px 0 0;
+  box-shadow:var(--e3), inset 0 1px 0 var(--glass-rim);
+  transform:translateY(101%);opacity:0;visibility:hidden;
+  transition:transform .44s var(--ease), opacity .26s var(--ease), visibility .44s;
+}
+.chat[data-open="1"]{transform:none;opacity:1;visibility:visible}
+@media (min-width:720px){
+  .chat{
+    inset:auto var(--gutter) calc(var(--gutter) + env(safe-area-inset-bottom)) auto;
+    width:min(27rem, calc(100vw - 2 * var(--gutter)));
+    height:min(74vh, 640px);
+    border:1px solid var(--rule);border-radius:18px;
+    transform:translateY(20px) scale(.97);
+  }
+}
+/* Header pinned to the top and tightened — every pixel taken back here goes
+   straight to the message log, which is the part people actually read. */
+.chat__top{
+  position:sticky;top:0;z-index:2;
+  display:flex;align-items:center;gap:.6rem;flex:none;
+  padding:.5rem var(--sp-2);
+  border-bottom:1px solid var(--rule);
+  background:color-mix(in srgb, var(--glass-a) 88%, transparent);
+  backdrop-filter:blur(14px) saturate(1.4);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);
+}
+.chat__grip{
+  position:absolute;left:50%;top:.42rem;translate:-50% 0;
+  width:34px;height:4px;border-radius:2px;background:var(--rule);
+}
+@media (min-width:720px){.chat__grip{display:none}}
+.chat__mark{
+  width:34px;height:34px;flex:none;border-radius:50%;
+  object-fit:cover;object-position:50% 20%;
+  border:1px solid var(--rule);
+  box-shadow:var(--e1);
+  background:var(--ground-2);
+}
+/* initials fallback, used only if the photo cannot load */
+.chat__mark--txt{
+  display:grid;place-items:center;border-radius:50%;
+  background:var(--cheong);color:var(--on-accent);border:0;
+  font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.02em;
+}
+.chat__who{display:grid;gap:.05rem;margin-right:auto;min-width:0}
+.chat__who b{font-size:var(--t-sm);font-weight:600;letter-spacing:-.012em}
+.chat__who span{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.chat__x{
+  flex:none;width:36px;height:36px;display:grid;place-items:center;cursor:pointer;
+  background:none;border:1px solid transparent;border-radius:9px;color:var(--ink-soft);
+  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.chat__x svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media (hover:hover){.chat__x:hover{color:var(--ink);border-color:var(--rule)}}
+
+.chat__log{
+  flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding:var(--sp-2);display:flex;flex-direction:column;gap:var(--sp-2);
+  scrollbar-width:thin;
+}
+.msg{display:flex;flex-direction:column;max-width:100%}
+.msg--u{align-items:flex-end}
+.msg--u .msg__b{
+  background:var(--cheong);color:var(--on-accent);
+  padding:.55rem .85rem;border-radius:14px 14px 4px 14px;
+  max-width:85%;font-size:var(--t-sm);line-height:1.55;
+}
+.msg--a .msg__b{
+  border-left:2px solid var(--jeok);padding-left:.85rem;
+  font-size:var(--t-sm);line-height:1.65;color:var(--ink);
+}
+.msg--a .msg__b p + p{margin-top:.6rem}
+.msg--a .msg__b strong{font-weight:600}
+.msg--a .msg__b ul{margin-top:.5rem;display:grid;gap:.3rem}
+.msg--a .msg__b li{padding-left:.9rem;position:relative;color:var(--ink-soft)}
+.msg--a .msg__b li::before{content:"—";position:absolute;left:0;color:var(--jeok)}
+.msg--a .msg__b em{font-style:normal;color:var(--ink-soft)}
+@media (prefers-reduced-motion:no-preference){
+  .msg{animation:msgIn .34s var(--ease) both}
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* the caret only exists while text is still arriving */
+.cur::after{
+  content:"";display:inline-block;width:.5ch;height:1em;margin-left:.12em;
+  background:var(--jeok);vertical-align:-.14em;
+}
+@media (prefers-reduced-motion:no-preference){.cur::after{animation:blink 1s steps(1) infinite}}
+@keyframes blink{50%{opacity:0}}
+
+.jump{
+  display:inline-flex;align-items:center;gap:.4rem;min-height:34px;margin-top:.6rem;
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;
+  border-bottom:1px solid var(--rule);
+  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.jump svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media (hover:hover){.jump:hover{color:var(--ink);border-color:var(--jeok)}}
+
+.dots{display:inline-flex;gap:4px;padding:.35rem 0}
+.dots i{width:5px;height:5px;border-radius:50%;background:var(--ink-soft);opacity:.4}
+@media (prefers-reduced-motion:no-preference){
+  .dots i{animation:hop 1.1s var(--ease) infinite}
+  .dots i:nth-child(2){animation-delay:.13s}
+  .dots i:nth-child(3){animation-delay:.26s}
+}
+@keyframes hop{0%,66%,100%{opacity:.35;transform:none}33%{opacity:1;transform:translateY(-3px)}}
+
+/* a generated answer is marked, so a reviewer can tell it from written copy */
+.chat__gen{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--ink-soft);
+  margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--rule-soft)}
+.chat__wait{color:var(--ink-soft);font-style:italic}
+.chat__foot{flex:none;border-top:1px solid var(--rule-soft);background:var(--ground-2)}
+/* Drag-to-scroll: the row is wider than the panel, and on a pointer device
+   there is no obvious way to move it. Grab and pull. */
+.chat__chips{
+  display:flex;gap:.4rem;overflow-x:auto;padding:.6rem var(--sp-2) 0;
+  scrollbar-width:none;-ms-overflow-style:none;
+  cursor:grab;
+  scroll-behavior:smooth;
+}
+.chat__chips[data-drag="1"]{
+  cursor:grabbing;
+  scroll-behavior:auto;          /* smooth fights a live drag */
+  user-select:none;
+}
+/* while dragging, a chip must not swallow the gesture as a click */
+.chat__chips[data-drag="1"] .hint{pointer-events:none}
+.chat__chips::-webkit-scrollbar{display:none}
+.chat__chips .hint{white-space:nowrap;flex:none}
+.chat__bar{display:flex;align-items:flex-end;gap:.5rem;padding:.6rem var(--sp-2)
+  calc(.6rem + env(safe-area-inset-bottom))}
+.chat__in{
+  flex:1 1 auto;min-width:0;min-height:44px;max-height:7.5rem;resize:none;
+  padding:.62rem .8rem;
+  font-family:var(--f-sans);font-size:var(--t-sm);line-height:1.5;color:var(--ink);
+  background:var(--raised);border:1px solid var(--rule);border-radius:11px;
+  transition:border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.chat__in:focus{outline:none;border-color:color-mix(in srgb, var(--cheong) 55%, var(--rule));
+  box-shadow:var(--glow-cheong)}
+.chat__in::placeholder{color:var(--ink-soft)}
+.chat__send{
+  flex:none;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;
+  border:0;border-radius:11px;background:var(--cheong);color:var(--on-accent);
+  transition:transform .18s var(--ease), background-color .18s var(--ease),
+             opacity .18s var(--ease);
+}
+.chat__send svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.chat__send:disabled{opacity:.4;cursor:not-allowed}
+@media (hover:hover){.chat__send:not(:disabled):hover{background:var(--cheong-hi)}}
+.chat__send:not(:disabled):active{transform:scale(.94)}
+/* while streaming the same control stops the stream */
+.chat__send[data-mode="stop"]{background:var(--jeok)}
+
+/* a section the answer pointed at, briefly marked */
+@media (prefers-reduced-motion:no-preference){
+  .flash{animation:flash 1.9s var(--ease) 1}
+}
+@keyframes flash{
+  0%{box-shadow:inset 3px 0 0 var(--jeok);background-color:var(--wash-2)}
+  100%{box-shadow:inset 3px 0 0 transparent;background-color:transparent}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOTION — additions
+   ═══════════════════════════════════════════════════════════════════════ */
+/* scroll progress, drawn on the sticky bar's own bottom edge */
+.bar::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:var(--jeok);transform:scaleX(var(--prog,0));transform-origin:0 50%;
+  opacity:0;transition:opacity var(--dur) var(--ease);
+}
+.bar.pinned::after{opacity:1}
+
+/* headline masks — JS wraps the text, so it degrades to plain text if JS is off */
+.js .mask{display:block;overflow:hidden}
+@media (prefers-reduced-motion:no-preference){
+  .js .mask > span{
+    display:block;transform:translateY(105%);
+    transition:transform .82s var(--ease);transition-delay:var(--d,0ms);
+  }
+  .js .seen .mask > span,.js .mask.seen > span{transform:none}
+}
+
+/* scroll-linked drift on the colour fields, where the browser supports it.
+   Pure compositor work — no scroll listener, no rAF, nothing on the main
+   thread. Browsers without view() timelines simply get the static field. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    #about::before,#work::before{
+      animation:drift linear both;
+      animation-timeline:view();
+      animation-range:entry 0% exit 100%;
+    }
+    @keyframes drift{from{transform:translateY(-2.2%) scale(1.03)}
+                     to{transform:translateY(2.2%) scale(1.03)}}
+  }
+}
+
+/* PRINT */
+@media print{
+  .rail,.bar,.mnav,.acts,#net,.strip,.tgl,.ask,.launch,.chat,.scrim{display:none!important}
+  body{padding-left:0;background:#fff;color:#000;font-size:10pt}
+  :root{--ground:#fff;--ground-2:#fff;--raised:#fff;--ink:#000;--ink-soft:#333;
+        --rule:#bbb;--rule-soft:#ddd;--jeok:#C70000;--cheong:#052962;--hwang:#6E5A3C;
+        --e1:none;--e2:none;--e3:none;--edge:none}
+  section{padding-block:1rem;break-inside:avoid}
+  #work{background:none}
+  .rec{background:none!important;backdrop-filter:none!important;border:1px solid #bbb;
+       transform:none!important;padding:.6rem}
+  .rec::after{display:none}
+  .rec,.step,.cred,.contact,.aim{break-inside:avoid;box-shadow:none}
+  #about::before,#work::before{display:none}
+  a[href^="http"]::after{content:" — " attr(href);font-size:8pt;color:#555;word-break:break-all}
+}
+</style>
+
+<!-- ══ STRUCTURED DATA ══
+     What a recruiter's ATS, a search engine, and an LLM crawler read instead
+     of guessing from the markup. Deliberately restricted to claims the page
+     actually makes — an empty `url` or an invented `sameAs` is worse than a
+     missing field, because a wrong one gets indexed. Fill the bracketed
+     values or delete those lines outright. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muhammad Waseem",
+  "givenName": "Muhammad",
+  "familyName": "Waseem",
+  "email": "mailto:muhammad.waseem.study1@gmail.com",
+  "image": "portrait.jpg",
+  "sameAs": [
+    "https://linkedin.com/in/muhammad-waseem-6361b4400"
+  ],
+  "nationality": { "@type": "Country", "name": "Pakistan" },
+  "description": "AI and cyber security student from Pakistan. Runs a home security lab and applies machine learning to the telemetry it produces. Applicant, Global Korea Scholarship (Undergraduate, 2027).",
+  "knowsAbout": [
+    "Anomaly detection",
+    "Security information and event management",
+    "Threat hunting",
+    "Network traffic analysis",
+    "Active Directory security",
+    "Incident response",
+    "Machine learning",
+    "Linux administration"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "Urdu" },
+    { "@type": "Language", "name": "English" },
+    { "@type": "Language", "name": "Korean", "alternateName": "ko" }
+  ],
+  "seeks": {
+    "@type": "Demand",
+    "name": "Undergraduate study in AI and cyber security in South Korea"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CompTIA Security+ (SY0-701)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "CompTIA" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Cybersecurity Certificate",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Google" }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "SOC Level 1 pathway",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "TryHackMe" }
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<aside class="rail" aria-hidden="true">
+  <span class="rail__mark"></span>
+  <span class="rail__now" id="railNow">Introduction</span>
+  <span class="rail__pct num" id="railPct">00</span>
+</aside>
+
+<header class="bar">
+  <div class="shell bar__in">
+    <a class="sig" href="#top">Muhammad Waseem<span>.</span></a>
+    <nav class="menu" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#skills">Skills</a>
+      <a href="#research">Direction</a>
+      <a href="#plan">Plan</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="tgl" id="tgl" type="button" aria-label="Switch colour theme">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.2v2.4m0 14.8v2.4M4.6 4.6l1.7 1.7m11.4 11.4 1.7 1.7M2.2 12h2.4m14.8 0h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.9A9 9 0 1 1 11.1 3a7.05 7.05 0 0 0 9.9 9.9z"/></svg>
+    </button>
+  </div>
+  <nav class="mnav" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#skills">Skills</a>
+    <a href="#research">Direction</a>
+    <a href="#plan">Plan</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="shell hero__in">
+
+    <p class="tagline">
+      <!-- Identity marker, not a hero image: the canvas is the visual anchor
+           here, and a large portrait would compete with it. Falls back to the
+           pulsing diamond if the file is missing. -->
+      <img class="tagline__me" src="portrait.jpg" width="720" height="720"
+           alt="" aria-hidden="true" decoding="async"
+           onerror="this.replaceWith(Object.assign(document.createElement('i'),{ariaHidden:'true'}))">
+      AI &amp; Security <b>·</b> Global Korea Scholarship <b>·</b> Undergraduate 2027
+    </p>
+
+    <!-- EDIT: keep it short. Each .ln is one animated line. -->
+    <h1 class="hero__h dsp" id="h1">
+      <span class="ln"><span>Teaching machines</span></span>
+      <span class="ln"><span>to notice what</span></span>
+      <span class="ln"><span><em>people miss.</em></span></span>
+    </h1>
+
+    <p class="hero__lede">
+      <!-- EDIT: one sentence — who you are, and what you want to study in Korea. -->
+      Muhammad Waseem — 22, from Pakistan. I run a small security lab out of my bedroom
+      and point machine learning at the logs it produces. I am applying
+      to study AI and cyber security in Korea.
+    </p>
+    <p class="hero__ko">
+      <!-- OPTIONAL: delete if you don't write Korean confidently. -->
+      한국에서 정보보안을 공부하고 싶습니다.
+    </p>
+
+    <div class="acts">
+      <a class="act act--solid" href="#work">
+        See the work
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="act act--line" href="[CV.pdf]" download>
+        Curriculum vitae
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg>
+      </a>
+    </div>
+
+    <!-- ══ ASK BAR ══
+         The one live composer above the fold. Submitting hands the question
+         to the panel, which owns the conversation from that point on. -->
+    <div class="ask rise" id="ask" style="--d:120ms">
+      <form class="ask__form" id="askForm" autocomplete="off">
+        <svg class="ask__spark" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/>
+          <circle cx="12" cy="12" r="2.6"/>
+        </svg>
+        <label class="skip" for="askIn">Ask a question about Muhammad Waseem</label>
+        <input class="ask__in" id="askIn" name="q" type="text"
+               placeholder="Ask me anything — projects, certifications, why Korea…"
+               aria-label="Ask a question about Muhammad Waseem">
+        <button class="ask__go" type="submit" aria-label="Send question">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <div class="ask__hints" id="askHints">
+        <button class="hint" type="button" data-q="What have you actually built?">What have you built?</button>
+        <button class="hint" type="button" data-q="Why Korea?">Why Korea?</button>
+        <button class="hint" type="button" data-q="What certifications do you hold?">Certifications</button>
+        <button class="hint" type="button" data-q="What is in your home lab?">Your home lab</button>
+      </div>
+      <p class="ask__note">Answers come from a profile written into this page — no server, no model, no data leaves your browser.</p>
+    </div>
+
+    <!-- EDIT: only numbers you can defend in an interview. Delete any you can't. -->
+    <dl class="ledger rise">
+      <div><b class="num" data-count="3">03</b><span>certifications</span></div>
+      <div><b class="num" data-count="4">04</b><span>documented projects</span></div>
+      <div><b class="num" data-count="240">240</b><span>logged lab hours</span></div>
+      <div><b class="num">[TOPIK —]</b><span>Korean level</span></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<section id="about">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">How I got here</h2>
+      <p class="mono">About</p>
+    </div>
+    <div class="two">
+      <div class="rise">
+        <!-- Save your headshot as portrait.jpg beside this file.
+             If it is missing the figure removes itself, so a reviewer never
+             sees a broken-image icon. -->
+        <figure class="portrait" id="portrait">
+          <div class="portrait__frame">
+            <!-- Source order is narrowest-format-first: the browser takes the
+                 first type it understands and stops. AVIF is 54% smaller than
+                 the JPEG here, WebP 51%; the JPEG stays as the <img> src so
+                 anything that understands neither still gets a photograph
+                 rather than the alt text. -->
+            <picture>
+              <source srcset="portrait.avif" type="image/avif">
+              <source srcset="portrait.webp" type="image/webp">
+              <img src="portrait.jpg" width="720" height="720" decoding="async"
+                   fetchpriority="high"
+                   alt="Portrait of Muhammad Waseem"
+                   onerror="this.closest('.portrait').dataset.failed='1';console.warn('portrait image did not load — save your headshot next to index.html')"
+                   onload="this.closest('.portrait').removeAttribute('data-failed')">
+            </picture>
+          </div>
+          <figcaption>
+            <b>Muhammad Waseem</b>
+            <span>Pakistan</span>
+          </figcaption>
+        </figure>
+
+        <!-- DRAFT — replace with your own opening moment if this isn't it. -->
+        <blockquote class="pull">
+          I bricked the family router at sixteen and spent a week learning why.
+        </blockquote>
+      </div>
+      <div class="prose rise" style="--d:90ms">
+        <!-- DRAFT — 100–150 words, first person. Rewrite in your own voice. -->
+        <p>
+          The router came back eventually. What stayed was the habit of taking a thing apart
+          until I understood the failure rather than just the fix. Two years on I run a home
+          lab out of my bedroom — <strong>pfSense</strong> at the edge, a three-host Windows
+          domain, and a Kali box I use to attack my own network so I know what the logs
+          look like from both sides of an intrusion.
+        </p>
+        <p>
+          The lab produces far more log data than I can read, which is how I ended up in
+          machine learning. Writing detection rules only catches what you already thought
+          of; a model that has learned what normal looks like can flag the thing you did
+          not. <strong>That gap is the work I want to do</strong> — and it is why I am
+          applying to Korea, where security research and applied AI sit in the same
+          departments rather than in separate buildings.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ WORK ══════════════════════ -->
+<section id="work">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Work</h2>
+      <p class="mono">04 records</p>
+    </div>
+    <p class="intro rise">
+      Each record states what I set out to find, what I did, and what changed as a result.
+      Full write-ups are linked; everything is sanitised.
+    </p>
+
+    <div class="deck" style="margin-top:var(--sp-4)">
+
+      <!-- ── DRAFT RECORDS ──────────────────────────────────────────────
+           All four are written from the shape of work you described, not
+           from your notes. Check every claim against what you actually ran
+           before an interview — a record you cannot defend is worse than a
+           record you do not have. Only the write-up URLs are still blank.
+           Copy this whole <article> per additional project. ──────────── -->
+      <article class="rec rise" style="--key:var(--cheong)">
+        <p class="rec__id">Lab 01 · 2025</p>
+        <h3>Teaching a model what my network normally does</h3>
+        <p class="rec__ctx">Isolation Forest over Zeek connection logs from a three-host lab.</p>
+        <dl class="pao">
+          <div><dt>Question</dt><dd>Could an unsupervised model flag beaconing traffic I had never labelled for it?</dd></div>
+          <div><dt>Method</dt><dd>Two weeks of Zeek conn logs, engineered features for interval regularity and payload-size variance, then fit an Isolation Forest and ran a real beacon through it.</dd></div>
+          <div><dt>Result</dt><dd>It caught the beacon — and flagged my own nightly backup job as well. Tuning out that false positive taught me more than the detection did: base rates matter more than model choice.</dd></div>
+        </dl>
+        <ul class="chips">
+          <li class="chip chip--role">AI Security</li>
+          <li class="chip">Python</li><li class="chip">scikit-learn</li><li class="chip">Zeek</li>
+        </ul>
+        <a class="go" href="[write-up URL]">
+          Full write-up
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="rec rise" style="--key:var(--jeok); --d:80ms">
+        <p class="rec__id">Lab 02 · 2025</p>
+        <h3>Walking my own domain the way an attacker would</h3>
+        <p class="rec__ctx">Active Directory attack path, then the detections that should have caught it.</p>
+        <dl class="pao">
+          <div><dt>Question</dt><dd>Starting from one ordinary domain user, how far could I get before anything in the lab logged it?</dd></div>
+          <div><dt>Method</dt><dd>Collected the graph with BloodHound, Kerberoasted a service account with a weak password, and moved to the file server. Then replayed the identical path with Sysmon and Wazuh recording everything.</dd></div>
+          <div><dt>Result</dt><dd>Four steps to Domain Admin; only two of them produced an alert under the default configuration. I wrote the Sigma rules for the other two, which is the part of the exercise that was actually worth keeping.</dd></div>
+        </dl>
+        <ul class="chips">
+          <li class="chip chip--role">Penetration Tester</li>
+          <li class="chip">BloodHound</li><li class="chip">Sysmon</li><li class="chip">Sigma</li>
+        </ul>
+        <a class="go" href="[write-up URL]">
+          Full write-up
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="rec rise" style="--key:var(--hwang); --d:160ms">
+        <p class="rec__id">Lab 03 · 2026</p>
+        <h3>Rebuilding an intrusion from what the SIEM kept</h3>
+        <p class="rec__ctx">Timeline reconstruction against my own scripted intrusion, a week cold.</p>
+        <dl class="pao">
+          <div><dt>Question</dt><dd>Could I reconstruct the timeline of an intrusion using only what my logging pipeline had retained — no memory of running it?</dd></div>
+          <div><dt>Method</dt><dd>Ran a scripted intrusion against the lab, left it a week, then worked purely from Wazuh alerts, Sysmon event IDs and Zeek logs to write the incident timeline.</dd></div>
+          <div><dt>Result</dt><dd>Initial access and persistence came back cleanly. Lateral movement was invisible — Sysmon Event ID 3 was never being forwarded. Fixing the pipeline mattered more than any rule I could have written on top of it.</dd></div>
+        </dl>
+        <ul class="chips">
+          <li class="chip chip--role">Incident Responder</li>
+          <li class="chip">Wazuh</li><li class="chip">Sysmon</li><li class="chip">Zeek</li>
+        </ul>
+        <a class="go" href="[write-up URL]">
+          Full write-up
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="rec rise" style="--key:var(--cheong); --d:240ms">
+        <p class="rec__id">Lab 04 · 2026</p>
+        <h3>A phishing URL classifier, and how accuracy lied to me</h3>
+        <p class="rec__ctx">Lexical features only, evaluated at a realistic base rate rather than a balanced one.</p>
+        <dl class="pao">
+          <div><dt>Question</dt><dd>How much of a phishing URL is detectable from its text alone, with no page fetch and no reputation feed?</dd></div>
+          <div><dt>Method</dt><dd>Built lexical features — length, character entropy, subdomain depth, token counts, TLD — over a public URL corpus, then compared logistic regression against gradient boosting on precision-recall rather than accuracy.</dd></div>
+          <div><dt>Result</dt><dd>0.96 accuracy on a balanced split, which is meaningless: re-weighted to the prevalence a real mail gateway sees, precision collapsed. The model was fine. The evaluation was the finding.</dd></div>
+        </dl>
+        <ul class="chips">
+          <li class="chip chip--role">Machine Learning</li>
+          <li class="chip">Python</li><li class="chip">pandas</li><li class="chip">scikit-learn</li>
+        </ul>
+        <a class="go" href="[write-up URL]">
+          Full write-up
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TOOLSET ══════════════════════ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__row">
+    <!-- EDIT: your real toolset. Both lists must stay identical for a seamless loop. -->
+    <ul><li>Python</li><li>scikit-learn</li><li>pandas</li><li>Wireshark</li><li>Zeek</li><li>Wazuh</li><li>Sysmon</li><li>Nmap</li><li>Burp Suite</li><li>Linux</li></ul>
+    <ul><li>Python</li><li>scikit-learn</li><li>pandas</li><li>Wireshark</li><li>Zeek</li><li>Wazuh</li><li>Sysmon</li><li>Nmap</li><li>Burp Suite</li><li>Linux</li></ul>
+  </div>
+</div>
+
+<!-- ══════════════════════ CREDENTIALS ══════════════════════ -->
+<section id="credentials">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Credentials</h2>
+      <p class="mono">Each one is verifiable</p>
+    </div>
+    <p class="intro rise">Every entry links to a record that can be checked independently.</p>
+
+    <div class="certs" style="margin-top:var(--sp-4)">
+      <!-- ── copy this whole <article> per certification ── -->
+      <article class="cred rise" style="--key:var(--cheong)">
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Certification
+        </p>
+        <h3>CompTIA Security+ (SY0-701)</h3>
+        <p class="cred__issuer">CompTIA</p>
+        <dl class="cred__facts">
+          <div><dt>Issued</dt><dd>2025</dd></div>
+          <div><dt>Credential ID</dt><dd>[ID number]</dd></div>
+        </dl>
+        <a class="go" href="[verification URL]">
+          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:70ms">
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Certificate
+        </p>
+        <h3>Google Cybersecurity Certificate</h3>
+        <p class="cred__issuer">Google · Coursera</p>
+        <dl class="cred__facts">
+          <div><dt>Issued</dt><dd>2024</dd></div>
+          <div><dt>Credential ID</dt><dd>[ID number]</dd></div>
+        </dl>
+        <a class="go" href="[verification URL]">
+          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="cred rise" style="--key:var(--key-tan); --d:140ms">
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Learning path
+        </p>
+        <h3>SOC Level 1 pathway</h3>
+        <p class="cred__issuer">TryHackMe</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>2025</dd></div>
+          <div><dt>Profile</dt><dd>[username]</dd></div>
+        </dl>
+        <a class="go" href="[profile URL]">
+          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ SKILLS ══════════════════════ -->
+<section id="skills">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Skills</h2>
+      <p class="mono">Grouped by the role it serves</p>
+    </div>
+    <div class="cols">
+      <div class="col rise" style="--key:var(--cheong)">
+        <h3>Machine learning</h3>
+        <ul><li>Anomaly detection</li><li>Feature engineering on logs</li><li>scikit-learn</li><li>Model evaluation</li></ul>
+      </div>
+      <div class="col rise" style="--key:var(--jeok); --d:70ms">
+        <h3>Defensive</h3>
+        <ul><li>Log analysis</li><li>SIEM rule writing</li><li>Threat hunting</li><li>Packet analysis</li></ul>
+      </div>
+      <div class="col rise" style="--key:var(--hwang); --d:140ms">
+        <h3>Offensive</h3>
+        <ul><li>Enumeration</li><li>Web exploitation</li><li>Privilege escalation</li><li>Reporting</li></ul>
+      </div>
+      <div class="col rise" style="--key:var(--ink); --d:210ms">
+        <h3>Foundations</h3>
+        <ul><li>Linux administration</li><li>TCP/IP networking</li><li>Python</li><li>Bash</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PLAN ══════════════════════ -->
+<!-- ══════════════════════ RESEARCH DIRECTION ══════════════════════
+     EDIT: these three questions come straight out of your four labs, so you
+     can defend every one of them in an interview. Change the wording to your
+     own — but keep each one tied to something you actually built, and keep
+     the "What I'd need" line, because that is what justifies the degree. -->
+<section id="research">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Where I want to take this</h2>
+      <p class="mono">Open questions</p>
+    </div>
+    <p class="intro rise">
+      Every lab below left me with a question I could not answer with a bedroom
+      network and no supervision. These are the three I want to work on.
+    </p>
+
+    <div class="aims" style="margin-top:var(--sp-4)">
+      <article class="aim rise" style="--key:var(--cheong)">
+        <p class="aim__n">01</p>
+        <h3>Detection that survives a realistic base rate</h3>
+        <p class="aim__why">
+          My phishing classifier looked strong until I evaluated it at the rate
+          real traffic actually carries, and my anomaly model flagged my own
+          backup job. Benchmarks reward balanced data; networks are not balanced.
+        </p>
+        <dl class="aim__need">
+          <div><dt>Need</dt><dd>Real traffic at volume, and a lab that treats false-positive cost as a first-class metric.</dd></div>
+        </dl>
+      </article>
+
+      <article class="aim rise" style="--key:var(--jeok); --d:80ms">
+        <p class="aim__n">02</p>
+        <h3>Can a detection model be evaded on purpose?</h3>
+        <p class="aim__why">
+          I built models that catch an attack I wrote myself. I have no idea how
+          they hold up against someone shaping traffic specifically to slip past
+          them — which is the only case that matters in production.
+        </p>
+        <dl class="aim__need">
+          <div><dt>Need</dt><dd>Adversarial machine learning taught properly, and people to test my assumptions against.</dd></div>
+        </dl>
+      </article>
+
+      <article class="aim rise" style="--key:var(--hwang); --d:160ms">
+        <p class="aim__n">03</p>
+        <h3>What evidence actually survives an incident</h3>
+        <p class="aim__why">
+          Reconstructing my own intrusion a week later, the limit was never my
+          analysis — it was what the pipeline had kept. Deciding what to retain
+          before you need it is a design problem, not a tooling one.
+        </p>
+        <dl class="aim__need">
+          <div><dt>Need</dt><dd>Systems bigger than one person's lab, where retention has a real cost.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Why Korea, and what happens after</h2>
+      <p class="mono">Study plan</p>
+    </div>
+    <div class="two">
+      <div class="prose rise">
+        <!-- DRAFT — the two paragraphs a GKS panel reads most closely.
+             Replace the specifics with the labs and courses you have actually
+             looked up. Generic praise of Korea reads as filler. -->
+        <p>
+          I am applying to the Department of AI Cyber Security
+          (인공지능사이버보안학과) at <strong>Korea University Sejong</strong> and the
+          Department of Smart Security (스마트보안학과) at
+          <strong>Konyang University</strong>. Both teach detection and machine learning
+          inside one department rather than treating security as a networking elective and
+          AI as a maths one — which is the exact seam my own lab work keeps falling into.
+          Korea University Sejong is the closer fit for the anomaly-detection research I
+          want to do; Konyang's programme is the more applied of the two, and its industry
+          placement is the part I would use hardest.
+        </p>
+        <p>
+          Pakistan has a growing number of organisations running enough infrastructure to
+          need real detection engineering, and very few people trained to build it. After
+          the degree I want to work in a SOC long enough to learn what detection actually
+          costs at scale, then take that back and teach it — a detection-engineering
+          curriculum in Urdu is not something that currently exists, and I am not
+          convinced it should stay that way.
+        </p>
+      </div>
+      <ol class="seq rise" style="--d:90ms">
+        <li class="step">
+          <div>
+            <time datetime="2027">2027</time>
+            <h3>Korean language year</h3>
+            <p>Both target departments teach entirely in Korean and require TOPIK 3
+               for admission after the language year. That is the target.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div>
+            <time datetime="2028">2028–2032</time>
+            <h3>B.Sc. — AI and security engineering</h3>
+            <p>Applying to Department of AI Cyber Security (인공지능사이버보안학과),
+               Korea University Sejong, and Department of Smart Security (스마트보안학과),
+               Konyang University. The work I want to reach is anomaly detection on
+               network and host telemetry — models that hold up at a real base rate.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div>
+            <time datetime="2032">2032 onward</time>
+            <h3>Detection engineering, then teaching it</h3>
+            <p>Three to four years building detections somewhere they are under genuine
+               load, then back to Pakistan to teach the same thing in Urdu. The gap at
+               home is not talent — it is that nobody has written the course.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<section id="contact">
+  <div class="shell">
+    <div class="contact rise">
+      <p class="mono" style="color:var(--jeok)">Contact</p>
+      <h2 class="dsp" style="margin-top:var(--sp-2)">Happy to talk about any of it.</h2>
+      <p class="intro" style="margin-top:var(--sp-2)">
+        For interviews, questions about a specific finding, or the full document set.
+      </p>
+      <div class="acts">
+        <a class="act act--solid act--mail" href="mailto:muhammad.waseem.study1@gmail.com">
+          muhammad.waseem.study1@gmail.com
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <!-- Brand marks are the official glyphs (Simple Icons, CC0), single-path
+           and inheriting currentColor so they follow the theme. Delete any row
+           you do not actually use — an unlinked profile is worse than none. -->
+      <div class="reach">
+        <a href="mailto:muhammad.waseem.study1@gmail.com">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.5 6.5 9.5 7 9.5-7"/>
+          </svg>
+          Email
+        </a>
+        <a href="https://linkedin.com/in/muhammad-waseem-6361b4400">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="[GitHub URL]">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a href="[Kaggle URL]">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.234.118-.353.354-.353h2.431c.234 0 .351.119.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.336"/></svg>
+          Kaggle
+        </a>
+        <a href="[Facebook URL]">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+          Facebook
+        </a>
+        <!-- Credly: I could not reproduce their official mark from memory, so
+             this is a generic verified-badge glyph. Replace the <path> with the
+             real one from simpleicons.org/?q=credly to be brand-accurate. -->
+        <a href="[Credly URL]">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.6 20 6v6.2c0 4.3-3.2 7.9-8 9.2-4.8-1.3-8-4.9-8-9.2V6z"/><path d="m8.8 12.1 2.2 2.2 4.2-4.4"/>
+          </svg>
+          Credly
+        </a>
+        <a href="[TryHackMe URL]">
+          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="13" rx="2"/><path d="m7.5 9 2.5 2-2.5 2M12.5 13.5H16M8 21h8"/>
+          </svg>
+          TryHackMe
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="shell foot">
+    <span>© <span id="yr">2026</span> Muhammad Waseem</span>
+    <span>Pakistan</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════ ASK PANEL ══════════════════════
+     Rendered last so it sits above everything without a z-index arms race.
+     Everything here is inert until JS runs — there is no non-JS state in
+     which a visitor sees a dead chat box. -->
+<button class="launch" id="launch" type="button" hidden
+        aria-haspopup="dialog" aria-controls="chat" aria-expanded="false">
+  <span class="launch__dot" aria-hidden="true"></span>
+  Ask about my work
+</button>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<section class="chat" id="chat" role="dialog" aria-modal="true"
+         aria-labelledby="chatTitle" hidden>
+  <div class="chat__grip" aria-hidden="true"></div>
+  <header class="chat__top">
+    <img class="chat__mark" src="portrait.jpg" width="720" height="720" alt=""
+         decoding="async" aria-hidden="true"
+         onerror="this.replaceWith(Object.assign(document.createElement('span'),
+                  {className:'chat__mark chat__mark--txt',textContent:'MW'}))">
+    <span class="chat__who">
+      <b id="chatTitle">Ask about Muhammad</b>
+      <span>Answers from this page</span>
+    </span>
+    <button class="chat__x" id="chatX" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+
+  <div class="chat__log" id="chatLog" role="log" aria-live="polite" aria-atomic="false"></div>
+
+  <div class="chat__foot">
+    <div class="chat__chips" id="chatChips"></div>
+    <form class="chat__bar" id="chatForm" autocomplete="off">
+      <label class="skip" for="chatIn">Your question</label>
+      <textarea class="chat__in" id="chatIn" rows="1" placeholder="Ask a question…"
+                aria-label="Your question"></textarea>
+      <button class="chat__send" id="chatSend" type="submit" aria-label="Send" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+(() => {
+  "use strict";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
+
+  /* ── theme ── */
+  const isDark = () => root.hasAttribute("data-theme")
+    ? root.getAttribute("data-theme") === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  const applyPointerLight = () => {
+    // A moving light source reads as a torch: correct at night, wrong at noon.
+    document.body.classList.toggle("lit-pointer", isDark() && fine && !reduced);
+  };
+  document.getElementById("tgl").addEventListener("click", () => {
+    const next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    applyPointerLight();
+  });
+  // While no explicit choice is stored the page follows the OS, so a system
+  // switch to light has to extinguish the torch too — not just the button.
+  matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => applyPointerLight());
+
+  /* ── hero lines ── */
+  const h1 = document.getElementById("h1");
+  h1.querySelectorAll(".ln > span").forEach((s, i) => s.style.setProperty("--d", 90 + i * 110 + "ms"));
+  requestAnimationFrame(() => h1.classList.add("lit"));
+
+  /* ── scroll reveal, with a failsafe so the page is never blank ── */
+  const rises = [...document.querySelectorAll(".rise")];
+  const showAll = () => rises.forEach(el => el.classList.add("seen"));
+  if (reduced) {
+    showAll();
+  } else {
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add("seen");
+        io.unobserve(e.target);
+      }
+    }, { rootMargin: "0px 0px -10% 0px", threshold: .04 });
+    rises.forEach(el => io.observe(el));
+    setTimeout(() => { if (!document.querySelector(".rise.seen")) showAll(); }, 1600);
+  }
+
+  /* ── rail + section spy (drives both desktop menu and mobile scroller) ── */
+  const pctEl = document.getElementById("railPct");
+  const nowEl = document.getElementById("railNow");
+  const bar = document.querySelector(".bar");
+  let qScroll = false;
+  addEventListener("scroll", () => {
+    if (qScroll) return;
+    qScroll = true;
+    requestAnimationFrame(() => {
+      const max = document.body.scrollHeight - innerHeight;
+      pctEl.textContent = String(Math.round(max > 0 ? scrollY / max * 100 : 0)).padStart(2, "0");
+      bar.classList.toggle("pinned", scrollY > 8);
+      qScroll = false;
+    });
+  }, { passive: true });
+
+  const links = [...document.querySelectorAll(".menu a, .mnav a")];
+  const mnav = document.querySelector(".mnav");
+  const spy = new IntersectionObserver((es) => {
+    for (const e of es) {
+      if (!e.isIntersecting) continue;
+      nowEl.textContent = e.target.querySelector("h2")?.textContent.trim() || "Introduction";
+      let active = null;
+      links.forEach(a => {
+        const on = a.hash === "#" + e.target.id;
+        a.setAttribute("aria-current", String(on));
+        if (on && a.closest(".mnav")) active = a;
+      });
+      // keep the current chip in view without yanking the page
+      if (active && mnav) {
+        const ar = active.getBoundingClientRect(), mr = mnav.getBoundingClientRect();
+        if (ar.left < mr.left || ar.right > mr.right) {
+          mnav.scrollTo({ left: active.offsetLeft - 16, behavior: reduced ? "auto" : "smooth" });
+        }
+      }
+    }
+  }, { rootMargin: "-42% 0px -50% 0px" });
+  document.querySelectorAll("main section[id]").forEach(s => spy.observe(s));
+
+  const fine = matchMedia("(pointer: fine)").matches;
+  applyPointerLight();
+
+  if (fine && !reduced) {
+    // Every zone that carries the light gets it in ITS OWN coordinates. A
+    // background position is measured from the element's box, so document-space
+    // values only ever lined up for the hero, which starts at y=0. Anything
+    // further down the page would have been offset by its own top.
+    const lightZones = [...document.querySelectorAll(
+      ".hero, #about, #work, #credentials, #skills, #research, #plan, #contact")];
+    let cx = 0, cy = 0, qLight = false;
+    addEventListener("pointermove", (ev) => {
+      cx = ev.clientX; cy = ev.clientY;
+      if (qLight) return;
+      qLight = true;
+      requestAnimationFrame(() => {
+        for (const zone of lightZones) {
+          const r = zone.getBoundingClientRect();
+          if (r.bottom < -600 || r.top > innerHeight + 600) continue;  // off-screen
+          zone.style.setProperty("--lx", (cx - r.left) + "px");
+          zone.style.setProperty("--ly", (cy - r.top) + "px");
+        }
+        qLight = false;
+      });
+    }, { passive: true });
+
+    // Panels tilt toward the pointer. The light itself is no longer drawn on
+    // the panel — it lives behind them, on the section — so nothing here
+    // writes a specular position any more.
+    document.querySelectorAll(".rec").forEach(rec => {
+      let queued = 0, px = 0, py = 0;
+      rec.addEventListener("pointermove", (ev) => {
+        const r = rec.getBoundingClientRect();
+        px = (ev.clientX - r.left) / r.width;
+        py = (ev.clientY - r.top) / r.height;
+        if (queued) return;
+        queued = requestAnimationFrame(() => {
+          rec.style.transform =
+            `rotateY(${(px - .5) * 7}deg) rotateX(${-(py - .5) * 5.5}deg) translateZ(22px)`;
+          queued = 0;
+        });
+      }, { passive: true });
+      rec.addEventListener("pointerleave", () => {
+        // Cancel the in-flight frame first: otherwise it lands after this
+        // reset and the panel stays tilted once the pointer has gone.
+        if (queued) { cancelAnimationFrame(queued); queued = 0; }
+        rec.style.transform = "";
+      });
+    });
+  }
+
+  /* ═════════════════════════════════════════════════════════════════
+     HERO CANVAS — a classifier watching traffic.
+
+     Real layered topology, projected through a focal length so depth is
+     genuine. A forward pass sweeps through the layers; edges brighten as
+     the wavefront crosses them and nodes fire as it arrives. Edge weight
+     is signed — inhibitory edges draw thinner and fainter.
+
+     Each completed pass may raise a detection: one output node is flagged
+     and EMITS, blooming and pushing a ring out instead of casting shadow.
+
+     Responsive in substance, not just scale: on a portrait phone the
+     network rotates to run top-to-bottom, because a four-layer horizontal
+     graph squeezed into 375px is an unreadable smear. Node count drops
+     with the viewport so the frame budget holds on a mid-range phone.
+     ═════════════════════════════════════════════════════════════════ */
+  const cv = document.getElementById("net");
+  const ctx = cv.getContext("2d", { alpha: true });
+  const FOCAL = 620, PASS_MS = 2600, GAP_MS = 900;
+
+  let W = 0, H = 0, dpr = 1, vertical = false, shapeKey = "";
+  let layers = [], nodes = [], edges = [], rings = [];
+  let passT0 = 0, flagged = null, flagT0 = 0, lastPass = -1, waits = 0;
+  let raf = 0, onScreen = true, pointer = { x: -1e4, y: -1e4, on: false };
+
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const shapeFor = (w) => w < 560 ? [4, 6, 6, 3] : (w < 900 ? [5, 8, 8, 3] : [6, 9, 9, 4]);
+  const reachFor = () => Math.max(110, Math.min(W, H) * .32);
+
+  function build(shape) {
+    layers = []; nodes = []; edges = [];
+    shape.forEach((count, li) => {
+      const a = -.84 + (li / (shape.length - 1)) * 1.68;   // along the layer axis
+      const spread = .30 + count * .038;
+      const arr = [];
+      for (let i = 0; i < count; i++) {
+        const n = {
+          a,
+          b0: count === 1 ? 0 : (-.5 + i / (count - 1)) * spread * 2,
+          b: 0, z: rnd(.82, 1.34),
+          phase: rnd(0, 6.283), drift: rnd(.18, .42), fire: 0, li
+        };
+        n.b = n.b0;
+        arr.push(n); nodes.push(n);
+      }
+      layers.push(arr);
+    });
+    for (let li = 0; li < layers.length - 1; li++)
+      for (const x of layers[li])
+        for (const y of layers[li + 1])
+          edges.push({ a: x, b: y, w: rnd(-1, 1) });
+    passT0 = performance.now();
+    lastPass = -1; flagged = null; rings.length = 0;
+  }
+
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    if (!W || !H) return;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    vertical = H > W * 1.25;
+    const shape = shapeFor(W);
+    const key = shape.join("-") + (vertical ? "v" : "h");
+    if (key !== shapeKey) { shapeKey = key; build(shape); }
+  }
+
+  function project(n) {
+    const s = FOCAL / (FOCAL * n.z);
+    const nx = vertical ? n.b : n.a;
+    const ny = vertical ? n.a : n.b;
+    const kx = vertical ? .70 : .40;
+    const ky = vertical ? .38 : .74;
+    return { sx: W / 2 + nx * W * kx * s, sy: H / 2 + ny * H * ky * s, s };
+  }
+
+  function frame(now) {
+    // size() bails before build() if the canvas measures 0×0 — which happens
+    // if the hero is laid out late, or is display:none when this runs.
+    // Without this guard the first frame reads layers[-1] and throws, and the
+    // animation never recovers even once the element does get a box.
+    // Bounded, not open-ended: an element that is 0×0 two seconds in is
+    // hidden on purpose, and spinning rAF forever on it is a battery leak.
+    // resize and visibilitychange both call start() again, so it recovers.
+    if (!nodes.length) {
+      size();
+      if (!nodes.length) {
+        if (++waits < 120) raf = requestAnimationFrame(frame); else raf = 0;
+        return;
+      }
+    }
+    waits = 0;
+    ctx.clearRect(0, 0, W, H);
+    const cs = getComputedStyle(root);
+    const tone = cs.getPropertyValue("--net").trim();
+    const hot = cs.getPropertyValue("--net-hot").trim();
+    const REACH = reachFor();
+
+    const elapsed = now - passT0;
+    const period = PASS_MS + GAP_MS;
+    const cycle = elapsed % period;
+    const front = cycle < PASS_MS ? -1.05 + (cycle / PASS_MS) * 2.1 : 99;
+
+    // Counted, not time-sampled: a frame budget longer than a narrow window
+    // must never be able to step over the event. Measured dead below ~25fps.
+    const passIndex = Math.floor(elapsed / period);
+    if (passIndex !== lastPass) {
+      lastPass = passIndex;
+      if (passIndex > 0 && Math.random() < .6) {
+        const out = layers[layers.length - 1];
+        flagged = out[(Math.random() * out.length) | 0];
+        flagT0 = now;
+        const p = project(flagged);
+        rings.push({ x: p.sx, y: p.sy, t0: now });
+      }
+    }
+    if (flagged && now - flagT0 > 2200) flagged = null;
+
+    const t = now / 1000;
+    for (const n of nodes) {
+      n.b = n.b0 + Math.sin(t * n.drift + n.phase) * .022;
+      n.z += Math.sin(t * n.drift * .7 + n.phase) * .00035;
+      if (Math.abs(front - n.a) < .05) n.fire = 1;
+      n.fire *= .94;
+      n.p = project(n);
+    }
+
+    for (const e of edges) {
+      const mid = (e.a.a + e.b.a) / 2;
+      const near = Math.max(0, 1 - Math.abs(front - mid) / .34);
+      const mag = Math.abs(e.w);
+      let alpha = (.045 + mag * .10) + near * .42 * mag;
+      let probe = 0;
+      if (pointer.on) {
+        const mx = (e.a.p.sx + e.b.p.sx) / 2, my = (e.a.p.sy + e.b.p.sy) / 2;
+        const pd = Math.hypot(mx - pointer.x, my - pointer.y);
+        if (pd < REACH) { probe = 1 - pd / REACH; alpha += probe * .38; }
+      }
+      ctx.strokeStyle = e.w >= 0
+        ? `rgba(${tone},${Math.min(alpha, .85).toFixed(3)})`
+        : `rgba(${tone},${Math.min(alpha * .55, .5).toFixed(3)})`;
+      ctx.lineWidth = (e.w >= 0 ? .5 + mag * .9 : .4 + mag * .45) * (1 + near * .8 + probe);
+      ctx.beginPath();
+      ctx.moveTo(e.a.p.sx, e.a.p.sy);
+      ctx.lineTo(e.b.p.sx, e.b.p.sy);
+      ctx.stroke();
+    }
+
+    for (const n of nodes) {
+      const isFlag = n === flagged;
+      const r = Math.max(1.3, 3.1 * n.p.s) * (1 + n.fire * .55);
+      if (isFlag || n.fire > .18) {
+        ctx.shadowBlur = isFlag ? 22 : 10 * n.fire;
+        ctx.shadowColor = `rgba(${isFlag ? hot : tone},${isFlag ? .95 : n.fire})`;
+      }
+      ctx.fillStyle = isFlag ? `rgba(${hot},1)` : `rgba(${tone},${(.30 + .62 * n.fire) / n.z})`;
+      ctx.beginPath();
+      ctx.arc(n.p.sx, n.p.sy, isFlag ? r * 1.5 : r, 0, 6.2832);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    for (let i = rings.length - 1; i >= 0; i--) {
+      const w = rings[i];
+      // Clamped at 0: click rings are stamped with performance.now() during
+      // event handling, which can be LATER than the next frame's rAF timestamp
+      // (that is the frame's start time). A negative age makes the radius
+      // negative, arc() throws, and the whole animation loop dies.
+      const age = Math.max(0, (now - w.t0) / 1500);
+      if (age >= 1) { rings.splice(i, 1); continue; }
+      ctx.strokeStyle = `rgba(${hot},${((1 - age) * .5).toFixed(3)})`;
+      ctx.lineWidth = 1.6 * (1 - age);
+      ctx.beginPath();
+      ctx.arc(w.x, w.y, age * REACH * 2.1, 0, 6.2832);
+      ctx.stroke();
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+  const start = () => { if (!raf && onScreen && !reduced) raf = requestAnimationFrame(frame); };
+
+  size();
+  if (reduced) { frame(performance.now()); stop(); } else { start(); }
+
+  if (fine && !reduced) {
+    // Listen on the hero, not the canvas. The canvas is at z-index:-2 behind
+    // .shell, which covers the whole hero as a block box — so nothing ever
+    // reaches the canvas and both of these effects were dead on arrival.
+    // Coordinates are still translated into canvas space.
+    const stage = cv.closest(".hero") || cv.parentElement;
+    const toCanvas = (ev) => {
+      const r = cv.getBoundingClientRect();
+      return { x: ev.clientX - r.left, y: ev.clientY - r.top };
+    };
+    stage.addEventListener("pointermove", (ev) => {
+      const p = toCanvas(ev);
+      pointer.x = p.x; pointer.y = p.y; pointer.on = true;
+    }, { passive: true });
+    stage.addEventListener("pointerleave", () => { pointer.on = false; });
+    stage.addEventListener("pointerdown", (ev) => {
+      // never compete with a real control the visitor meant to press
+      if (ev.target.closest("a, button, input, textarea, select, label")) return;
+      rings.push({ ...toCanvas(ev), t0: performance.now() });
+    }, { passive: true });
+  }
+
+  // Debounced: an orientation change or a mobile URL bar collapsing fires
+  // resize repeatedly, and rebuilding the graph on every one of those is jank.
+  let rTimer = 0;
+  addEventListener("resize", () => {
+    clearTimeout(rTimer);
+    rTimer = setTimeout(() => {
+      waits = 0; size();
+      // a canvas that had no box when the page loaded gets its chance here
+      if (reduced) frame(performance.now()); else start();
+    }, 140);
+  }, { passive: true });
+
+  document.addEventListener("visibilitychange", () => {
+    onScreen = !document.hidden;
+    onScreen ? start() : stop();
+  });
+  new IntersectionObserver(([e]) => {
+    onScreen = e.isIntersecting && !document.hidden;
+    onScreen ? start() : stop();
+  }, { threshold: 0 }).observe(cv);
+
+  /* ── external links open in their own tab ────────────────────────────
+     Applied here rather than typed on each <a> so every link added later —
+     the write-ups, the Verify links — inherits it without being remembered.
+     rel=noopener is a security requirement, not styling: without it the
+     opened page gets a handle on this one through window.opener. */
+  for (const a of document.querySelectorAll('a[href^="http"]')) {
+    if (a.host === location.host) continue;          // same-site stays put
+    a.target = "_blank";
+    // noopener only. noreferrer additionally strips the Referer header, and
+    // some sites — LinkedIn among them — treat referrer-less traffic as
+    // suspicious and gate it harder. noopener is the security-critical half:
+    // it is what denies the opened page a handle on this one.
+    a.rel = "noopener";
+    // tell assistive tech the tab changes, without touching the visible label
+    if (!a.getAttribute("aria-label")) {
+      a.setAttribute("aria-label", `${a.textContent.trim()} (opens in a new tab)`);
+    }
+  }
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   ASK — retrieval over a written profile.
+
+   No model, no network, no key. The page ships with a set of written
+   answers and picks the closest one to the question. That is an honest
+   thing to put on a static site: an API key in client source is a key
+   anyone can spend, and there is no server here to hide one behind.
+
+   Retrieval is deliberately boring — normalise, drop stopwords, light
+   stemming, weighted term overlap against per-entry keyword sets, plus a
+   verbatim-phrase bonus. Below threshold it says so rather than
+   confabulating, which is the only behaviour that stays trustworthy when
+   a reviewer asks something the profile does not cover.
+
+   The streaming is cosmetic and it says so on the page. Structure is
+   built as real DOM first, then text nodes fill word by word — so tags
+   are never half-parsed and the transcript is correct at every frame.
+   ═══════════════════════════════════════════════════════════════════════ */
+(() => {
+  "use strict";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  const $ = (id) => document.getElementById(id);
+
+  /* ─────────────────────────────────────────────────────────────────────
+     THE PROFILE
+     Edit these answers, not the engine. `k` is the keyword set that has to
+     match a question; `s` is the section the answer points at; `f` is the
+     follow-up chips offered afterwards.
+     ───────────────────────────────────────────────────────────────────── */
+  const KB = [
+    { id:"intro", t:"Who I am",
+      k:["who are you","who is muhammad","who is waseem","about you","about him","about muhammad",
+         "introduce yourself","tell me about yourself","yourself","bio","background","summary",
+         "name","muhammad","waseem","이름","소개","누구"],
+      s:"#about",
+      f:["What have you built?","Why Korea?","What is in your home lab?"],
+      a:`<p>I'm <strong>Muhammad Waseem</strong> — 22, from Pakistan. I run a small security
+         lab out of my bedroom and point machine learning at the logs it
+         produces.</p>
+         <p>Practically that means two halves that keep meeting: attacking my own network so
+         I know what an intrusion looks like from the inside, and then building detection
+         for it. I'm applying to study AI and cyber security in Korea on the Global Korea
+         Scholarship.</p>` },
+
+    { id:"story", t:"How I got started",
+      k:["how did you start","how you started","got into","get into","why security","why cyber",
+         "origin","story","router","beginning","first","interested","motivation","why did you"],
+      s:"#about",
+      f:["What is in your home lab?","What have you built?"],
+      a:`<p>I bricked the family router at sixteen and spent a week working out why. The router
+         came back. What stayed was the habit of taking something apart until I understood
+         the <em>failure</em>, not just the fix.</p>
+         <p>The lab I built afterwards produces far more log data than I can read, which is
+         how I ended up in machine learning. Writing detection rules only catches what you
+         already thought of. A model that has learned what normal looks like can flag the
+         thing you didn't.</p>` },
+
+    { id:"lab", t:"The home lab",
+      k:["home lab","homelab","your lab","setup","rig","hardware","pfsense","kali","domain",
+         "network","environment","infrastructure","what do you run","machines"],
+      s:"#work",
+      f:["What have you built?","What tools do you use?"],
+      a:`<p>Modest, and entirely mine to break:</p>
+         <ul>
+           <li><strong>pfSense</strong> at the edge, so I control routing and can watch traffic
+               leave</li>
+           <li>A three-host <strong>Windows domain</strong> — DC, member server, workstation</li>
+           <li>A <strong>Kali</strong> box I use to attack the domain</li>
+           <li><strong>Zeek</strong>, <strong>Sysmon</strong> and <strong>Wazuh</strong> recording
+               everything, which is the part that actually matters</li>
+         </ul>
+         <p>The point isn't the hardware. It's that every attack I run leaves evidence I then
+         have to go and find.</p>` },
+
+    { id:"work", t:"The projects",
+      k:["what have you built","what did you build","projects","project","work","portfolio",
+         "experience","done","records","labs","show me","built","achievements","프로젝트"],
+      s:"#work",
+      f:["Tell me about the anomaly detection project","What did the AD lab find?","How do you evaluate a model?"],
+      a:`<p>Four documented records, each written as question → method → result:</p>
+         <ul>
+           <li><strong>Lab 01</strong> — an Isolation Forest that learned my network's normal
+               traffic and caught a beacon it was never labelled for</li>
+           <li><strong>Lab 02</strong> — walked my own Active Directory to Domain Admin, then
+               wrote the detections that should have caught it</li>
+           <li><strong>Lab 03</strong> — rebuilt an intrusion timeline a week cold, using only
+               what the SIEM had kept</li>
+           <li><strong>Lab 04</strong> — a phishing URL classifier where the evaluation, not
+               the model, turned out to be the finding</li>
+         </ul>
+         <p>Everything is sanitised. No flags, no credentials, no unredacted addresses.</p>` },
+
+    { id:"p1", t:"Lab 01 — anomaly detection",
+      k:["isolation forest","anomaly","anomaly detection","beacon","beaconing","zeek","unsupervised",
+         "lab 01","first project","traffic","conn log","false positive","base rate"],
+      s:"#work",
+      f:["What did the AD lab find?","How do you evaluate a model?"],
+      a:`<p>I wanted to know whether an unsupervised model could flag beaconing traffic I had
+         never labelled for it.</p>
+         <p>Two weeks of Zeek connection logs, features engineered for interval regularity and
+         payload-size variance, then an Isolation Forest fitted on them and a real beacon run
+         through it.</p>
+         <p>It caught the beacon — and flagged my own nightly backup job as well. <strong>Tuning
+         out that false positive taught me more than the detection did.</strong> Base rates
+         matter more than model choice, and that lesson came back in Lab 04.</p>` },
+
+    { id:"p2", t:"Lab 02 — Active Directory",
+      k:["active directory","ad lab","bloodhound","kerberoast","kerberoasting","domain admin",
+         "lab 02","attack path","sigma rule","service account","file server","weak password"],
+      s:"#work",
+      f:["Tell me about the anomaly detection project","How did the incident response lab go?"],
+      a:`<p>The question: starting from one ordinary domain user, how far could I get before
+         anything in the lab logged it?</p>
+         <p>I collected the graph with BloodHound, Kerberoasted a service account with a weak
+         password, and moved to the file server. Then I replayed the identical path with
+         Sysmon and Wazuh recording.</p>
+         <p><strong>Four steps to Domain Admin, and only two of them produced an alert under
+         the default configuration.</strong> I wrote the Sigma rules for the other two — that
+         part is what was worth keeping.</p>` },
+
+    { id:"p3", t:"Lab 03 — incident response",
+      k:["incident response","incident","timeline","reconstruct","siem","wazuh","forensic",
+         "lab 03","dfir","logging","pipeline","event id","retention"],
+      s:"#work",
+      f:["What did the AD lab find?","What defensive skills do you have?"],
+      a:`<p>I ran a scripted intrusion against the lab, left it a week, then tried to reconstruct
+         the timeline using only what the pipeline had retained — no memory of what I'd run.</p>
+         <p>Initial access and persistence came back cleanly. <strong>Lateral movement was
+         completely invisible</strong> — Sysmon Event ID 3 was never being forwarded.</p>
+         <p>Fixing the pipeline mattered more than any rule I could have written on top of it.
+         You cannot detect what you never collected.</p>` },
+
+    { id:"p4", t:"Lab 04 — phishing classifier",
+      k:["phishing","url","classifier","logistic regression","gradient boosting","accuracy",
+         "precision","recall","lab 04","evaluation","evaluate","metric","lexical","corpus",
+         "how do you evaluate"],
+      s:"#work",
+      f:["Tell me about the anomaly detection project","What machine learning can you do?"],
+      a:`<p>How much of a phishing URL is detectable from its text alone — no page fetch, no
+         reputation feed?</p>
+         <p>Lexical features (length, character entropy, subdomain depth, token counts, TLD)
+         over a public corpus, then logistic regression against gradient boosting, compared on
+         precision-recall rather than accuracy.</p>
+         <p>0.96 accuracy on a balanced split, which is meaningless. Re-weighted to the
+         prevalence a real mail gateway sees, precision collapsed. <strong>The model was fine.
+         The evaluation was the finding.</strong></p>` },
+
+    { id:"ml", t:"Machine learning",
+      k:["machine learning","ml","ai","artificial intelligence","model","models","data science",
+         "scikit","sklearn","feature engineering","statistics","python ml","deep learning",
+         "인공지능","머신러닝"],
+      s:"#skills",
+      f:["How do you evaluate a model?","What have you built?"],
+      a:`<p>Applied rather than theoretical, and pointed at one problem: <strong>detection</strong>.</p>
+         <ul>
+           <li>Anomaly detection — Isolation Forest, and why unsupervised is the honest choice
+               when you have no labels</li>
+           <li>Feature engineering on logs, which is most of the actual work</li>
+           <li>scikit-learn, pandas, numpy</li>
+           <li>Model evaluation at a realistic base rate, not a balanced test split</li>
+         </ul>
+         <p>I'm not going to claim depth I don't have. I want the degree precisely because the
+         theory underneath this is where I'm thinnest.</p>` },
+
+    { id:"blue", t:"Defensive skills",
+      k:["defensive","blue team","soc","defence","defense","detection","log analysis","threat hunting",
+         "siem rule","packet analysis","wireshark","monitoring","analyst","방어"],
+      s:"#skills",
+      f:["How did the incident response lab go?","What offensive work have you done?"],
+      a:`<p>Log analysis, SIEM rule writing, threat hunting and packet analysis — Wazuh, Sysmon,
+         Zeek and Wireshark in practice.</p>
+         <p>This is the half I'm strongest in and the half I want to build a career on. Lab 02
+         and Lab 03 both ended in a defensive deliverable rather than an exploit, which was
+         the point.</p>` },
+
+    { id:"red", t:"Offensive skills",
+      k:["offensive","red team","pentest","penetration testing","hacking","exploit","enumeration",
+         "web exploitation","burp","nmap","attack","공격"],
+      s:"#skills",
+      f:["What did the AD lab find?","What defensive skills do you have?"],
+      a:`<p>Enumeration, web exploitation, privilege escalation and writing it up — Nmap, Burp
+         Suite, BloodHound, and the TryHackMe path work behind them.</p>
+         <p>I attack my own network so I understand the evidence it leaves. I'm not aiming at a
+         red-team career; I want to be a defender who knows what the other side actually does.</p>` },
+
+    { id:"base", t:"Foundations",
+      k:["foundations","linux","networking","tcp","tcp/ip","bash","scripting","programming",
+         "languages","code","python","fundamentals","basics"],
+      s:"#skills",
+      f:["What tools do you use?","What machine learning can you do?"],
+      a:`<p>Linux administration, TCP/IP networking, Python and Bash. Unglamorous and
+         non-negotiable — every one of the four labs failed at some point for a reason that
+         turned out to be networking rather than security.</p>` },
+
+    { id:"tools", t:"Toolset",
+      k:["tools","toolset","stack","software","what do you use","technologies","tech",
+         "wireshark","zeek","wazuh","sysmon","nmap","burp","pandas"],
+      s:"#skills",
+      f:["What is in your home lab?","What defensive skills do you have?"],
+      a:`<p>Python, scikit-learn and pandas on the modelling side. Wireshark, Zeek, Wazuh and
+         Sysmon on the telemetry side. Nmap, Burp Suite and BloodHound when I'm the one
+         attacking. Linux underneath all of it.</p>` },
+
+    { id:"certs", t:"Certifications",
+      k:["certification","certificate","credential","qualified","qualification","security plus",
+         "comptia","google","coursera","tryhackme","thm","verify","verifiable","자격증"],
+      s:"#credentials",
+      f:["What have you built?","What are you studying next?"],
+      a:`<p>Three, and each one links to a record that can be checked independently:</p>
+         <ul>
+           <li><strong>CompTIA Security+ (SY0-701)</strong> — 2025</li>
+           <li><strong>Google Cybersecurity Certificate</strong>, Coursera — 2024</li>
+           <li><strong>SOC Level 1 pathway</strong>, TryHackMe — 2025</li>
+         </ul>
+         <p>I'd rather have three that survive verification than a longer list that doesn't.</p>` },
+
+    { id:"korea", t:"Why Korea",
+      k:["why korea","korea","korean","why there","why study in korea","한국","왜 한국",
+         "move","relocate","abroad","overseas"],
+      s:"#plan",
+      f:["Which universities?","What is GKS?","Do you speak Korean?"],
+      a:`<p>Because in the departments I'm applying to, security research and applied AI sit
+         together rather than in separate buildings. That seam — a model that has to hold up
+         as a <em>detection</em>, not just as a benchmark score — is exactly where my own lab
+         work keeps falling.</p>
+         <p>Korea also has the industry density to make the applied half real: there is
+         somewhere to actually go after the degree.</p>` },
+
+    { id:"unis", t:"Universities",
+      k:["university","universities","college","school","apply","applying","program","programme",
+         "department","korea university","sejong","konyang","대학교","학과"],
+      s:"#plan",
+      f:["Why Korea?","What happens after you graduate?"],
+      a:`<p>Two:</p>
+         <ul>
+           <li><strong>Korea University Sejong</strong> — Department of AI Cyber Security
+               (인공지능사이버보안학과). The closer fit for the anomaly-detection research I
+               want to do.</li>
+           <li><strong>Konyang University</strong> — Department of Smart Security
+               (스마트보안학과). The more applied of the two; its industry placement is the
+               part I'd use hardest.</li>
+         </ul>
+         <p>Both teach entirely in Korean, which is why the language year comes first.</p>` },
+
+    { id:"gks", t:"The scholarship",
+      k:["gks","scholarship","global korea","funding","niied","undergraduate","embassy","track",
+         "application","장학금"],
+      s:"#plan",
+      f:["Which universities?","Do you speak Korean?"],
+      a:`<p>I'm applying to the <strong>Global Korea Scholarship</strong> for undergraduate study,
+         2027 intake, embassy track.</p>
+         <p>The structure is one year of Korean language study followed by four years of the
+         degree. This site isn't part of the submission — GKS doesn't accept extra documents.
+         It exists for the interview.</p>` },
+
+    { id:"topik", t:"Korean language",
+      k:["korean language","topik","speak korean","language","fluent","한국어","language level",
+         "hangul","study korean","learning korean"],
+      s:"#plan",
+      f:["What is GKS?","Which universities?"],
+      a:`<p>Learning, and not yet where I need to be — I'd rather say that than inflate it.
+         한국에서 정보보안을 공부하고 싶습니다.</p>
+         <p>Both target departments require <strong>TOPIK 3</strong> for admission after the
+         language year, so that's the concrete target the first year is built around.</p>` },
+
+    { id:"after", t:"After graduating",
+      k:["after","future","goal","goals","plan","plans","career","ambition","long term","next",
+         "graduate","graduation","then what","pakistan","return","teach","teaching"],
+      s:"#plan",
+      f:["What role are you looking for?","Why Korea?"],
+      a:`<p>Three or four years in a SOC somewhere under genuine load — long enough to learn what
+         detection actually costs at scale, rather than what it costs in a bedroom lab.</p>
+         <p>Then back to Pakistan to teach it. There are organisations at home running enough
+         infrastructure to need real detection engineering and very few people trained to
+         build it. <strong>A detection-engineering curriculum in Urdu doesn't exist.</strong>
+         I'm not convinced it should stay that way.</p>` },
+
+    { id:"role", t:"The role I want",
+      k:["role","job","position","hire","hiring","looking for","want to be","career path",
+         "soc analyst","detection engineer","internship","intern","work for","employ"],
+      s:"#skills",
+      f:["What defensive skills do you have?","What have you built?"],
+      a:`<p>Detection-side. SOC analyst first, detection engineer after — the work where you own
+         both the telemetry and the rules written on top of it.</p>
+         <p>The machine learning is in service of that, not separate from it. I'm not looking to
+         be a data scientist who happens to work on security data.</p>` },
+
+    { id:"strength", t:"Strengths and gaps",
+      k:["strength","strengths","weakness","weaknesses","good at","bad at","struggle","limitation",
+         "honest","gap","gaps","improve","learning","gets you"],
+      s:"#work",
+      f:["What machine learning can you do?","What have you built?"],
+      a:`<p>What I'm good at: not stopping at the fix. Every one of the four records ends in
+         something I got wrong and then chased down — a false positive, a missing event ID, a
+         metric that flattered the model.</p>
+         <p>Where I'm thin: the theory under the machine learning. I can fit a model and
+         evaluate it honestly; I can't yet derive why one converges and another doesn't.
+         <strong>That gap is the reason I'm applying, not something I'm hiding from the
+         panel.</strong></p>` },
+
+    { id:"contact", t:"Contact",
+      k:["contact","email","reach","get in touch","message","talk","interview","hire you",
+         "linkedin","github","연락"],
+      s:"#contact",
+      f:["Can I see your CV?","What role are you looking for?"],
+      a:`<p>Email is best: <strong>muhammad.waseem.study1@gmail.com</strong>.</p>
+         <p>LinkedIn, GitHub and TryHackMe are all linked at the bottom of the page. Happy to
+         talk about any specific finding in more detail — including the ones that didn't
+         work.</p>` },
+
+    { id:"cv", t:"CV",
+      k:["cv","resume","curriculum vitae","document","download","pdf","paper"],
+      s:"#contact",
+      f:["How can I contact you?","What certifications do you hold?"],
+      a:`<p>There's a CV download button at the top of the page. If you need the full document
+         set — transcripts, certificates, write-ups — email me and I'll send it across.</p>` },
+
+    { id:"site", t:"This site",
+      k:["this site","this page","website","built this","how was this made","design","stack",
+         "code","source","chat","chatbot","how does this work","who made"],
+      s:"#top",
+      f:["Who are you?","What have you built?"],
+      a:`<p>One HTML file, no build step, no framework, no dependencies beyond a webfont.
+         The hero is a real layered classifier — signed edge weights, a forward pass, periodic
+         detections on the output layer — not a video.</p>
+         <p>This chat runs entirely in your browser against a written profile. No model, no
+         server, no key. <em>An API key in client-side source is a key anyone can spend.</em></p>` },
+
+    { id:"self", t:"About this assistant",
+      k:["are you ai","are you a bot","are you real","are you human","chatgpt","claude","llm",
+         "gpt","who am i talking to","is this a person","language model","api"],
+      s:null,
+      f:["Who are you?","How does this site work?"],
+      a:`<p>Not an LLM. I'm a small retrieval script matching your question against answers
+         Muhammad wrote for this page, then typing them out.</p>
+         <p>That means I can't improvise. If I don't have something, I'll say so rather than
+         invent it — which is the whole reason it was built this way.</p>` },
+
+    /* ── Questions a department, supervisor or admissions officer asks ──
+       Entries marked [like this] need your real answer. Do NOT publish them
+       as-is: an invented grade or test score is the one thing that can sink
+       an application, and every claim here has to survive an interview. */
+
+    { id:"academics", t:"Academic record",
+      k:["academic record","grades","cgpa","gpa","transcript","marks","percentage",
+         "school","college","qualification","education","degree","studied","fsc",
+         "intermediate","matric","성적","학력"],
+      s:"#about",
+      f:["What are you studying next?","Which universities?"],
+      a:`<p>[Your current or most recent qualification, the institution, and the year
+         you finished or expect to finish.]</p>
+         <p>[Your CGPA on its original scale — GKS requires 80% on a 100-point scale, or
+         top 20% of your class, or 2.64/4.0. State the number and the scale.]</p>` },
+
+    { id:"english", t:"English proficiency",
+      k:["english","ielts","toefl","english level","language proficiency","english test",
+         "speak english","english score","영어"],
+      s:"#plan",
+      f:["Do you speak Korean?","Which universities?"],
+      a:`<p>[Your IELTS or TOEFL score and test date, or say plainly that you have not sat
+         one yet and when you plan to.]</p>
+         <p>Both departments I am applying to teach entirely in Korean, so Korean is the
+         binding requirement rather than English — but an English score still carries
+         points in the GKS evaluation.</p>` },
+
+    { id:"fit", t:"Why this department",
+      k:["why this department","why this university","why this lab","fit","supervisor",
+         "professor","advisor","research group","why us","why konyang","why korea university",
+         "why sejong","교수","연구실"],
+      s:"#research",
+      f:["Where do you want to take this?","What would you bring to a lab?"],
+      a:`<p>Two departments, both taught in Korean, both in the engineering division:
+         <strong>AI Cyber Security</strong> at Korea University Sejong, and
+         <strong>Smart Security</strong> at Konyang. Each sits exactly where my own work
+         already runs — machine learning pointed at security telemetry, rather than at
+         either subject on its own.</p>
+         <p>[Name the specific lab, professor or research area at each that you want to
+         work with, and what of theirs you have actually read. This is the paragraph a
+         supervisor reads most closely, and a generic answer is worse than none.]</p>` },
+
+    { id:"contribute", t:"What I would bring to a lab",
+      k:["what would you bring","contribute","contribution","value","why should we",
+         "what can you do for","add to the lab","useful","offer"],
+      s:"#work",
+      f:["What have you built?","How do you evaluate a model?"],
+      a:`<p>Four labs I designed, ran and wrote up without supervision — including the parts
+         that failed. I built the attack, the detection and the evaluation for each, so I am
+         used to owning a question end to end.</p>
+         <p>Specifically: I already treat false-positive cost and base rates as first-class,
+         which is the habit most junior work lacks. And I document — every project here has a
+         stated question, method and result, including the results that embarrassed me.</p>` },
+
+    { id:"independent", t:"Working independently",
+      k:["independent","self directed","self-taught","supervision","alone","own initiative",
+         "motivated","discipline","how do you learn","autonomous"],
+      s:"#work",
+      f:["What is in your home lab?","What would you bring to a lab?"],
+      a:`<p>Everything on this page was self-directed. Nobody set the questions, marked the
+         work, or told me the phishing classifier was being evaluated wrongly — I found that
+         by testing it at a realistic base rate instead of a balanced one.</p>
+         <p>The limit I have hit is not motivation, it is scale: one bedroom network, no peer
+         review, and no adversary who is not me. That is what I am applying for.</p>` },
+
+    { id:"ethics", t:"Ethics and scope",
+      k:["ethics","ethical","legal","permission","authorised","authorized","responsible",
+         "disclosure","illegal","hack others","consent","윤리"],
+      s:"#work",
+      f:["What is in your home lab?","What have you built?"],
+      a:`<p>Every attack described here ran against hardware I own, on a network I own, in an
+         isolated lab. No third-party system, no production network, no target that was not
+         mine.</p>
+         <p>That boundary is not a formality in this field — it is the difference between a
+         security researcher and a defendant. If I found something in someone else's system I
+         would report it and stop.</p>` },
+
+    { id:"funding", t:"Funding and status",
+      k:["funding","fund","pay","tuition","fees","cost","money","sponsor","scholarship cover",
+         "financial","afford","stipend","장학금"],
+      s:"#plan",
+      f:["What is GKS?","When can you start?"],
+      a:`<p>I am applying through the <strong>Global Korea Scholarship</strong>, which covers
+         tuition, a monthly allowance, airfare and medical insurance, plus a funded year of
+         Korean language study before the degree begins.</p>
+         <p>[If you are also applying for other funding, or would consider self-funding, say
+         so here. If GKS is your only route, say that plainly — it is not a weakness.]</p>` },
+
+    { id:"start", t:"Start date and timeline",
+      k:["when can you start","start date","available","availability","intake","semester",
+         "when would you","timeline","begin","입학"],
+      s:"#plan",
+      f:["What is GKS?","Do you speak Korean?"],
+      a:`<p>Both target departments admit for the <strong>March intake</strong>. The GKS route
+         is one funded year of Korean language study first, then four years of the degree —
+         five years in total.</p>
+         <p>Neither department allows skipping the language year, so the degree itself would
+         begin the March after the language programme finishes.</p>` },
+
+    { id:"reading", t:"What I read in the field",
+      k:["what do you read","papers","research papers","reading","books","follow","keep up",
+         "blogs","sources","literature","논문"],
+      s:"#research",
+      f:["Where do you want to take this?","What machine learning can you do?"],
+      a:`<p>[Name two or three papers, books or researchers you have actually read, and one
+         sentence on what each changed in how you work. A professor asks this to find out
+         whether you read the field or only the tools — and they will follow up. Do not list
+         anything you cannot discuss.]</p>` },
+
+    { id:"gaps2", t:"What I cannot do yet",
+      k:["weakness","weaknesses","gaps","cannot do","limitations","not good at","struggle",
+         "what do you lack","missing","improve","shortcoming"],
+      s:"#research",
+      f:["Where do you want to take this?","What would you bring to a lab?"],
+      a:`<p>Named honestly, because a supervisor will find them anyway.</p>
+         <p><strong>Scale.</strong> Everything I have tested ran on three hosts. I do not know
+         how my assumptions hold at real traffic volume.<br>
+         <strong>Adversarial ML.</strong> My models catch attacks I wrote myself. They have
+         never faced someone trying to evade them on purpose.<br>
+         <strong>Formal method.</strong> I learned by building. I have not been taught to
+         design an experiment properly, and it showed in how I used to evaluate.</p>` },
+
+    { id:"afterreturn", t:"Plans after the degree",
+      k:["after graduation","after the degree","return","go back","pakistan after",
+         "stay in korea","long term","career plan","five years","future plan","귀국"],
+      s:"#plan",
+      f:["What role are you looking for?","Why Korea?"],
+      a:`<p>[What you intend to do after graduating, and how it connects back to Pakistan.
+         GKS panels weigh this heavily — the programme exists to build ties between Korea and
+         your country, so an answer ending in "stay in Korea permanently" is weaker than one
+         describing what you carry back.]</p>` },
+  ];
+
+  /* ── suggested questions offered before the conversation starts ── */
+  const OPENERS = ["What have you built?","Why Korea?","What certifications do you hold?",
+                   "What role are you looking for?","Are you an AI?"];
+
+  /* ── normalisation ────────────────────────────────────────────────── */
+  const STOP = new Set(("a an and are as at be been being but by can could did do does for from " +
+    "had has have he her him his how i if in into is it its me my of on or should so some tell " +
+    "that the their them then there these they this to told up was we were what when where which " +
+    "who whom why will with would you your yours us our about got get give").split(" "));
+
+  const SYN = { uni:"university", unis:"university", college:"university", cert:"certification",
+    certs:"certification", certificate:"certification", certificates:"certification",
+    ml:"machine learning", ai:"artificial intelligence", thm:"tryhackme", ad:"active directory",
+    ir:"incident response", ctf:"lab", resume:"cv", job:"role", jobs:"role", uni_:"university",
+    korea:"korea", pentest:"penetration testing", infosec:"security", cybersec:"security",
+    secplus:"security plus", homelab:"home lab", grad:"graduate",
+    "u":"you", "ur":"your", "pls":"please", "im":"i am", "whats":"what is" };
+
+  const stem = (w) => {
+    if (w.length > 4 && w.endsWith("ies")) return w.slice(0, -3) + "y";
+    if (w.length > 4 && w.endsWith("es"))  return w.slice(0, -2);
+    if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
+    if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
+    if (w.length > 4 && w.endsWith("ed"))  return w.slice(0, -2);
+    return w;
+  };
+  const terms = (str) => {
+    const out = [];
+    // "+" carries meaning in this field — Security+ is a product name, not
+    // punctuation — so it is spelled out before the class strips symbols.
+    // Only after a letter, though: spelling out every "+" turns "2+2" into
+    // the token "plus" and scores it against Security+.
+    // \p{L} keeps Hangul intact; a [a-z] class would silently delete every
+    // Korean question and score it as an empty query.
+    const clean = String(str).toLowerCase().replace(/(\p{L})\+/gu, "$1 plus ")
+                             .replace(/[^\p{L}\p{N}]+/gu, " ");
+    for (let w of clean.split(" ")) {
+      if (!w) continue;
+      if (SYN[w]) w = SYN[w];
+      for (const part of w.split(" ")) {
+        if (!part || STOP.has(part)) continue;
+        out.push(stem(part));
+      }
+    }
+    return out;
+  };
+
+  /* A handful of questions are pure stopwords once normalised — "who are
+     you" reduces to nothing at all — and a couple are genuinely ambiguous
+     between two entries. Those are settled here, before scoring, rather
+     than by bending the weights until they happen to fall the right way. */
+  const INTENT = [
+    [/\b(are|is)\s+(you|this|it)\s+(an?\s+)?(ai|a\.i|bot|robot|human|real|person|llm|gpt|chatgpt|claude|machine|model)\b/i, "self"],
+    [/\b(language model|talking to|a real person|chat ?bot)\b/i, "self"],
+    [/\bwho\s+(are|r)\s+(you|u)\b/i, "intro"],
+    [/\b(tell me about (your ?self|him|you)|introduce)\b/i, "intro"],
+    [/\b(hi|hey|hello|안녕|안녕하세요)\b/i, "intro"],
+    /* "when can you start" reduces to the single term `start` once stopwords
+       go, and "how did you start" owns that term too — so the origin story
+       won on array order. Route the timing sense explicitly. */
+    [/\bwhen\s+(can|could|would|will|do|does)\s+(you|u|he)?\s*(start|begin|join|come)\b/i, "start"],
+    [/\b(start|starting|joining|intake|admission)\s+date\b/i, "start"],
+    [/\bhow\s+(did|do)\s+(you|u)\s+(start|get\s+into|begin)\b/i, "story"],
+  ];
+
+  /* ── index: keywords 4, title 2, body 1 ── */
+  const strip = document.createElement("div");
+  for (const e of KB) {
+    const idx = new Map();
+    const put = (str, w) => { for (const t of terms(str)) if ((idx.get(t) || 0) < w) idx.set(t, w); };
+    e.k.forEach(k => put(k, 4));
+    put(e.t, 2);
+    strip.innerHTML = e.a;
+    put(strip.textContent, 1);
+    e._idx = idx;
+    // Phrases are compared after normalisation on BOTH sides, so "are you an
+    // ai" still matches the keyword "are you ai" — a raw substring test on
+    // the original string misses every one of those.
+    e._phr = e.k.filter(k => k.includes(" "))
+                .map(k => terms(k).join(" ")).filter(Boolean);
+  }
+
+  const byId = (id) => KB.find(e => e.id === id) || null;
+
+  /* ─────────────────────────────────────────────────────────────────────
+     OPTIONAL: grounded model for questions the profile does not cover.
+
+     Empty string = off, and off is the shipped state — with no endpoint the
+     panel behaves exactly as it always has. Paste your deployed Worker URL
+     here to switch it on. Never put an API key in this file: it is served to
+     every visitor and readable by all of them. The Worker holds the key.
+     ───────────────────────────────────────────────────────────────────── */
+  const ASK_ENDPOINT = "";     // e.g. "https://waseem-ask.<you>.workers.dev"
+
+  const noAnswer = () => `<p>That one isn't in the profile, so I'd only be guessing — and a
+    guess about someone's background is worse than no answer.</p>
+    <p>Email <strong>muhammad.waseem.study1@gmail.com</strong> and Muhammad will answer it properly.
+    In the meantime I do have:</p>`;
+
+  /* The model is a fallback, never the first answer: known questions stay
+     instant and exact. Any failure — offline, quota, timeout, bad deploy —
+     lands back on the honest refusal rather than an error message. */
+  async function askRemote(q) {
+    const thinking = say("a", `<p class="chat__wait">Checking…</p>`, null, true);
+    let out = null, busy = false;
+    try {
+      const ctl = new AbortController();
+      const t = setTimeout(() => ctl.abort(), 12000);
+      const r = await fetch(ASK_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ q }),
+        signal: ctl.signal,
+      });
+      clearTimeout(t);
+      if (r.status === 429) busy = true;          // throttled, not broken
+      else if (r.ok) {
+        const d = await r.json();
+        if (d && d.a) out = String(d.a);
+      }
+    } catch (e) { /* fall through to the refusal */ }
+
+    const node = log.querySelector(".chat__wait");
+    if (node) node.closest(".msg")?.remove();
+
+    if (out) {
+      // Escaped, not injected: this text came from a model over the network
+      // and must never be able to write markup into the page.
+      const safe = out.replace(/[&<>"]/g, c =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const paras = safe.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+      // Labelled, because a reviewer deserves to know which answers are
+      // written by Muhammad and which are generated from his profile.
+      stream = say("a", `${paras}<p class="chat__gen">Generated from Muhammad's profile —
+        verify anything that matters by email.</p>`, null, false);
+    } else if (busy) {
+      // Distinguish throttled from broken: telling someone to email you when
+      // they only need to wait a minute loses a conversation unnecessarily.
+      stream = say("a", `<p>I'm answering a lot of questions right now — give it a minute
+        and ask again.</p>
+        <p>If it's urgent, email <strong>muhammad.waseem.study1@gmail.com</strong>.
+        In the meantime I do have:</p>`, null, false);
+    } else {
+      stream = say("a", noAnswer(), null, false);
+    }
+    setChips(OPENERS);
+    if (!stream) setMode("send");
+  }
+
+  function match(q) {
+    for (const [re, id] of INTENT) if (re.test(q)) return byId(id);
+    const all = terms(q);
+    if (!all.length) return null;
+    const qt = [...new Set(all)];
+    // padded, so the test is on whole words — an unpadded includes() lets
+    // the phrase "why security" match the single token "securityplus"
+    const qj = " " + all.join(" ") + " ";
+    let best = null, bestS = 0;
+    for (const e of KB) {
+      let s = 0, top = 0, strong = 0;
+      for (const t of qt) {
+        const w = e._idx.get(t) || 0;
+        s += w;
+        if (w >= 2) strong++;                 // matched a keyword or title term
+        if (w > top) top = w;
+      }
+      s /= qt.length * 4;                                  // 0…1
+      let bonus = 0;
+      for (const p of e._phr) {
+        if (!qj.includes(" " + p + " ")) continue;
+        // a longer verbatim phrase is stronger evidence than a two-word one
+        bonus = Math.max(bonus, Math.min(.6, .26 + .14 * p.split(" ").length));
+      }
+      // Prose-only evidence is not evidence. A one-word query that happens to
+      // appear somewhere in an answer's body — "1", matching "SOC Level 1" —
+      // otherwise clears the threshold on its own and answers confidently.
+      if (top < 2 && !bonus) continue;
+      // One generic token out of several is not a match. "favourite football
+      // team" hit the single token `team` — from the keyword "blue team" — and
+      // answered about defensive skills with full confidence. On this page a
+      // confident wrong answer costs more than a refusal, so a longer question
+      // has to agree on more than one keyword before it counts.
+      if (qt.length >= 3 && strong < 2 && !bonus) continue;
+      s += bonus;
+      if (s > bestS) { bestS = s; best = e; }
+    }
+    return bestS >= .22 ? best : null;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────
+     UI
+     ───────────────────────────────────────────────────────────────────── */
+  const chat = $("chat"), log = $("chatLog"), form = $("chatForm"), input = $("chatIn"),
+        send = $("chatSend"), chips = $("chatChips"), scrim = $("scrim"),
+        launch = $("launch"), closeBtn = $("chatX"),
+        askForm = $("askForm"), askIn = $("askIn"), askWrap = $("ask");
+
+  [chat, scrim, launch].forEach(el => el.removeAttribute("hidden"));
+
+  const isSheet = () => !matchMedia("(min-width: 720px)").matches;
+  let open = false, lastFocus = null, stream = null;
+
+  const setChips = (list) => {
+    chips.replaceChildren();
+    list.slice(0, 4).forEach(q => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "hint"; b.textContent = q; b.dataset.q = q;
+      chips.appendChild(b);
+    });
+  };
+
+  function openChat(focusField = true) {
+    if (open) return;
+    open = true;
+    lastFocus = document.activeElement;
+    // Modal only when it is a full sheet. On desktop it is a corner panel and
+    // the page behind it is still legitimately usable — claiming aria-modal
+    // there would lie to a screen reader about what is reachable.
+    chat.setAttribute("aria-modal", String(isSheet()));
+    chat.dataset.open = "1";
+    scrim.dataset.open = "1";
+    launch.setAttribute("aria-expanded", "true");
+    if (isSheet()) document.body.style.overflow = "hidden";
+    if (focusField) setTimeout(() => input.focus({ preventScroll: true }), reduced ? 0 : 260);
+    if (!log.childElementCount) {
+      say("a", `<p>Ask me anything about Muhammad's work, the labs, the certifications, or the
+                Korea plan. I answer from a written profile, so if something isn't in there
+                I'll tell you instead of guessing.</p>`, null, true);
+      setChips(OPENERS);
+    }
+  }
+  function closeChat() {
+    if (!open) return;
+    open = false;
+    chat.dataset.open = "0";
+    scrim.dataset.open = "0";
+    chat.removeAttribute("aria-modal");
+    launch.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.isConnected) lastFocus.focus({ preventScroll: true });
+  }
+
+  const atBottom = () => log.scrollHeight - log.scrollTop - log.clientHeight < 90;
+  const toBottom = (force) => {
+    if (!force && !atBottom()) return;          // don't yank a reader who scrolled up
+    // Element.scrollTo is not universal. Falling back to scrollTop keeps the
+    // transcript pinned rather than throwing mid-stream and stranding the
+    // caret — the failure mode is a missing animation, not a dead panel.
+    if (typeof log.scrollTo === "function") {
+      log.scrollTo({ top: log.scrollHeight, behavior: reduced ? "auto" : "smooth" });
+    } else {
+      log.scrollTop = log.scrollHeight;
+    }
+  };
+
+  /* Build the message as real DOM first, then fill its text nodes word by
+     word. Streaming raw HTML into innerHTML would re-parse a half-written
+     tag on every tick. */
+  function say(role, html, section, instant) {
+    const wrap = document.createElement("div");
+    wrap.className = "msg msg--" + role;
+    const body = document.createElement("div");
+    body.className = "msg__b";
+    body.innerHTML = html;
+    wrap.appendChild(body);
+
+    if (section) {
+      const a = document.createElement("a");
+      a.className = "jump"; a.href = section; a.dataset.jump = section;
+      a.innerHTML = `See it on the page
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
+      body.appendChild(a);
+    }
+    log.appendChild(wrap);
+    toBottom(true);
+
+    if (role !== "a" || instant || reduced) return null;
+    return typeOut(body);
+  }
+
+  function typeOut(body) {
+    const walk = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
+    const bits = [];
+    let n;
+    while ((n = walk.nextNode())) {
+      if (!n.nodeValue.trim()) continue;
+      bits.push({ node: n, full: n.nodeValue, words: n.nodeValue.match(/\s*\S+/g) || [] });
+      n.nodeValue = "";
+    }
+    let bi = 0, wi = 0, timer = 0, done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      bits.forEach(b => { b.node.nodeValue = b.full; });
+      body.querySelectorAll(".cur").forEach(el => el.classList.remove("cur"));
+      setMode("send");
+      toBottom();
+    };
+    const tick = () => {
+      if (done) return;
+      if (bi >= bits.length) return finish();
+      const b = bits[bi];
+      const step = 1 + (Math.random() * 2 | 0);
+      b.node.nodeValue += b.words.slice(wi, wi + step).join("");
+      wi += step;
+      const host = b.node.parentElement;
+      body.querySelectorAll(".cur").forEach(el => el.classList.remove("cur"));
+      if (host) host.classList.add("cur");
+      if (wi >= b.words.length) { bi++; wi = 0; }
+      toBottom();
+      timer = setTimeout(tick, 26 + Math.random() * 26);
+    };
+    timer = setTimeout(tick, 40);
+    return { stop: finish };
+  }
+
+  const setMode = (mode) => {
+    send.dataset.mode = mode;
+    send.setAttribute("aria-label", mode === "stop" ? "Stop" : "Send");
+    send.disabled = mode === "send" && !input.value.trim();
+    send.innerHTML = mode === "stop"
+      ? `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="currentColor" stroke="none"/></svg>`
+      : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+    stream = mode === "stop" ? stream : null;
+  };
+
+  function ask(q) {
+    q = String(q || "").trim();
+    if (!q) return;
+    if (stream) { stream.stop(); stream = null; }
+    openChat(false);
+    say("u", escapeText(q), null, true);
+
+    const thinking = document.createElement("div");
+    thinking.className = "msg msg--a";
+    thinking.innerHTML = `<div class="msg__b"><span class="dots" role="status" aria-label="Thinking">
+      <i></i><i></i><i></i></span></div>`;
+    log.appendChild(thinking);
+    toBottom(true);
+    setMode("stop");
+
+    const hit = match(q);
+    setTimeout(() => {
+      thinking.remove();
+      if (hit) {
+        stream = say("a", hit.a, hit.s, false);
+        setChips(hit.f || OPENERS);
+      } else if (ASK_ENDPOINT) {
+        askRemote(q);              // grounded model, only ever on a miss
+        return;
+      } else {
+        stream = say("a", noAnswer(), null, false);
+        setChips(OPENERS);
+      }
+      if (!stream) setMode("send");
+    }, reduced ? 60 : 420 + Math.random() * 280);
+  }
+
+  const escapeText = (s) => s.replace(/[&<>"]/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  /* ── wiring ── */
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = input.value.trim();
+    // The control is "stop" only while the field is empty. Treating it as
+    // stop regardless throws away a question the visitor has already typed —
+    // they pressed Enter to ask it, not to interrupt the previous answer.
+    if (!v) {
+      if (send.dataset.mode === "stop") { if (stream) stream.stop(); stream = null; setMode("send"); }
+      return;
+    }
+    input.value = ""; input.style.height = "";
+    setMode("send");
+    ask(v);                                    // ask() stops any live stream
+  });
+  input.addEventListener("input", () => {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 120) + "px";
+    if (send.dataset.mode !== "stop") send.disabled = !input.value.trim();
+  });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+  });
+
+  askForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = askIn.value;
+    askIn.value = "";
+    ask(v || "Who are you?");
+  });
+
+  document.addEventListener("click", (e) => {
+    const hint = e.target.closest(".hint");
+    if (hint) { ask(hint.dataset.q || hint.textContent); return; }
+    const jump = e.target.closest("[data-jump]");
+    if (jump) {
+      e.preventDefault();
+      const target = document.querySelector(jump.dataset.jump);
+      if (!target) return;
+      if (isSheet()) closeChat();
+      target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      target.classList.remove("flash");
+      void target.offsetWidth;
+      target.classList.add("flash");
+      setTimeout(() => target.classList.remove("flash"), 2000);
+    }
+  });
+
+  // ── grab-to-scroll the suggested questions ────────────────────────────
+  // Touch already has native momentum scrolling, so this is pointer-only.
+  // The 6px threshold is what separates a drag from a tap: below it the
+  // chip still fires its question, above it the click is suppressed so
+  // pulling the row never asks something by accident.
+  document.querySelectorAll(".chat__chips").forEach(row => {
+    let down = false, startX = 0, startLeft = 0, moved = 0;
+    row.addEventListener("pointerdown", (ev) => {
+      if (ev.pointerType !== "mouse") return;
+      down = true; moved = 0;
+      startX = ev.clientX; startLeft = row.scrollLeft;
+      row.setPointerCapture(ev.pointerId);
+    });
+    row.addEventListener("pointermove", (ev) => {
+      if (!down) return;
+      const dx = ev.clientX - startX;
+      if (Math.abs(dx) > 6) { moved = Math.abs(dx); row.dataset.drag = "1"; }
+      if (row.dataset.drag === "1") row.scrollLeft = startLeft - dx;
+    });
+    const end = (ev) => {
+      if (!down) return;
+      down = false;
+      try { row.releasePointerCapture(ev.pointerId); } catch (e) {}
+      // clear on the next frame, so the click that follows this pointerup
+      // still sees pointer-events:none and is swallowed
+      if (moved > 6) requestAnimationFrame(() => delete row.dataset.drag);
+      else delete row.dataset.drag;
+    };
+    row.addEventListener("pointerup", end);
+    row.addEventListener("pointercancel", end);
+  });
+
+  launch.addEventListener("click", () => (open ? closeChat() : openChat()));
+
+  // Ripple from the press point, as in the liquid-metal component. Cleared on
+  // a timer, not animationend: a backgrounded tab pauses animations, so that
+  // event may never fire and the nodes would accumulate without bound.
+  launch.addEventListener("pointerdown", (ev) => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const r = launch.getBoundingClientRect();
+    const dot = document.createElement("span");
+    dot.className = "launch__ripple";
+    dot.style.left = (ev.clientX - r.left) + "px";
+    dot.style.top = (ev.clientY - r.top) + "px";
+    launch.appendChild(dot);
+    setTimeout(() => dot.remove(), 700);
+  }, { passive: true });
+  closeBtn.addEventListener("click", closeChat);
+  scrim.addEventListener("click", closeChat);
+
+  addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      open ? closeChat() : openChat();
+      return;
+    }
+    if (!open) return;
+    if (e.key === "Escape") { e.preventDefault(); closeChat(); return; }
+    // Trap Tab only while it is a modal sheet; on desktop the page behind is
+    // genuinely still in scope, so stealing Tab there would be wrong.
+    if (e.key === "Tab" && isSheet()) {
+      const f = [...chat.querySelectorAll("button, textarea, a[href], input")]
+        .filter(el => !el.disabled && el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // The launcher is redundant while the hero's own ask bar is on screen.
+  new IntersectionObserver(([e]) => {
+    launch.dataset.show = (!e.isIntersecting && !open) ? "1" : "0";
+  }, { threshold: 0 }).observe(askWrap);
+
+  setMode("send");
+
+  /* ═════════════════════════════════════════════════════════════════════
+     MOTION — additions layered on the existing reveal system
+     ═════════════════════════════════════════════════════════════════════ */
+
+  /* scroll progress on the sticky bar's bottom edge */
+  const bar = document.querySelector(".bar");
+  let qp = false;
+  addEventListener("scroll", () => {
+    if (qp) return;
+    qp = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.setProperty("--prog", max > 0 ? (scrollY / max).toFixed(4) : 0);
+      qp = false;
+    });
+  }, { passive: true });
+
+  /* headings rise out of a mask. Wrapped in JS so a no-JS page is plain text. */
+  document.querySelectorAll(".head h2, .contact h2").forEach(h => {
+    const span = document.createElement("span");
+    span.className = "mask";
+    const inner = document.createElement("span");
+    inner.textContent = h.textContent.trim();
+    span.appendChild(inner);
+    h.replaceChildren(span);
+  });
+
+  /* the ledger counts up once, when it arrives */
+  if (!reduced) {
+    const nums = [...document.querySelectorAll(".ledger [data-count]")];
+    if (nums.length) {
+      const io = new IntersectionObserver((es) => {
+        for (const e of es) {
+          if (!e.isIntersecting) continue;
+          io.unobserve(e.target);
+          const el = e.target, end = +el.dataset.count, pad = el.textContent.trim().length;
+          const t0 = performance.now(), dur = 900;
+          const step = (now) => {
+            const p = Math.min(1, (now - t0) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = String(Math.round(end * eased)).padStart(pad, "0");
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      }, { threshold: .6 });
+      nums.forEach(n => io.observe(n));
+    }
+  }
+
+  /* magnetic pull on the two primary controls — pointer devices only */
+  if (fine && !reduced) {
+    document.querySelectorAll(".act--solid, .launch, .ask__go").forEach(el => {
+      let q = 0;
+      el.addEventListener("pointermove", (ev) => {
+        const r = el.getBoundingClientRect();
+        const dx = (ev.clientX - (r.left + r.width / 2)) / r.width;
+        const dy = (ev.clientY - (r.top + r.height / 2)) / r.height;
+        if (q) return;
+        q = requestAnimationFrame(() => {
+          el.style.translate = `${(dx * 7).toFixed(2)}px ${(dy * 5).toFixed(2)}px`;
+          q = 0;
+        });
+      }, { passive: true });
+      el.addEventListener("pointerleave", () => {
+        // cancel first, or the queued frame lands after the reset and it sticks
+        if (q) { cancelAnimationFrame(q); q = 0; }
+        el.style.translate = "";
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# ── never publish ──────────────────────────────────────────────────────
+# Working notes. DRAFTS.md states in its first line that the copy was written
+# for you rather than by you — published, that is at yoursite/DRAFTS.md and in
+# your public repo, where a reviewer could find it. It stays local.
+DRAFTS.md
+CLAUDE.md
+# README.md documents the build and says in line 168 that the prose is
+# 'drafted, not yours'. Same exposure as DRAFTS.md. Keep it local.
+/README.md
+
+# 1.9 MB source PNG. The page uses portrait.jpg / .webp / .avif; this one is
+# referenced nowhere, so committing it makes every visitor pay for nothing.
+portrait.png
+
+# Generated from index.html by worker/make_profile.py — profile.js is what the
+# Worker bundles; the .txt is only there to be read.
+worker/profile.txt
+
+# Local tooling
+node_modules/
+.wrangler/
+.DS_Store
+Thumbs.db

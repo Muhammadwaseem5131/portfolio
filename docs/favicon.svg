@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Muhammad Waseem">
+  <!-- The site's own motif, reduced until it still reads at 16px: a layered
+       classifier with one output node flagged. Everything smaller than a
+       node had to go — at 16px an edge is a subpixel and reads as dirt. -->
+  <style>
+    .bg{fill:#052962}
+    .ln{stroke:#F6F6F6;stroke-opacity:.55;stroke-width:2.2;stroke-linecap:round}
+    .nd{fill:#F6F6F6;fill-opacity:.85}
+    .hot{fill:#FF3B30}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#121212}
+      .ln{stroke:#00B2FF;stroke-opacity:.6}
+      .nd{fill:#00B2FF;fill-opacity:.9}
+      .hot{fill:#FF5943}
+    }
+  </style>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <g class="ln" fill="none">
+    <path d="M18 20 44 32M18 32 44 32M18 44 44 32"/>
+  </g>
+  <circle class="nd" cx="18" cy="20" r="5"/>
+  <circle class="nd" cx="18" cy="32" r="5"/>
+  <circle class="nd" cx="18" cy="44" r="5"/>
+  <circle class="hot" cx="45" cy="32" r="7.5"/>
+</svg>

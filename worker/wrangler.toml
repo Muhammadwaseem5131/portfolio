@@ -1,0 +1,13 @@
+name = "waseem-ask"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Only these origins may call the Worker. Without this, anyone can point their
+# own page at your endpoint and spend your Gemini quota.
+# Add your GitHub Pages URL here, and keep localhost only while testing.
+[vars]
+ALLOWED_ORIGINS = "https://muhammadwaseem.github.io,http://localhost:8000"
+
+# GEMINI_KEY is NOT set here — a secret in a committed file is a leaked secret.
+# Set it once, from your machine:
+#   wrangler secret put GEMINI_KEY
