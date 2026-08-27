@@ -566,16 +566,16 @@ a{color:inherit}
    above the section's background, below every in-flow card. Coordinates are
    section-local, set from JS. Kept off ::before because that already carries
    the colour field, and a background is a single property. */
-:is(.hero,#about,#work,#credentials,#skills,#research,#plan,#contact)::after{
+:is(.hero,#about,#work,#credentials,#skills,#research,#plan,#community,#contact)::after{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(26rem 26rem at var(--lx, 50%) var(--ly, -30%),
              var(--wash), transparent 68%);
   opacity:0;transition:opacity .7s var(--ease);
 }
-body.lit-pointer :is(.hero,#about,#work,#credentials,#skills,#research,#plan,#contact)::after{
+body.lit-pointer :is(.hero,#about,#work,#credentials,#skills,#research,#plan,#community,#contact)::after{
   opacity:1;
 }
-.hero__in{padding-block:clamp(2rem, 6vh, 6rem) var(--sp-6)}
+.hero__in{padding-block:clamp(1.25rem, 3.5vh, 3.5rem) var(--sp-6)}
 
 .tagline{
   display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;
@@ -608,10 +608,10 @@ h1.hero__h em{font-style:normal;color:var(--jeok)}
   }
   .js h1.hero__h.lit .ln > span{transform:none;opacity:1}
 }
-.hero__lede{margin-top:var(--sp-3);max-width:50ch;font-size:var(--t-md);color:var(--ink-soft);line-height:1.55}
+.hero__lede{margin-top:var(--sp-2);max-width:50ch;font-size:var(--t-md);color:var(--ink-soft);line-height:1.55}
 .hero__ko{margin-top:.5rem;font-size:var(--t-base);color:var(--ink-soft);opacity:.85}
 
-.acts{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:var(--sp-4)}
+.acts{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:var(--sp-3)}
 .act{
   display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
   min-height:48px;padding:0 1.35rem;
@@ -643,6 +643,44 @@ h1.hero__h em{font-style:normal;color:var(--jeok)}
   .ledger div:nth-child(even){padding-left:0;border-left:0}
   .ledger div + div{border-left:1px solid var(--rule-soft);padding-left:var(--sp-2)}
 }
+/* ── featured build, in the hero ── */
+.feat{
+  display:flex;align-items:center;gap:var(--sp-2);
+  margin-top:var(--sp-2);padding:.5rem .9rem .5rem .5rem;
+  text-decoration:none;color:var(--ink);
+  background:linear-gradient(158deg, var(--page-glass-a), var(--page-glass-b));
+  border:1px solid var(--page-glass-brd);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  border-top:3px solid var(--cheong);
+  border-radius:0 0 14px 14px;
+  box-shadow:var(--e1), inset 0 1px 0 var(--page-glass-rim);
+  max-width:40rem;
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+@media (hover:hover){
+  .feat:hover{transform:translateY(-2px);box-shadow:var(--e3), inset 0 1px 0 var(--page-glass-rim)}
+  .feat:hover .feat__go{transform:translateX(3px)}
+}
+/* 96px was unreadable — a whole landing page shrunk to a smudge. At 208 the
+   wordmark, the drop zone and the language row are all legible. */
+.feat__shot{width:208px;height:130px;flex:none;object-fit:cover;object-position:50% 0;
+  border-radius:10px;border:1px solid var(--rule-soft);box-shadow:var(--e1)}
+@media (max-width:700px){.feat__shot{width:150px;height:94px}}
+.feat__txt{display:grid;gap:.1rem;min-width:0}
+.feat__k{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--cheong)}
+.feat__txt b{font-size:var(--t-md);font-weight:600;letter-spacing:-.02em}
+.feat__d{font-size:var(--t-sm);color:var(--ink-soft);line-height:1.45}
+.feat__go{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;color:var(--cheong);
+  transition:transform var(--dur) var(--ease)}
+@media (max-width:520px){
+  .feat{flex-wrap:wrap;padding:.6rem}
+  .feat__shot{width:100%;height:110px}
+  .feat__go{display:none}
+}
+
 .ledger b{display:block;font-size:var(--t-lg);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .ledger span{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 
@@ -702,7 +740,7 @@ section{padding-block:var(--sp-6);position:relative}
    masked to nothing at both ends, so it fades in and out of the page
    instead of cutting. About and Work carry the same two hues at different
    weights, so the two sections read as one continuous wash. */
-#about,#work,#credentials,#skills,#research,#plan,#contact{position:relative;isolation:isolate}
+#about,#work,#credentials,#skills,#research,#plan,#community,#contact{position:relative;isolation:isolate}
 #about::before,#work::before,
 #credentials::before,#skills::before,#research::before,#plan::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -797,9 +835,12 @@ section{padding-block:var(--sp-6);position:relative}
 @media (hover:hover){
   .rec:hover{box-shadow:var(--e3), inset 0 1px 0 var(--glass-rim)}
 }
-.rec__id{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.1em;
-  text-transform:uppercase;color:var(--jeok)}
-.rec h3{font-size:var(--t-lg);font-weight:600;letter-spacing:-.028em;margin-top:.45rem;max-width:22ch}
+.rec__id{font-family:var(--f-sans);font-size:var(--t-lg);font-weight:700;
+  letter-spacing:-.02em;color:var(--ink)}
+.rec__id span{font-weight:400;font-size:var(--t-xs);letter-spacing:.1em;
+  color:var(--ink-soft);margin-left:.5em}
+.rec h3{font-size:var(--t-sm);font-weight:400;letter-spacing:0;margin-top:.3rem;
+  color:var(--ink-soft);max-width:40ch}
 .rec__ctx{font-size:var(--t-sm);color:var(--ink-soft);margin-top:.5rem;
   padding-bottom:var(--sp-2);border-bottom:1px solid var(--rule-soft)}
 .rec .pao{margin-top:var(--sp-2)}
@@ -811,6 +852,45 @@ section{padding-block:var(--sp-6);position:relative}
   text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--rule-soft);padding-top:.35rem}
 @container (max-width: 560px){.pao dt{border:0;padding:0;color:var(--jeok)}}
 .pao dd{font-size:var(--t-sm);color:var(--ink);line-height:1.6}
+
+/* ── project screenshots ────────────────────────────────────────────────
+   Thumbnails are a horizontal strip so a card with four shots stays the same
+   height as one with none. The full-size image is only fetched when opened. */
+/* A grid, not a scroller. As a flex row the third thumbnail fell outside the
+   408px card and could only be reached by horizontal scrolling with no visible
+   affordance — so it read as missing. auto-fit sizes them to whatever fits, so
+   every screenshot in a card is always on screen. */
+.shots{display:grid;gap:.5rem;margin-top:var(--sp-2);
+  grid-template-columns:repeat(auto-fit, minmax(96px, 1fr))}
+.shot{
+  width:100%;aspect-ratio:16/10;padding:0;cursor:zoom-in;
+  border:1px solid var(--rule);border-radius:8px;overflow:hidden;
+  background:var(--ground-2);
+  transition:border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:0 0;display:block}
+@media (hover:hover){.shot:hover{border-color:var(--cheong);transform:translateY(-2px)}}
+
+/* ── lightbox ── */
+.lbx{
+  position:fixed;inset:0;z-index:200;border:0;padding:0;max-width:none;max-height:none;
+  width:100%;height:100%;background:transparent;
+}
+.lbx::backdrop{background:rgba(8,10,14,.88);backdrop-filter:blur(3px)}
+.lbx__in{
+  position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;
+  gap:.75rem;padding:clamp(.75rem,3vw,2rem);place-items:center;
+}
+.lbx img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.7)}
+.lbx__cap{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.05em;
+  color:#D6DBE2;text-align:center;max-width:60ch}
+.lbx__x{
+  position:absolute;top:.6rem;right:.6rem;min-width:44px;min-height:44px;
+  display:grid;place-items:center;cursor:pointer;border-radius:10px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;
+}
+.lbx__x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:var(--sp-2)}
 .chip{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.04em;
@@ -831,22 +911,28 @@ section{padding-block:var(--sp-6);position:relative}
    the ID visible at a glance; hiding half of that behind a hover was the
    wrong call, and it never worked on touch anyway.
    ═══════════════════════════════════════════════════════════════════════ */
-.certs{display:grid;gap:var(--sp-2);grid-template-columns:repeat(auto-fit, minmax(min(100%, 258px), 1fr))}
+.certs,.community-grid{display:grid;gap:var(--sp-2);grid-template-columns:repeat(auto-fit, minmax(min(100%, 258px), 1fr))}
 .cred{
   position:relative;display:flex;flex-direction:column;
   border-top:4px solid var(--key, var(--cheong));
   border-radius:0 0 14px 14px;
   padding:var(--sp-3);
   transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  cursor:pointer;
 }
+.cred__link{position:absolute;inset:0;z-index:1}
+.cred__badge{z-index:2}
+.cred .go{z-index:2}
 @media (hover:hover){
   .cred:hover{transform:translateY(-3px);box-shadow:var(--e3), var(--edge)}
 }
 .cred:focus-within{box-shadow:var(--e2), var(--glow-cheong)}
 .cred__kicker{
-  display:flex;align-items:center;gap:.45rem;
-  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.11em;
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;
   text-transform:uppercase;color:var(--key, var(--cheong));
+  background:color-mix(in srgb,var(--key, var(--cheong)) 10%,transparent);
+  padding:4px 10px;border-radius:100px;width:fit-content;
 }
 .cred__kicker svg{width:13px;height:13px;fill:none;stroke:currentColor;
   stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -861,7 +947,17 @@ section{padding-block:var(--sp-6);position:relative}
   text-transform:uppercase;color:var(--ink-soft);flex:none}
 .cred__facts dd{font-family:var(--f-mono);font-size:var(--t-xs);color:var(--ink);
   font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+@media(hover:none){
+  .community-grid .cred{}
+}
 .cred .go{margin-top:var(--sp-2)}
+.cred__badge{position:absolute;top:12px;right:12px;width:3rem;height:3rem;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:8px;overflow:hidden;opacity:.88;
+  transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease)}
+.cred__badge:hover{opacity:1;transform:scale(1.08)}
+.cred__badge svg{width:100%;height:100%}
+.cred h3{padding-right:3.5rem}
 
 /* ═══════════════════════════════════════════════════════════════════════
    TOOLSET STRIP
@@ -914,6 +1010,42 @@ section{padding-block:var(--sp-6);position:relative}
 .aim__need dt{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-soft)}
 .aim__need dd{font-size:var(--t-sm);color:var(--ink);line-height:1.55}
+.research-card{
+  position:relative;display:grid;grid-template-columns:1fr auto;align-items:start;
+  gap:var(--sp-3) var(--sp-4);
+  border-top:4px solid var(--cheong);border-radius:0 0 14px 14px;
+  padding:var(--sp-4);cursor:pointer;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+@media(hover:hover){.research-card:hover{transform:translateY(-4px);box-shadow:var(--e3),var(--edge)}}
+.research-card__link{position:absolute;inset:0;z-index:1}
+.research-card__body{display:flex;flex-direction:column;gap:.6rem}
+.research-card__kicker{
+  font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cheong);
+}
+.research-card h3{font-size:var(--t-lg);font-weight:600;letter-spacing:-.02em;max-width:28ch}
+.research-card__lede{font-size:var(--t-base);color:var(--ink-soft);line-height:1.6;max-width:52ch}
+.research-card__chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-2)}
+.research-card__chip{
+  font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--cheong);
+  background:color-mix(in srgb,var(--cheong) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--cheong) 25%,transparent);
+  border-radius:100px;padding:5px 14px;
+}
+.research-card__arrow{
+  display:flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:50%;flex:none;
+  background:var(--cheong);color:var(--on-accent);
+  transition:transform var(--dur) var(--ease);
+}
+@media(hover:hover){.research-card:hover .research-card__arrow{transform:translate(3px,-3px)}}
+.research-card__arrow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:540px){
+  .research-card{grid-template-columns:1fr;gap:var(--sp-2)}
+  .research-card__arrow{width:40px;height:40px}
+}
 
 .seq{counter-reset:step}
 .step{counter-increment:step;display:grid;grid-template-columns:2.4rem minmax(0,1fr);
@@ -1408,12 +1540,6 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
-      "name": "CompTIA Security+ (SY0-701)",
-      "credentialCategory": "certification",
-      "recognizedBy": { "@type": "Organization", "name": "CompTIA" }
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
       "name": "Google Cybersecurity Certificate",
       "credentialCategory": "certificate",
       "recognizedBy": { "@type": "Organization", "name": "Google" }
@@ -1448,6 +1574,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       <a href="#skills">Skills</a>
       <a href="#research">Direction</a>
       <a href="#plan">Plan</a>
+      <a href="#community">Community</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="tgl" id="tgl" type="button" aria-label="Switch colour theme">
@@ -1462,6 +1589,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     <a href="#skills">Skills</a>
     <a href="#research">Direction</a>
     <a href="#plan">Plan</a>
+    <a href="#community">Community</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -1492,10 +1620,9 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </h1>
 
     <p class="hero__lede">
-      
-      Muhammad Waseem — 22, from Pakistan. I run a small security lab out of my bedroom
-      and point machine learning at the logs it produces. I am applying
-      to study AI and cyber security in Korea.
+      Muhammad Waseem — 22, from Pakistan. Cybersecurity practitioner with a home
+      lab and four shipped security tools. I am applying to study cybersecurity
+      in Korea, where I can deepen the AI side of defence.
     </p>
     <p class="hero__ko">
       <!-- OPTIONAL: delete if you don't write Korean confidently. -->
@@ -1540,12 +1667,28 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </div>
 
     
+    <!-- The strongest thing here is a shipped tool, so it goes above the fold
+         rather than waiting three sections. Small on purpose: the canvas is
+         still the visual anchor and the headline still leads. -->
+    <a class="feat rise" href="#work" style="--d:300ms">
+      <img class="feat__shot" src="shots/omniaudit-upload.webp" alt=""
+           width="560" height="350" decoding="async">
+      <span class="feat__txt">
+        <span class="feat__k">Latest build</span>
+        <b>OmniAudit</b>
+        <span class="feat__d">An AI-assisted code security auditor — finds the
+          vulnerability, scores it, and tells you whether it is real.</span>
+      </span>
+      <svg class="feat__go" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
     <dl class="ledger rise">
-      <div><b class="num" data-count="3">03</b><span>certifications</span></div>
+      <div><b class="num" data-count="3">03</b><span>credentials</span></div>
       <div><b class="num" data-count="4">04</b><span>documented projects</span></div>
       <div><b class="num" data-count="240">240</b><span>logged lab hours</span></div>
-      <div><b class="num">[TOPIK —]</b><span>Korean level</span></div>
+      <div><b class="num">Beginner</b><span>Korean level</span></div>
     </dl>
+
   </div>
 </section>
 
@@ -1568,10 +1711,20 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
                  the JPEG here, WebP 51%; the JPEG stays as the <img> src so
                  anything that understands neither still gets a photograph
                  rather than the alt text. -->
+            <!-- Rendered at 330 CSS px. 720 covers a 2x display exactly; the
+                 1080 entry is only fetched by 3x screens, so a phone gets a
+                 sharp image and a laptop never pays for one. -->
             <picture>
-              <source srcset="portrait.avif" type="image/avif">
-              <source srcset="portrait.webp" type="image/webp">
-              <img src="portrait.jpg" width="720" height="720" decoding="async"
+              <source type="image/avif"
+                      srcset="portrait.avif 720w, portrait@1080.avif 1080w"
+                      sizes="(max-width: 919px) 220px, 330px">
+              <source type="image/webp"
+                      srcset="portrait.webp 720w, portrait@1080.webp 1080w"
+                      sizes="(max-width: 919px) 220px, 330px">
+              <img src="portrait.jpg"
+                   srcset="portrait.jpg 720w, portrait@1080.jpg 1080w"
+                   sizes="(max-width: 919px) 220px, 330px"
+                   width="720" height="720" decoding="async"
                    fetchpriority="high"
                    alt="Portrait of Muhammad Waseem"
                    onerror="this.closest('.portrait').dataset.failed='1';console.warn('portrait image did not load — save your headshot next to index.html')"
@@ -1584,27 +1737,28 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
           </figcaption>
         </figure>
 
-        
         <blockquote class="pull">
-          I bricked the family router at sixteen and spent a week learning why.
+          Someone broke into the system at the NGO I work with — student records ended up exposed. I helped stop the damage. That is when security became serious for me.
         </blockquote>
       </div>
       <div class="prose rise" style="--d:90ms">
-        
         <p>
-          The router came back eventually. What stayed was the habit of taking a thing apart
-          until I understood the failure rather than just the fix. Two years on I run a home
-          lab out of my bedroom — <strong>pfSense</strong> at the edge, a three-host Windows
-          domain, and a Kali box I use to attack my own network so I know what the logs
-          look like from both sides of an intrusion.
+          I am 22 years old, from Chishtian, Pakistan. I taught myself cybersecurity by
+          building a home lab in my bedroom — a <strong>pfSense</strong> firewall, a
+          three-host <strong>Windows Active Directory</strong> domain, and a
+          <strong>Kali Linux</strong> machine I use to attack my own network. I run
+          penetration tests, collect the logs, and then try to detect my own attacks
+          from the defender's side. That loop — attack, detect, fix — is how I learn.
         </p>
         <p>
-          The lab produces far more log data than I can read, which is how I ended up in
-          machine learning. Writing detection rules only catches what you already thought
-          of; a model that has learned what normal looks like can flag the thing you did
-          not. <strong>That gap is the work I want to do</strong> — and it is why I am
-          applying to Korea, where security research and applied AI sit in the same
-          departments rather than in separate buildings.
+          The lab taught me that existing security tools give you too much raw data
+          and not enough clear answers. So I started building my own:
+          <strong>ScanMesh</strong> runs five scanners and merges their output into
+          one report. <strong>LogMind</strong> reads security logs and tells you what
+          happened in plain language. <strong>OmniAudit</strong> checks code for real
+          vulnerabilities and filters out the false alarms. I use machine learning where
+          it helps — but the core of everything I build is
+          <strong>cybersecurity</strong>. That is what I want to study in Korea.
         </p>
       </div>
     </div>
@@ -1625,79 +1779,129 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
     <div class="deck" style="margin-top:var(--sp-4)">
 
-      
+      <!-- ── SHIPPED PROJECTS ────────────────────────────────────────────-->
+
       <article class="rec rise" style="--key:var(--cheong)">
-        <p class="rec__id">Lab 01 · 2025</p>
-        <h3>Teaching a model what my network normally does</h3>
-        <p class="rec__ctx">Isolation Forest over Zeek connection logs from a three-host lab.</p>
+        <p class="rec__id">OmniAudit <span>· 2026</span></p>
+        <h3>Telling a developer which security warnings are real</h3>
+        <p class="rec__ctx">An AI-assisted, local-first code security auditor. Python 3.10 and
+           FastAPI behind a React 19 dashboard. Your code never leaves your machine unless you
+           opt in.</p>
         <dl class="pao">
-          <div><dt>Question</dt><dd>Could an unsupervised model flag beaconing traffic I had never labelled for it?</dd></div>
-          <div><dt>Method</dt><dd>Two weeks of Zeek conn logs, engineered features for interval regularity and payload-size variance, then fit an Isolation Forest and ran a real beacon through it.</dd></div>
-          <div><dt>Result</dt><dd>It caught the beacon — and flagged my own nightly backup job as well. Tuning out that false positive taught me more than the detection did: base rates matter more than model choice.</dd></div>
+          <div><dt>Problem</dt><dd>AI-generated code ships with real bugs. Scanners catch them but return too many false alarms.</dd></div>
+          <div><dt>Method</dt><dd>Bandit scans the code and scores each finding. Gemini marks which ones are real and which are noise.</dd></div>
+          <div><dt>Result</dt><dd>The AI can label findings but never remove them. Code stays on your machine. Python only for now.</dd></div>
         </dl>
+        <div class="shots">
+        <button class="shot" type="button" data-full="shots/omniaudit-findings@full.webp"
+                data-cap="OmniAudit — findings dashboard">
+          <img src="shots/omniaudit-findings.webp" alt="OmniAudit — findings dashboard" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        <button class="shot" type="button" data-full="shots/omniaudit-fixide@full.webp"
+                data-cap="OmniAudit — remediation IDE: backlog, code with inline diff, diagnostics">
+          <img src="shots/omniaudit-fixide.webp" alt="OmniAudit — remediation IDE: backlog, code with inline diff, diagnostics" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        <button class="shot" type="button" data-full="shots/omniaudit-upload@full.webp"
+                data-cap="OmniAudit — upload: drag a folder or .zip, nothing leaves the browser">
+          <img src="shots/omniaudit-upload.webp" alt="OmniAudit — upload: drag a folder or .zip, nothing leaves the browser" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        </div>
         <ul class="chips">
           <li class="chip chip--role">AI Security</li>
-          <li class="chip">Python</li><li class="chip">scikit-learn</li><li class="chip">Zeek</li>
+          <li class="chip">Python</li><li class="chip">FastAPI</li><li class="chip">React 19</li>
+          <li class="chip">Bandit</li><li class="chip">Gemini</li>
+          <li class="chip">Google ADK</li><li class="chip">MCP</li><li class="chip">OSV</li>
         </ul>
-        <a class="go" href="[write-up URL]">
-          Full write-up
+        <a class="go" href="https://github.com/Muhammadwaseem5131/OmniAudit01">
+          Source on GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </article>
 
       <article class="rec rise" style="--key:var(--jeok); --d:80ms">
-        <p class="rec__id">Lab 02 · 2025</p>
-        <h3>Walking my own domain the way an attacker would</h3>
-        <p class="rec__ctx">Active Directory attack path, then the detections that should have caught it.</p>
+        <p class="rec__id">IoT-Sentinel <span>· 2026</span></p>
+        <h3>Finding the exposed devices nobody audits</h3>
+        <p class="rec__ctx">Network scanner for IoT devices that reports risk in plain language.
+           Python 3.12 / FastAPI, React dashboard, SQLite.</p>
         <dl class="pao">
-          <div><dt>Question</dt><dd>Starting from one ordinary domain user, how far could I get before anything in the lab logged it?</dd></div>
-          <div><dt>Method</dt><dd>Collected the graph with BloodHound, Kerberoasted a service account with a weak password, and moved to the file server. Then replayed the identical path with Sysmon and Wazuh recording everything.</dd></div>
-          <div><dt>Result</dt><dd>Four steps to Domain Admin; only two of them produced an alert under the default configuration. I wrote the Sigma rules for the other two, which is the part of the exercise that was actually worth keeping.</dd></div>
+          <div><dt>Problem</dt><dd>Home and office networks have IoT devices nobody checks — old firmware, default passwords, open ports.</dd></div>
+          <div><dt>Method</dt><dd>Scans the network, identifies each device, and checks it against known vulnerability databases.</dd></div>
+          <div><dt>Result</dt><dd>67 tests passing. Some false positives from keyword matching — documented, not hidden.</dd></div>
         </dl>
+        <div class="shots">
+        <button class="shot" type="button" data-full="shots/iot-dashboard@full.webp"
+                data-cap="IoT-Sentinel — discovered devices, risk overview and wireless findings">
+          <img src="shots/iot-dashboard.webp" alt="IoT-Sentinel — discovered devices, risk overview and wireless findings" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        <button class="shot" type="button" data-full="shots/iot-device@full.webp"
+                data-cap="IoT-Sentinel — device detail: open ports and two critical vulnerabilities">
+          <img src="shots/iot-device.webp" alt="IoT-Sentinel — device detail: open ports and two critical vulnerabilities" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        <button class="shot" type="button" data-full="shots/iot-wireless@full.webp"
+                data-cap="IoT-Sentinel — wireless audit: adapter status and detected networks">
+          <img src="shots/iot-wireless.webp" alt="IoT-Sentinel — wireless audit: adapter status and detected networks" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        <button class="shot" type="button" data-full="shots/iot-map@full.webp"
+                data-cap="IoT-Sentinel — network map of the scanned subnet">
+          <img src="shots/iot-map.webp" alt="IoT-Sentinel — network map of the scanned subnet" loading="lazy" decoding="async"
+               width="560" height="350">
+        </button>
+        </div>
         <ul class="chips">
-          <li class="chip chip--role">Penetration Tester</li>
-          <li class="chip">BloodHound</li><li class="chip">Sysmon</li><li class="chip">Sigma</li>
+          <li class="chip chip--role">Network Security</li>
+          <li class="chip">Python</li><li class="chip">nmap</li><li class="chip">Scapy</li>
+          <li class="chip">NVD / CVE</li><li class="chip">FastAPI</li>
         </ul>
-        <a class="go" href="[write-up URL]">
-          Full write-up
+        <a class="go" href="https://github.com/Muhammadwaseem5131/IoT-Sentinel">
+          Source on GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </article>
 
       <article class="rec rise" style="--key:var(--hwang); --d:160ms">
-        <p class="rec__id">Lab 03 · 2026</p>
-        <h3>Rebuilding an intrusion from what the SIEM kept</h3>
-        <p class="rec__ctx">Timeline reconstruction against my own scripted intrusion, a week cold.</p>
+        <p class="rec__id">ScanMesh <span>· 2026</span></p>
+        <h3>Five scanners, one correlated report</h3>
+        <p class="rec__ctx">A rule-based security-tool orchestrator. Chains nmap, ZAP, sqlmap
+           and tshark into one automated pipeline — no AI, 100% deterministic.</p>
         <dl class="pao">
-          <div><dt>Question</dt><dd>Could I reconstruct the timeline of an intrusion using only what my logging pipeline had retained — no memory of running it?</dd></div>
-          <div><dt>Method</dt><dd>Ran a scripted intrusion against the lab, left it a week, then worked purely from Wazuh alerts, Sysmon event IDs and Zeek logs to write the incident timeline.</dd></div>
-          <div><dt>Result</dt><dd>Initial access and persistence came back cleanly. Lateral movement was invisible — Sysmon Event ID 3 was never being forwarded. Fixing the pipeline mattered more than any rule I could have written on top of it.</dd></div>
+          <div><dt>Problem</dt><dd>A pentester runs each tool by hand, copies output between them, and manually writes up five separate dumps into one report.</dd></div>
+          <div><dt>Method</dt><dd>One target in, five tools chained by a rule engine. Findings on the same endpoint and vuln family merge — two tools agreeing = one high-confidence result.</dd></div>
+          <div><dt>Result</dt><dd>ZAP suspects SQL injection, sqlmap confirms it, ScanMesh merges them into one critical finding. Unit tests + CI on every push.</dd></div>
         </dl>
         <ul class="chips">
-          <li class="chip chip--role">Incident Responder</li>
-          <li class="chip">Wazuh</li><li class="chip">Sysmon</li><li class="chip">Zeek</li>
+          <li class="chip chip--role">Penetration Testing</li>
+          <li class="chip">Python</li><li class="chip">nmap</li><li class="chip">OWASP ZAP</li>
+          <li class="chip">sqlmap</li><li class="chip">tshark</li><li class="chip">SQLite</li>
         </ul>
-        <a class="go" href="[write-up URL]">
-          Full write-up
+        <a class="go" href="https://github.com/Muhammadwaseem5131/scanmesh">
+          Source on GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </article>
 
       <article class="rec rise" style="--key:var(--cheong); --d:240ms">
-        <p class="rec__id">Lab 04 · 2026</p>
-        <h3>A phishing URL classifier, and how accuracy lied to me</h3>
-        <p class="rec__ctx">Lexical features only, evaluated at a realistic base rate rather than a balanced one.</p>
+        <p class="rec__id">LogMind <span>· 2026</span></p>
+        <h3>Explaining security-log anomalies in plain language</h3>
+        <p class="rec__ctx">Detects unusual patterns in security logs and explains them with a risk
+           level, MITRE ATT&CK mapping, and recommended actions. Python stdlib only — no installs, no internet.</p>
         <dl class="pao">
-          <div><dt>Question</dt><dd>How much of a phishing URL is detectable from its text alone, with no page fetch and no reputation feed?</dd></div>
-          <div><dt>Method</dt><dd>Built lexical features — length, character entropy, subdomain depth, token counts, TLD — over a public URL corpus, then compared logistic regression against gradient boosting on precision-recall rather than accuracy.</dd></div>
-          <div><dt>Result</dt><dd>0.96 accuracy on a balanced split, which is meaningless: re-weighted to the prevalence a real mail gateway sees, precision collapsed. The model was fine. The evaluation was the finding.</dd></div>
+          <div><dt>Problem</dt><dd>Security logs show something happened, but not what it means or what to do next.</dd></div>
+          <div><dt>Method</dt><dd>Ten pure-function detectors over an event list, plus a live-monitoring mode that tails logs continuously and alerts on anomalies.</dd></div>
+          <div><dt>Result</dt><dd>55/55 attack logs detected (recall 1.00), macro F1 0.89. 15 false alarms on hard-ambiguous benign logs — each documented with why.</dd></div>
         </dl>
         <ul class="chips">
-          <li class="chip chip--role">Machine Learning</li>
-          <li class="chip">Python</li><li class="chip">pandas</li><li class="chip">scikit-learn</li>
+          <li class="chip chip--role">Blue Team</li>
+          <li class="chip">Python</li><li class="chip">MITRE ATT&CK</li>
+          <li class="chip">Log Analysis</li><li class="chip">Anomaly Detection</li>
         </ul>
-        <a class="go" href="[write-up URL]">
-          Full write-up
+        <a class="go" href="https://github.com/Muhammadwaseem5131/logmind">
+          Source on GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
       </article>
@@ -1725,24 +1929,11 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     <p class="intro rise">Every entry links to a record that can be checked independently.</p>
 
     <div class="certs" style="margin-top:var(--sp-4)">
-      
-      <article class="cred rise" style="--key:var(--cheong)">
-        <p class="cred__kicker">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
-          Certification
-        </p>
-        <h3>CompTIA Security+ (SY0-701)</h3>
-        <p class="cred__issuer">CompTIA</p>
-        <dl class="cred__facts">
-          <div><dt>Issued</dt><dd>2025</dd></div>
-          <div><dt>Credential ID</dt><dd>[ID number]</dd></div>
-        </dl>
-        <a class="go" href="[verification URL]">
-          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      <article class="cred rise" style="--key:var(--jeok)">
+        <a class="cred__link" href="certs/google-cybersecurity.pdf" target="_blank" rel="noopener" aria-label="Open Google Cybersecurity certificate"></a>
+        <a class="cred__badge" href="certs/google-cybersecurity.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/google.png" alt="Google" width="48" height="48">
         </a>
-      </article>
-
-      <article class="cred rise" style="--key:var(--jeok); --d:70ms">
         <p class="cred__kicker">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
           Certificate
@@ -1759,12 +1950,16 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       </article>
 
       <article class="cred rise" style="--key:var(--key-tan); --d:140ms">
+        <a class="cred__link" href="certs/cisco-soc.pdf" target="_blank" rel="noopener" aria-label="Open SOC Level 1 certificate"></a>
+        <a class="cred__badge" href="certs/cisco-soc.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/cisco.svg" alt="Cisco" width="48" height="48">
+        </a>
         <p class="cred__kicker">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
-          Learning path
+          Certificate
         </p>
-        <h3>SOC Level 1 pathway</h3>
-        <p class="cred__issuer">TryHackMe</p>
+        <h3>Introduction to Cybersecurity</h3>
+        <p class="cred__issuer">Cisco Networking Academy</p>
         <dl class="cred__facts">
           <div><dt>Completed</dt><dd>2025</dd></div>
           <div><dt>Profile</dt><dd>[username]</dd></div>
@@ -1772,6 +1967,23 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         <a class="go" href="[profile URL]">
           Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:210ms">
+        <a class="cred__link" href="certs/kaist-ds1.pdf" target="_blank" rel="noopener" aria-label="Open KAIST Data Structure certificate"></a>
+        <a class="cred__badge" href="certs/kaist-ds1.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/kaist.svg" alt="KAIST" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+          University course
+        </p>
+        <h3>Data Structure and Analysis 1 &amp; 2</h3>
+        <p class="cred__issuer">KAIST Online · Prof. Moon, Il-Chul</p>
+        <dl class="cred__facts">
+          <div><dt>Code</dt><dd>IE260</dd></div>
+          <div><dt>Completed</dt><dd>Jun – Jul 2026</dd></div>
+        </dl>
       </article>
     </div>
   </div>
@@ -1811,53 +2023,30 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   <div class="shell">
     <div class="head rise">
       <h2 class="dsp">Where I want to take this</h2>
-      <p class="mono">Open questions</p>
+      <p class="mono">Study direction</p>
     </div>
-    <p class="intro rise">
-      Every lab below left me with a question I could not answer with a bedroom
-      network and no supervision. These are the three I want to work on.
-    </p>
 
-    <div class="aims" style="margin-top:var(--sp-4)">
-      <article class="aim rise" style="--key:var(--cheong)">
-        <p class="aim__n">01</p>
-        <h3>Detection that survives a realistic base rate</h3>
-        <p class="aim__why">
-          My phishing classifier looked strong until I evaluated it at the rate
-          real traffic actually carries, and my anomaly model flagged my own
-          backup job. Benchmarks reward balanced data; networks are not balanced.
+    <article class="research-card rise" style="margin-top:var(--sp-3)">
+      <a class="research-card__link" href="research.html" aria-label="Read full study direction"></a>
+      <div class="research-card__body">
+        <p class="research-card__kicker">Study Direction · Smart Security &amp; AI Safety</p>
+        <h3>Securing Systems That Learn</h3>
+        <p class="research-card__lede">
+          As attackers weaponize LLMs into malware that learns and mutates, our
+          defenses have to be trained against it. A proposed undergraduate study
+          direction in adversarial simulation, defensive AI, and safe autonomy.
         </p>
-        <dl class="aim__need">
-          <div><dt>Need</dt><dd>Real traffic at volume, and a lab that treats false-positive cost as a first-class metric.</dd></div>
-        </dl>
-      </article>
-
-      <article class="aim rise" style="--key:var(--jeok); --d:80ms">
-        <p class="aim__n">02</p>
-        <h3>Can a detection model be evaded on purpose?</h3>
-        <p class="aim__why">
-          I built models that catch an attack I wrote myself. I have no idea how
-          they hold up against someone shaping traffic specifically to slip past
-          them — which is the only case that matters in production.
-        </p>
-        <dl class="aim__need">
-          <div><dt>Need</dt><dd>Adversarial machine learning taught properly, and people to test my assumptions against.</dd></div>
-        </dl>
-      </article>
-
-      <article class="aim rise" style="--key:var(--hwang); --d:160ms">
-        <p class="aim__n">03</p>
-        <h3>What evidence actually survives an incident</h3>
-        <p class="aim__why">
-          Reconstructing my own intrusion a week later, the limit was never my
-          analysis — it was what the pipeline had kept. Deciding what to retain
-          before you need it is a design problem, not a tooling one.
-        </p>
-        <dl class="aim__need">
-          <div><dt>Need</dt><dd>Systems bigger than one person's lab, where retention has a real cost.</dd></div>
-        </dl>
-      </article>
-    </div>
+        <div class="research-card__chips">
+          <span class="research-card__chip">Adversarial Training</span>
+          <span class="research-card__chip">Sandboxed Simulation</span>
+          <span class="research-card__chip">AI Safety</span>
+          <span class="research-card__chip">Konyang University</span>
+        </div>
+      </div>
+      <div class="research-card__arrow">
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1923,6 +2112,90 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   </div>
 </section>
 
+<!-- ══════════════════════ COMMUNITY ══════════════════════ -->
+<section id="community">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Community</h2>
+      <p class="mono">Beyond the keyboard</p>
+    </div>
+    <div class="community-grid rise">
+
+      <article class="cred rise" style="--key:var(--cheong)">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Volunteer</p>
+            <h3>Flood relief operations — District Bahawalnagar</h3>
+            <p class="cred__issuer">Alkhidmat Foundation Pakistan</p>
+            <dl class="cred__facts">
+              <div><dt>When</dt><dd>24 Aug – 5 Oct 2025 (6 weeks)</dd></div>
+              <div><dt>Location</dt><dd>Relief camps, District Bahawalnagar, Punjab</dd></div>
+            </dl>
+            <p class="rec__ctx" style="margin-top:var(--sp-2)">Distributed ration packages, supported supply logistics, registered displaced families, maintained beneficiary records, and documented relief activities. Certified by Capt. Sannan Akbar, Head of Volunteer Management.</p>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:70ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg> Teaching</p>
+            <h3>Trained 50 students in IT &amp; CS</h3>
+            <p class="cred__issuer">Ghazali Education Foundation</p>
+            <dl class="cred__facts">
+              <div><dt>When</dt><dd>2024 – present</dd></div>
+              <div><dt>Scope</dt><dd>Computer fundamentals, Office, internet literacy</dd></div>
+            </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--hwang); --d:140ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg> Hackathon</p>
+            <h3>AI Seekho 2026 — Google National Hackathon</h3>
+            <p class="cred__issuer">Google for Developers &amp; Ministry of IT, Pakistan</p>
+            <dl class="cred__facts">
+              <div><dt>Year</dt><dd>2026</dd></div>
+              <div><dt>Organized by</dt><dd>Google for Developers &amp; Ministry of IT</dd></div>
+            </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:210ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> UNICEF</p>
+            <h3>Education in Emergencies — Global Course</h3>
+            <p class="cred__issuer">UNICEF Agora</p>
+            <dl class="cred__facts">
+              <div><dt>Completed</dt><dd>Apr 2026</dd></div>
+              <div><dt>Platform</dt><dd>UNICEF Agora — global learning</dd></div>
+            </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:280ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Volunteer</p>
+            <h3>World Orphan Day event</h3>
+            <p class="cred__issuer">Ghazali Education Foundation</p>
+            <dl class="cred__facts">
+              <div><dt>When</dt><dd>Feb 2026</dd></div>
+              <div><dt>Organized by</dt><dd>Ghazali Education Foundation</dd></div>
+            </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--hwang); --d:350ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Volunteer</p>
+            <h3>Thalassemia patient support — campus blood donor drives</h3>
+            <p class="cred__issuer">Patient Welfare Society Chishtian</p>
+            <dl class="cred__facts">
+              <div><dt>Role</dt><dd>Campus coordinator</dd></div>
+              <div><dt>Scope</dt><dd>Organized high-school student donors for thalassemia patients</dd></div>
+            </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:420ms">
+            <p class="cred__kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg> Member</p>
+            <h3>Pakistan National Youth Foundation</h3>
+            <p class="cred__issuer">PNYC — Project of LUMS</p>
+            <dl class="cred__facts">
+              <div><dt>Focus</dt><dd>Youth empowerment, leadership, UN SDGs</dd></div>
+              <div><dt>Network</dt><dd>National platform connecting students with leaders</dd></div>
+            </dl>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════════ CONTACT ══════════════════════ -->
 <section id="contact">
   <div class="shell">
@@ -1933,7 +2206,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         For interviews, questions about a specific finding, or the full document set.
       </p>
       <div class="acts">
-        <a class="act act--solid act--mail" href="mailto:muhammad.waseem.study1@gmail.com">
+        <a class="act act--solid act--mail" href="https://mail.google.com/mail/?view=cm&to=muhammad.waseem.study1@gmail.com" target="_blank" rel="noopener">
           muhammad.waseem.study1@gmail.com
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -1942,7 +2215,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            and inheriting currentColor so they follow the theme. Delete any row
            you do not actually use — an unlinked profile is worse than none. -->
       <div class="reach">
-        <a href="mailto:muhammad.waseem.study1@gmail.com">
+        <a href="https://mail.google.com/mail/?view=cm&to=muhammad.waseem.study1@gmail.com" target="_blank" rel="noopener">
           <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.5 6.5 9.5 7 9.5-7"/>
@@ -1953,40 +2226,39 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
           <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a href="[GitHub URL]">
+        <a href="https://github.com/Muhammadwaseem5131">
           <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           GitHub
         </a>
-        <a href="[Kaggle URL]">
+        <a href="https://www.kaggle.com/muhammadwaseemcs2025">
           <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.234.118-.353.354-.353h2.431c.234 0 .351.119.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.336"/></svg>
           Kaggle
-        </a>
-        <a href="[Facebook URL]">
-          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
-          Facebook
         </a>
         <!-- Credly: I could not reproduce their official mark from memory, so
              this is a generic verified-badge glyph. Replace the <path> with the
              real one from simpleicons.org/?q=credly to be brand-accurate. -->
-        <a href="[Credly URL]">
+        <a href="https://www.credly.com/users/waseem-waseem.95ec08a9">
           <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2.6 20 6v6.2c0 4.3-3.2 7.9-8 9.2-4.8-1.3-8-4.9-8-9.2V6z"/><path d="m8.8 12.1 2.2 2.2 4.2-4.4"/>
           </svg>
           Credly
         </a>
-        <a href="[TryHackMe URL]">
-          <svg class="reach__i" viewBox="0 0 24 24" aria-hidden="true" fill="none"
-               stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="13" rx="2"/><path d="m7.5 9 2.5 2-2.5 2M12.5 13.5H16M8 21h8"/>
-          </svg>
-          TryHackMe
-        </a>
       </div>
     </div>
   </div>
 </section>
 </main>
+
+<dialog class="lbx" id="lbx" aria-label="Screenshot">
+  <div class="lbx__in">
+    <img id="lbxImg" alt="">
+    <p class="lbx__cap" id="lbxCap"></p>
+  </div>
+  <button class="lbx__x" id="lbxX" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+</dialog>
 
 <footer>
   <div class="shell foot">
@@ -2134,7 +2406,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     // values only ever lined up for the hero, which starts at y=0. Anything
     // further down the page would have been offset by its own top.
     const lightZones = [...document.querySelectorAll(
-      ".hero, #about, #work, #credentials, #skills, #research, #plan, #contact")];
+      ".hero, #about, #work, #credentials, #skills, #research, #plan, #community, #contact")];
     let cx = 0, cy = 0, qLight = false;
     addEventListener("pointermove", (ev) => {
       cx = ev.clientX; cy = ev.clientY;
@@ -2426,6 +2698,37 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     }
   }
 
+  /* ── screenshot lightbox ───────────────────────────────────────────────
+     <dialog> rather than a hand-rolled overlay: showModal() gives focus
+     trapping, Escape-to-close and inert background for free, and they are
+     the parts people get wrong. The full-size image is only fetched on open,
+     so seven thumbnails cost seven small files, not seven large ones. */
+  const lbx = document.getElementById("lbx");
+  if (lbx && typeof lbx.showModal === "function") {
+    const lbxImg = document.getElementById("lbxImg");
+    const lbxCap = document.getElementById("lbxCap");
+    let opener = null;
+
+    document.addEventListener("click", (e) => {
+      const shot = e.target.closest(".shot");
+      if (!shot) return;
+      opener = shot;
+      lbxImg.src = shot.dataset.full;
+      lbxImg.alt = shot.dataset.cap || "";
+      lbxCap.textContent = shot.dataset.cap || "";
+      lbx.showModal();
+    });
+
+    const close = () => lbx.open && lbx.close();
+    document.getElementById("lbxX").addEventListener("click", close);
+    // clicking the backdrop closes; clicking the image itself must not
+    lbx.addEventListener("click", (e) => { if (e.target === lbx) close(); });
+    lbx.addEventListener("close", () => {
+      lbxImg.removeAttribute("src");     // release the large image
+      if (opener) { opener.focus(); opener = null; }
+    });
+  }
+
   document.getElementById("yr").textContent = new Date().getFullYear();
 })();
 </script>
@@ -2468,26 +2771,25 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "name","muhammad","waseem","이름","소개","누구"],
       s:"#about",
       f:["What have you built?","Why Korea?","What is in your home lab?"],
-      a:`<p>I'm <strong>Muhammad Waseem</strong> — 22, from Pakistan. I run a small security
-         lab out of my bedroom and point machine learning at the logs it
-         produces.</p>
-         <p>Practically that means two halves that keep meeting: attacking my own network so
-         I know what an intrusion looks like from the inside, and then building detection
-         for it. I'm applying to study AI and cyber security in Korea on the Global Korea
-         Scholarship.</p>` },
+      a:`<p>I'm <strong>Muhammad Waseem</strong> — 22, from Chishtian, Pakistan. I'm a
+         self-taught cybersecurity practitioner with a home lab and four shipped
+         security tools.</p>
+         <p>I run penetration tests on my own network, collect the logs, and then build
+         tools that make sense of them. I'm applying to study cybersecurity in Korea
+         on the Global Korea Scholarship, where I can deepen the AI side of defence.</p>` },
 
     { id:"story", t:"How I got started",
       k:["how did you start","how you started","got into","get into","why security","why cyber",
-         "origin","story","router","beginning","first","interested","motivation","why did you"],
+         "origin","story","beginning","first","interested","motivation","why did you","breach","ngo"],
       s:"#about",
       f:["What is in your home lab?","What have you built?"],
-      a:`<p>I bricked the family router at sixteen and spent a week working out why. The router
-         came back. What stayed was the habit of taking something apart until I understood
-         the <em>failure</em>, not just the fix.</p>
-         <p>The lab I built afterwards produces far more log data than I can read, which is
-         how I ended up in machine learning. Writing detection rules only catches what you
-         already thought of. A model that has learned what normal looks like can flag the
-         thing you didn't.</p>` },
+      a:`<p>A breach at the NGO I work with — Ghazali Education Foundation — put student
+         records in the wrong hands. I helped stop the damage. That was the moment
+         cybersecurity stopped being a hobby and became something I had to learn
+         properly.</p>
+         <p>I built a home lab, taught myself penetration testing and log analysis, and
+         started building security tools that solve real problems I had seen
+         first-hand.</p>` },
 
     { id:"lab", t:"The home lab",
       k:["home lab","homelab","your lab","setup","rig","hardware","pfsense","kali","domain",
@@ -2508,76 +2810,71 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
     { id:"work", t:"The projects",
       k:["what have you built","what did you build","projects","project","work","portfolio",
-         "experience","done","records","labs","show me","built","achievements","프로젝트"],
+         "experience","done","records","show me","built","achievements","프로젝트"],
       s:"#work",
-      f:["Tell me about the anomaly detection project","What did the AD lab find?","How do you evaluate a model?"],
+      f:["Tell me about ScanMesh","What is LogMind?","How does OmniAudit work?"],
       a:`<p>Four documented records, each written as question → method → result:</p>
          <ul>
-           <li><strong>Lab 01</strong> — an Isolation Forest that learned my network's normal
-               traffic and caught a beacon it was never labelled for</li>
-           <li><strong>Lab 02</strong> — walked my own Active Directory to Domain Admin, then
-               wrote the detections that should have caught it</li>
-           <li><strong>Lab 03</strong> — rebuilt an intrusion timeline a week cold, using only
-               what the SIEM had kept</li>
-           <li><strong>Lab 04</strong> — a phishing URL classifier where the evaluation, not
-               the model, turned out to be the finding</li>
+           <li><strong>OmniAudit</strong> — an AI-assisted code security auditor that separates
+               real vulnerabilities from false alarms</li>
+           <li><strong>IoT-Sentinel</strong> — a network scanner for IoT devices that reports
+               risk in plain language</li>
+           <li><strong>ScanMesh</strong> — a rule-based orchestrator that chains five security
+               scanners and correlates their output into one de-duplicated report</li>
+           <li><strong>LogMind</strong> — detects anomalies in security logs and explains them
+               in plain language with MITRE ATT&CK mapping</li>
          </ul>
-         <p>Everything is sanitised. No flags, no credentials, no unredacted addresses.</p>` },
+         <p>Everything runs locally. No cloud dependencies unless you opt in.</p>` },
 
-    { id:"p1", t:"Lab 01 — anomaly detection",
-      k:["isolation forest","anomaly","anomaly detection","beacon","beaconing","zeek","unsupervised",
-         "lab 01","first project","traffic","conn log","false positive","base rate"],
+    { id:"p1", t:"OmniAudit — code security auditor",
+      k:["omniaudit","omni audit","code audit","vulnerability","false alarm","bandit","gemini",
+         "fastapi","react","code security","static analysis","sast"],
       s:"#work",
-      f:["What did the AD lab find?","How do you evaluate a model?"],
-      a:`<p>I wanted to know whether an unsupervised model could flag beaconing traffic I had
-         never labelled for it.</p>
-         <p>Two weeks of Zeek connection logs, features engineered for interval regularity and
-         payload-size variance, then an Isolation Forest fitted on them and a real beacon run
-         through it.</p>
-         <p>It caught the beacon — and flagged my own nightly backup job as well. <strong>Tuning
-         out that false positive taught me more than the detection did.</strong> Base rates
-         matter more than model choice, and that lesson came back in Lab 04.</p>` },
+      f:["Tell me about ScanMesh","What is LogMind?"],
+      a:`<p>AI-generated code ships with real bugs. Scanners catch them but return too many
+         false alarms — developers start ignoring the warnings entirely.</p>
+         <p>OmniAudit scans Python code with Bandit, then uses Gemini to separate real
+         vulnerabilities from noise. <strong>The AI labels findings but never removes
+         them</strong> — the developer always sees everything. Code stays on your machine
+         unless you opt in. Built with Python, FastAPI, and React 19.</p>` },
 
-    { id:"p2", t:"Lab 02 — Active Directory",
-      k:["active directory","ad lab","bloodhound","kerberoast","kerberoasting","domain admin",
-         "lab 02","attack path","sigma rule","service account","file server","weak password"],
+    { id:"p2", t:"IoT-Sentinel — network scanner",
+      k:["iot","sentinel","iot-sentinel","network scanner","device","firmware","cve","nvd",
+         "scapy","open port","default password","smart device"],
       s:"#work",
-      f:["Tell me about the anomaly detection project","How did the incident response lab go?"],
-      a:`<p>The question: starting from one ordinary domain user, how far could I get before
-         anything in the lab logged it?</p>
-         <p>I collected the graph with BloodHound, Kerberoasted a service account with a weak
-         password, and moved to the file server. Then I replayed the identical path with
-         Sysmon and Wazuh recording.</p>
-         <p><strong>Four steps to Domain Admin, and only two of them produced an alert under
-         the default configuration.</strong> I wrote the Sigma rules for the other two — that
-         part is what was worth keeping.</p>` },
+      f:["Tell me about ScanMesh","How does OmniAudit work?"],
+      a:`<p>Home and office networks have IoT devices nobody checks — old firmware, default
+         passwords, open ports.</p>
+         <p>IoT-Sentinel scans the network, identifies each device, and checks it against
+         known vulnerability databases (NVD/CVE). It reports risk in plain language so a
+         non-technical person can understand it. <strong>67 tests passing.</strong> Some
+         false positives from keyword matching — documented, not hidden.</p>` },
 
-    { id:"p3", t:"Lab 03 — incident response",
-      k:["incident response","incident","timeline","reconstruct","siem","wazuh","forensic",
-         "lab 03","dfir","logging","pipeline","event id","retention"],
+    { id:"p3", t:"ScanMesh — security orchestrator",
+      k:["scanmesh","scan mesh","orchestrator","nmap","zap","sqlmap","tshark","correlation",
+         "pentest","penetration test","scanner","pipeline","rule engine","correlated"],
       s:"#work",
-      f:["What did the AD lab find?","What defensive skills do you have?"],
-      a:`<p>I ran a scripted intrusion against the lab, left it a week, then tried to reconstruct
-         the timeline using only what the pipeline had retained — no memory of what I'd run.</p>
-         <p>Initial access and persistence came back cleanly. <strong>Lateral movement was
-         completely invisible</strong> — Sysmon Event ID 3 was never being forwarded.</p>
-         <p>Fixing the pipeline mattered more than any rule I could have written on top of it.
-         You cannot detect what you never collected.</p>` },
+      f:["What is LogMind?","How does OmniAudit work?"],
+      a:`<p>The problem: a pentester runs each tool by hand, copies output between them, and
+         writes up five separate tool dumps into one report.</p>
+         <p>ScanMesh chains nmap, ZAP, sqlmap and tshark into one automated pipeline. A rule
+         engine decides which tool runs next based on prior results. Findings on the same
+         endpoint and vulnerability family merge — <strong>two tools agreeing = one
+         high-confidence result, not two vague duplicates.</strong></p>
+         <p>100% deterministic, no AI anywhere. Unit tests and CI on every push.</p>` },
 
-    { id:"p4", t:"Lab 04 — phishing classifier",
-      k:["phishing","url","classifier","logistic regression","gradient boosting","accuracy",
-         "precision","recall","lab 04","evaluation","evaluate","metric","lexical","corpus",
-         "how do you evaluate"],
+    { id:"p4", t:"LogMind — log anomaly explainer",
+      k:["logmind","log mind","anomaly","log analysis","mitre","att&ck","attack","detector",
+         "security log","brute force","explain","plain language","live monitor"],
       s:"#work",
-      f:["Tell me about the anomaly detection project","What machine learning can you do?"],
-      a:`<p>How much of a phishing URL is detectable from its text alone — no page fetch, no
-         reputation feed?</p>
-         <p>Lexical features (length, character entropy, subdomain depth, token counts, TLD)
-         over a public corpus, then logistic regression against gradient boosting, compared on
-         precision-recall rather than accuracy.</p>
-         <p>0.96 accuracy on a balanced split, which is meaningless. Re-weighted to the
-         prevalence a real mail gateway sees, precision collapsed. <strong>The model was fine.
-         The evaluation was the finding.</strong></p>` },
+      f:["Tell me about ScanMesh","What defensive skills do you have?"],
+      a:`<p>Security logs show something happened, but not what it means or what to do next.</p>
+         <p>LogMind runs ten pure-function detectors over an event list, flags anomalies, and
+         explains each one with a risk level, MITRE ATT&CK mapping, and recommended actions.
+         It also has a live-monitoring mode that tails logs continuously.</p>
+         <p><strong>55/55 attack logs detected (recall 1.00), macro F1 0.89.</strong> 15 false
+         alarms on hard-ambiguous benign cases — each documented with why the log alone cannot
+         separate them from the real thing. Python standard library only, no installs.</p>` },
 
     { id:"ml", t:"Machine learning",
       k:["machine learning","ml","ai","artificial intelligence","model","models","data science",
@@ -2603,9 +2900,9 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       f:["How did the incident response lab go?","What offensive work have you done?"],
       a:`<p>Log analysis, SIEM rule writing, threat hunting and packet analysis — Wazuh, Sysmon,
          Zeek and Wireshark in practice.</p>
-         <p>This is the half I'm strongest in and the half I want to build a career on. Lab 02
-         and Lab 03 both ended in a defensive deliverable rather than an exploit, which was
-         the point.</p>` },
+         <p>This is the half I'm strongest in and the half I want to build a career on. LogMind
+         is a pure defensive tool — ten detectors, MITRE ATT&CK mapping, and live monitoring.
+         I attack my own network so I can build what catches it.</p>` },
 
     { id:"red", t:"Offensive skills",
       k:["offensive","red team","pentest","penetration testing","hacking","exploit","enumeration",
@@ -2623,7 +2920,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#skills",
       f:["What tools do you use?","What machine learning can you do?"],
       a:`<p>Linux administration, TCP/IP networking, Python and Bash. Unglamorous and
-         non-negotiable — every one of the four labs failed at some point for a reason that
+         non-negotiable — every one of the four projects failed at some point for a reason that
          turned out to be networking rather than security.</p>` },
 
     { id:"tools", t:"Toolset",
@@ -2636,17 +2933,17 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          attacking. Linux underneath all of it.</p>` },
 
     { id:"certs", t:"Certifications",
-      k:["certification","certificate","credential","qualified","qualification","security plus",
-         "comptia","google","coursera","tryhackme","thm","verify","verifiable","자격증"],
+      k:["certification","certificate","credential","qualified","qualification",
+         "google","coursera","verify","verifiable","자격증","kaist"],
       s:"#credentials",
       f:["What have you built?","What are you studying next?"],
-      a:`<p>Three, and each one links to a record that can be checked independently:</p>
+      a:`<p>Each one links to a record that can be checked independently:</p>
          <ul>
-           <li><strong>CompTIA Security+ (SY0-701)</strong> — 2025</li>
-           <li><strong>Google Cybersecurity Certificate</strong>, Coursera — 2024</li>
-           <li><strong>SOC Level 1 pathway</strong>, TryHackMe — 2025</li>
+           <li><strong>Google Cybersecurity Certificate</strong> — Coursera</li>
+           <li><strong>Introduction to Cybersecurity</strong> — Cisco Networking Academy</li>
+           <li><strong>Data Structure and Analysis 1 &amp; 2</strong> — KAIST Online</li>
          </ul>
-         <p>I'd rather have three that survive verification than a longer list that doesn't.</p>` },
+         <p>I'd rather have credentials that survive verification than a longer list that doesn't.</p>` },
 
     { id:"korea", t:"Why Korea",
       k:["why korea","korea","korean","why there","why study in korea","한국","왜 한국",
@@ -2724,8 +3021,8 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "honest","gap","gaps","improve","learning","gets you"],
       s:"#work",
       f:["What machine learning can you do?","What have you built?"],
-      a:`<p>What I'm good at: not stopping at the fix. Every one of the four records ends in
-         something I got wrong and then chased down — a false positive, a missing event ID, a
+      a:`<p>What I'm good at: not stopping at the fix. Every one of the four projects ends in
+         something I got wrong and then chased down — a false positive, a missing log source, a
          metric that flattered the model.</p>
          <p>Where I'm thin: the theory under the machine learning. I can fit a model and
          evaluate it honestly; I can't yet derive why one converges and another doesn't.
@@ -2738,7 +3035,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#contact",
       f:["Can I see your CV?","What role are you looking for?"],
       a:`<p>Email is best: <strong>muhammad.waseem.study1@gmail.com</strong>.</p>
-         <p>LinkedIn, GitHub and TryHackMe are all linked at the bottom of the page. Happy to
+         <p>LinkedIn, GitHub and Kaggle are all linked at the bottom of the page. Happy to
          talk about any specific finding in more detail — including the ones that didn't
          work.</p>` },
 
@@ -2817,12 +3114,12 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "what can you do for","add to the lab","useful","offer"],
       s:"#work",
       f:["What have you built?","How do you evaluate a model?"],
-      a:`<p>Four labs I designed, ran and wrote up without supervision — including the parts
-         that failed. I built the attack, the detection and the evaluation for each, so I am
-         used to owning a question end to end.</p>
-         <p>Specifically: I already treat false-positive cost and base rates as first-class,
-         which is the habit most junior work lacks. And I document — every project here has a
-         stated question, method and result, including the results that embarrassed me.</p>` },
+      a:`<p>Four security tools I designed, built and shipped without supervision — including
+         the parts that didn't work. I own a question end to end: find the problem, build the
+         tool, test it, document the results honestly.</p>
+         <p>And I document — every project here has a stated question, method and result,
+         including the results that embarrassed me. That habit is what I would bring to
+         a research group.</p>` },
 
     { id:"independent", t:"Working independently",
       k:["independent","self directed","self-taught","supervision","alone","own initiative",
@@ -2830,8 +3127,9 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#work",
       f:["What is in your home lab?","What would you bring to a lab?"],
       a:`<p>Everything on this page was self-directed. Nobody set the questions, marked the
-         work, or told me the phishing classifier was being evaluated wrongly — I found that
-         by testing it at a realistic base rate instead of a balanced one.</p>
+         work, or told me LogMind's false alarms were ambiguous edge cases — I found that
+         by documenting each one and asking why the log alone could not separate them from
+         a real attack.</p>
          <p>The limit I have hit is not motivation, it is scale: one bedroom network, no peer
          review, and no adversary who is not me. That is what I am applying for.</p>` },
 
