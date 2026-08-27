@@ -25,8 +25,13 @@ DIST = os.path.join(ROOT, "docs")
 # copied verbatim; everything else in the folder is local-only
 ASSETS = [
     "portrait.jpg", "portrait.webp", "portrait.avif",
+    "portrait@1080.jpg", "portrait@1080.webp", "portrait@1080.avif",
     "favicon.svg", "apple-touch-icon.png", "og.png",
+    "research.html",
 ]
+
+# whole folders copied as-is
+ASSET_DIRS = ["shots", "certs", "logos"]
 
 AUTHOR_FACING = re.compile(
     r"\bEDIT\b|DRAFT|replace with|not your|you can defend|your own|your real|"
@@ -72,6 +77,14 @@ if holes and "--force" not in sys.argv:
 os.makedirs(DIST, exist_ok=True)
 io.open(os.path.join(DIST, "index.html"), "w", encoding="utf-8",
         newline="\n").write(out)
+
+for d in ASSET_DIRS:
+    src_dir = os.path.join(ROOT, d)
+    if os.path.isdir(src_dir):
+        dst_dir = os.path.join(DIST, d)
+        if os.path.isdir(dst_dir):
+            shutil.rmtree(dst_dir)
+        shutil.copytree(src_dir, dst_dir)
 
 missing = []
 for a in ASSETS:

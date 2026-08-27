@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="12" fill="#212c42"/>
+  <circle cx="60" cy="58" r="22" fill="#88cc14"/>
+  <rect x="38" y="36" width="44" height="18" rx="4" fill="#212c42"/>
+  <rect x="34" y="50" width="52" height="6" rx="2" fill="#88cc14"/>
+  <circle cx="52" cy="68" r="3" fill="#212c42"/>
+  <circle cx="68" cy="68" r="3" fill="#212c42"/>
+  <path d="M52 78q8 6 16 0" stroke="#212c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="60" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#88cc14">TryHackMe</text>
+</svg>
