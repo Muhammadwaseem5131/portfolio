@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Securing Systems That Learn — Muhammad Waseem</title>
-<meta name="description" content="Study direction: AI-powered malware that learns and adapts demands defenses trained against it. A proposed undergraduate direction in Smart Security and AI Safety.">
+<meta name="description" content="Study direction: AI-powered malware that learns and adapts demands defenses trained against it. What I want to study in Smart Security and AI Safety at Konyang University.">
 <link rel="canonical" href="https://muhammadwaseem5131.github.io/portfolio/research.html">
 <meta property="og:title" content="Securing Systems That Learn — Muhammad Waseem">
 <meta property="og:description" content="Study direction in Smart Security and AI Safety. Adaptive malware demands adaptive defense.">
@@ -22,7 +22,7 @@
   r.classList.add("js");
   let s = null;
   try { s = localStorage.getItem("theme"); } catch (e) {}
-  if (s) r.setAttribute("data-theme", s);
+  r.setAttribute("data-theme", s || "dark");
 })();
 </script>
 
@@ -363,7 +363,7 @@ footer .note{
   <div class="shell">
     <p class="kicker rise">Muhammad Waseem — Applicant, GKS-U 2026</p>
     <h1 class="rise d1">Malware is learning to adapt. Our defenses have to be trained against it.</h1>
-    <p class="lede rise d2">A proposed study direction in <b>Smart Security &amp; AI Safety</b>: as attackers weaponize LLMs into malware that learns and mutates, we must <b>safely simulate those attacks</b> to train the systems that defend us.</p>
+    <p class="lede rise d2">What I want to study in <b>Smart Security &amp; AI Safety</b>: as attackers weaponize LLMs into malware that learns and mutates, I want to learn how we <b>safely simulate those attacks</b> and train the systems that defend us.</p>
     <nav class="chips rise d3" aria-label="Jump to section">
       <a class="chip hl" href="#escalation">Smart Security</a>
       <a class="chip" href="#approach">AI Safety</a>
@@ -433,7 +433,7 @@ footer .note{
 
 <section id="directions">
   <div class="shell">
-    <p class="sec-label rise">What I want to study — three directions</p>
+    <p class="sec-label rise">What I want to learn — three areas</p>
 
     <div class="pillars">
 
@@ -448,7 +448,7 @@ footer .note{
         <div class="qa">
           <div class="row2"><span class="lbl">Question</span><div class="val"><p>How do we mimic self-mutating, LLM-powered malware realistically enough to train a defense — while guaranteeing the simulation can never escape its sandbox?</p></div></div>
           <div class="row2"><span class="lbl">The gap</span><div class="val"><p>Realistic adaptive-attack testbeds barely exist, and the ones that do carry real risk. A safe, reproducible adversary is the missing raw material for training defenses.</p></div></div>
-          <div class="row2"><span class="lbl">My direction</span><div class="val"><p>Build controlled testbeds that reproduce a learning attacker's behavior under strict containment — network whitelisting, isolated execution, and an immutable audit log — so the simulation is powerful <em>and</em> provably contained.</p></div></div>
+          <div class="row2"><span class="lbl">What I want to learn</span><div class="val"><p>How to build controlled testbeds that reproduce a learning attacker's behavior under strict containment — network whitelisting, isolated execution, and an immutable audit log — so the simulation is realistic <em>and</em> safely contained.</p></div></div>
           <div class="row2"><span class="lbl">Why it matters</span><div class="val"><p>Every defense in the following directions needs a realistic adversary to be trained and measured against.</p></div></div>
         </div>
       </article>
@@ -464,7 +464,7 @@ footer .note{
         <div class="qa">
           <div class="row2"><span class="lbl">Question</span><div class="val"><p>Can our LLM-based security systems be trained against a learning adversary so they adapt as fast as the threat does — and harden what they protect without a human in the critical path?</p></div></div>
           <div class="row2"><span class="lbl">The gap</span><div class="val"><p>Most defenses are static; they are updated after an attack succeeds, not before. A defender that keeps pace with a mutating attacker is still largely unsolved.</p></div></div>
-          <div class="row2"><span class="lbl">My direction</span><div class="val"><p>Use the simulated adversary from Direction I to adversarially train and continuously harden defensive models, with strict rollback-and-audit discipline so an automated fix can never take a live service down.</p></div></div>
+          <div class="row2"><span class="lbl">What I want to learn</span><div class="val"><p>How adversarial training works in practice — using simulated attackers to continuously test and harden defensive models, with the discipline to ensure automated responses never cause more harm than they prevent.</p></div></div>
           <div class="row2"><span class="lbl">Why it matters</span><div class="val"><p>Defenders are perpetually outpaced. Training against the real threat is one of the few ways to close the gap.</p></div></div>
         </div>
       </article>
@@ -480,7 +480,7 @@ footer .note{
         <div class="qa">
           <div class="row2"><span class="lbl">Question</span><div class="val"><p>We give AI systems deep access to our infrastructure so they can be useful. But that same access becomes a liability if the system is compromised or behaves unexpectedly. How do we let AI act autonomously while ensuring it cannot exceed its intended scope — even when it modifies its own behavior?</p></div></div>
           <div class="row2"><span class="lbl">The gap</span><div class="val"><p>Self-modifying AI with broad privileges is being deployed faster than we can verify it stays safe. Today's guardrails are ad hoc rules, not provable constraints.</p></div></div>
-          <div class="row2"><span class="lbl">My direction</span><div class="val"><p>Study least-privilege architectures and validation-before-execution for autonomous systems — designing constraints that can be formally checked, so a system's safety guarantees hold even as it updates itself.</p></div></div>
+          <div class="row2"><span class="lbl">What I want to learn</span><div class="val"><p>How least-privilege architectures and validation-before-execution keep autonomous systems safe — understanding constraints that can be formally checked, so a system's safety guarantees hold even as it updates itself.</p></div></div>
           <div class="row2"><span class="lbl">Why it matters</span><div class="val"><p>The access and knowledge we grant AI is what makes an attack on it so dangerous. Containing that risk is foundational AI safety.</p></div></div>
         </div>
       </article>
@@ -500,17 +500,17 @@ footer .note{
         <h3>Build the foundations</h3>
         <ul>
           <li>Master the security fundamentals — <b>penetration testing, forensics, vulnerability assessment, and cryptography</b> — through Konyang's hands-on curriculum.</li>
-          <li>Build programming and <b>ML fluency</b> alongside, reproducing published adversarial-ML results in independent study and course projects.</li>
-          <li>Seek early involvement with <b>Prof. Jung's or Prof. Lee's research</b> on AI-driven malware detection and classification.</li>
+          <li>Build programming and <b>ML fluency</b> alongside, studying published adversarial-ML results in course projects and independent reading.</li>
+          <li>Learn from <b>Prof. Jung's and Prof. Lee's work</b> on AI-driven malware detection and classification — and look for opportunities to assist in their research.</li>
         </ul>
       </div>
       <div class="hcard rise d1">
         <p class="hlbl">Year 4 · supervised capstone</p>
         <h3>Put it together under mentorship</h3>
         <ul>
-          <li>Build a <b>safe, sandboxed adversary-simulation testbed</b> as a capstone project under faculty supervision.</li>
-          <li>Measure which <b>defensive approaches actually hold</b> against an adaptive simulated attacker.</li>
-          <li>Document findings as an <b>undergraduate thesis</b> — a foundation to carry into graduate study.</li>
+          <li>Attempt a <b>safe, sandboxed adversary-simulation testbed</b> as a capstone project under faculty supervision.</li>
+          <li>Test which <b>defensive approaches actually hold</b> against an adaptive simulated attacker.</li>
+          <li>Document what I learn as an <b>undergraduate thesis</b> — a foundation I hope to carry into graduate study.</li>
         </ul>
       </div>
     </div>
@@ -534,8 +534,8 @@ footer .note{
   <div class="shell measure">
     <p class="sec-label rise">Why Konyang · Why GKS</p>
     <p class="rise">Korea treats cybersecurity as national infrastructure — not a niche specialization but a strategic priority, backed by government investment, industry collaboration, and dedicated university programs. That is the environment this study direction needs: one where security is built and tested, not only theorized.</p>
-    <p class="rise">Konyang University's <strong>Department of Smart Security</strong> (스마트보안학과) gives me the practical foundations this direction requires — penetration testing, vulnerability assessment, digital forensics, and security operations, with over half the coursework hands-on. But what makes Konyang the right fit is that its faculty are already researching at the intersection of AI and security. Prof. Jung Seung-Wook has developed a <strong>LangChain-based malware detection framework</strong>, applying large language models directly to threat analysis. Prof. Lee Hoo-ki's work on <strong>CNN-based malware classification</strong> and <strong>deep-learning DGA-domain detection</strong> uses the same adversarial-ML techniques I want to study. The curriculum builds my security craft; their research shows me where AI takes it next.</p>
-    <p class="rise">The <strong>Global Korea Scholarship</strong> would let me commit to this fully — to spend my undergraduate years learning security by doing it, while working toward the AI-driven defense questions that their faculty are already asking. The GKS is not just funding; it is access to the academic environment, the language, and a research culture where this work is already underway.</p>
+    <p class="rise">Konyang University's <strong>Department of Smart Security</strong> (스마트보안학과) teaches the practical foundations I need — penetration testing, vulnerability assessment, digital forensics, and security operations, with over half the coursework hands-on. What excites me most is that the faculty are already working at the intersection of AI and security. Prof. Jung Seung-Wook has developed a <strong>LangChain-based malware detection framework</strong>, applying large language models directly to threat analysis. Prof. Lee Hoo-ki's work on <strong>CNN-based malware classification</strong> and <strong>deep-learning DGA-domain detection</strong> covers the adversarial-ML techniques I want to understand. The curriculum builds my security skills; their research shows me where to go next.</p>
+    <p class="rise">The <strong>Global Korea Scholarship</strong> would let me commit to this fully — to spend my undergraduate years learning security by doing it, guided by faculty who are already asking the questions I want to learn how to answer. The GKS is not just funding; it is access to the academic environment, the language, and the hands-on research culture I have not been able to find on my own.</p>
   </div>
 </section>
 
@@ -545,7 +545,7 @@ footer .note{
       <span class="who">Muhammad Waseem</span>
       <span class="meta">Study Direction · Smart Security &amp; AI Safety</span>
     </div>
-    <p class="note">This page outlines a proposed undergraduate study direction in Smart Security and AI safety — a problem space and the questions I want to pursue. Any attack simulation it describes is confined to isolated, controlled testbeds built solely to strengthen defenses.</p>
+    <p class="note">This page describes what I want to study as an undergraduate in Smart Security and AI safety — the problem that motivates me and the questions I hope to learn how to answer. Any attack simulation it describes would be confined to isolated, controlled testbeds built solely to strengthen defenses.</p>
   </div>
 </footer>
 
