@@ -50,7 +50,7 @@
   // here is not, so it stays contained.
   let s = null;
   try { s = localStorage.getItem("theme"); } catch (e) {}
-  if (s) r.setAttribute("data-theme", s);
+  r.setAttribute("data-theme", s || "dark");
 })();
 </script>
 
