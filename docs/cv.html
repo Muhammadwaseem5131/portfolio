@@ -7,10 +7,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:11pt;font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;line-height:1.45}
+html{font-size:10.5pt;font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;line-height:1.5}
 body{background:#fff}
 
-@page{size:A4;margin:18mm 20mm 16mm 20mm}
+@page{size:A4;margin:14mm 18mm 12mm 18mm}
 @media print{
   body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .page{box-shadow:none;margin:0;padding:0;width:auto;page-break-after:always}
@@ -19,58 +19,64 @@ body{background:#fff}
   .dl-bar{display:none}
 }
 
+.page{max-width:210mm;min-height:297mm;margin:0 auto;padding:14mm 18mm 12mm 18mm;box-shadow:0 0 12px rgba(0,0,0,.08);background:#fff}
+
 .dl-bar{position:fixed;top:0;left:0;right:0;background:#1a1a1a;padding:8pt 20pt;display:flex;justify-content:flex-end;z-index:100}
-.dl-bar button{background:#c8161d;color:#fff;border:none;padding:6pt 16pt;font-size:9pt;font-weight:600;border-radius:4pt;cursor:pointer;font-family:inherit}
-.dl-bar button:hover{background:#a51118}
+.dl-bar button{background:#0a66c2;color:#fff;border:none;padding:6pt 16pt;font-size:9pt;font-weight:600;border-radius:4pt;cursor:pointer;font-family:inherit}
+.dl-bar button:hover{background:#084d94}
 .dl-bar+.page{margin-top:40pt}
 
-.page{
-  max-width:210mm;min-height:297mm;margin:0 auto;
-  padding:18mm 20mm 16mm 20mm;
-  box-shadow:0 0 12px rgba(0,0,0,.08);
-  background:#fff;
-}
-
 /* Header */
-.header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2.5px solid #c8161d;padding-bottom:10pt;margin-bottom:12pt}
-.header h1{font-size:20pt;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
-.header .subtitle{font-size:9.5pt;color:#c8161d;font-weight:600;margin-top:2pt}
-.contact-row{text-align:right;font-size:8pt;line-height:1.6;color:#444}
-.contact-row a{color:#444;text-decoration:none}
+.name{font-size:22pt;font-weight:700;letter-spacing:-.02em;text-align:center}
+.title{font-size:10pt;font-weight:600;color:#0a66c2;text-align:center;text-transform:uppercase;letter-spacing:.08em;margin-top:2pt}
+.contact{text-align:center;font-size:8.5pt;color:#444;margin-top:6pt;padding-bottom:8pt;border-bottom:1.5px solid #1a1a1a}
+.contact a{color:#444;text-decoration:none}
+.contact span{margin:0 6pt;color:#bbb}
 
 /* Section */
-.sec{margin-top:13pt}
-.sec-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#c8161d;border-bottom:1px solid #ddd;padding-bottom:3pt;margin-bottom:7pt}
+.sec{margin-top:12pt}
+.sec-title{font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#1a1a1a;border-bottom:1.5px solid #1a1a1a;padding-bottom:3pt;margin-bottom:6pt}
 
-/* Entry blocks */
+/* Summary */
+.summary{font-size:9.5pt;color:#333}
+
+/* Core strengths */
+.strengths{display:flex;flex-wrap:wrap;gap:4pt 8pt;margin-top:4pt}
+.strengths span{font-size:8pt;color:#333;padding:2pt 8pt;border:1px solid #ccc;border-radius:2pt}
+
+/* Entry */
 .entry{margin-bottom:8pt}
 .entry-head{display:flex;justify-content:space-between;align-items:baseline}
-.entry-head h3{font-size:10pt;font-weight:600}
-.entry-head .date{font-size:8.5pt;color:#666;white-space:nowrap}
-.entry-sub{font-size:8.5pt;color:#555;margin-top:1pt}
-.entry p,.entry ul{font-size:9pt;margin-top:3pt;color:#333}
-.entry ul{padding-left:14pt}
-.entry li{margin-bottom:1pt}
+.entry-head h3{font-size:10pt;font-weight:700}
+.entry-head .loc{font-size:8.5pt;color:#666}
+.entry-sub{font-size:8.5pt;color:#0a66c2;font-weight:600}
+.entry-desc{font-size:8.5pt;color:#555;font-style:italic;margin-top:1pt}
+.entry ul{font-size:9pt;margin-top:3pt;padding-left:14pt;color:#333}
+.entry li{margin-bottom:2pt}
+.entry li strong{font-weight:600}
 
 /* Skills grid */
-.skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6pt 16pt;margin-top:4pt}
-.skill-group h4{font-size:8.5pt;font-weight:700;color:#1a1a1a;margin-bottom:2pt}
-.skill-group ul{list-style:none;padding:0;font-size:8.5pt;color:#444}
-.skill-group li{margin-bottom:1pt}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4pt 16pt;margin-top:4pt}
+.skills-grid div{font-size:8.5pt}
+.skills-grid h4{font-weight:700;font-size:8.5pt;margin-bottom:2pt}
+.skills-grid ul{list-style:disc;padding-left:14pt;color:#444}
+.skills-grid li{margin-bottom:1pt}
 
-/* Cert grid */
-.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:3pt 20pt}
-.cert-item{font-size:8.5pt;padding:1.5pt 0;border-bottom:1px solid #f0f0f0}
-.cert-item .cert-name{color:#1a1a1a;font-weight:500}
-.cert-item .cert-org{color:#888;font-size:7.5pt}
+/* Certs */
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:2pt 20pt;margin-top:4pt}
+.cert-item{font-size:8.5pt;padding:2pt 0;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between}
+.cert-name{font-weight:600;color:#1a1a1a}
+.cert-org{color:#888;font-size:7.5pt}
 
 /* Community */
-.comm-item{margin-bottom:5pt}
-.comm-item h3{font-size:9pt;font-weight:600}
+.comm-item{margin-bottom:4pt}
+.comm-head{display:flex;justify-content:space-between;align-items:baseline}
+.comm-head h3{font-size:9pt;font-weight:600}
+.comm-head .date{font-size:8pt;color:#666}
 .comm-item p{font-size:8.5pt;color:#555;margin-top:1pt}
 
-/* Page 2 continuation header */
-.cont-header{font-size:8pt;color:#999;text-align:right;margin-bottom:10pt;padding-bottom:4pt;border-bottom:1px solid #eee}
+/* Page 2 */
+.cont-header{font-size:8pt;color:#999;text-align:right;margin-bottom:8pt;padding-bottom:4pt;border-bottom:1px solid #eee}
 </style>
 </head>
 <body>
@@ -80,25 +86,104 @@ body{background:#fff}
 <!-- ═══════ PAGE 1 ═══════ -->
 <div class="page">
 
-  <div class="header">
-    <div>
-      <h1>Muhammad Waseem</h1>
-      <div class="subtitle">AI &amp; Cybersecurity · GKS Undergraduate Applicant 2027</div>
-    </div>
-    <div class="contact-row">
-      muhammad.waseem.study1@gmail.com<br>
-      <a href="https://github.com/Muhammadwaseem5131">github.com/Muhammadwaseem5131</a><br>
-      <a href="https://linkedin.com/in/muhammad-waseem-6361b4400">linkedin.com/in/muhammad-waseem</a><br>
-      Chishtian, Pakistan · 22 years old
+  <div class="name">MUHAMMAD WASEEM</div>
+  <div class="title">Cybersecurity &amp; AI · GKS Undergraduate Applicant 2027</div>
+  <div class="contact">
+    muhammad.waseem.study1@gmail.com
+    <span>|</span>
+    <a href="https://github.com/Muhammadwaseem5131">github.com/Muhammadwaseem5131</a>
+    <span>|</span>
+    <a href="https://linkedin.com/in/muhammad-waseem-6361b4400">linkedin.com/in/muhammad-waseem</a>
+    <span>|</span>
+    Chishtian, Pakistan
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="sec">
+    <div class="sec-title">Professional Summary</div>
+    <p class="summary">
+      Self-taught cybersecurity practitioner with a home security lab and four shipped security tools.
+      Applied machine learning to vulnerability scanning, log anomaly detection, and code security auditing.
+      Built end-to-end Python/FastAPI/React applications with documented results and open-source code.
+      Seeking a B.Sc. in Smart Security at Konyang University to gain structured training in AI-driven
+      defense that self-study cannot provide.
+    </p>
+  </div>
+
+  <!-- CORE STRENGTHS -->
+  <div class="sec">
+    <div class="sec-title">Core Strengths</div>
+    <div class="strengths">
+      <span>Vulnerability Scanning</span>
+      <span>Anomaly Detection</span>
+      <span>Log Analysis</span>
+      <span>Incident Response</span>
+      <span>Machine Learning</span>
+      <span>Generative AI</span>
+      <span>Python</span>
+      <span>FastAPI</span>
+      <span>React</span>
+      <span>Network Security</span>
+      <span>MITRE ATT&amp;CK</span>
+      <span>Linux</span>
     </div>
   </div>
 
-  <!-- PROFILE -->
+  <!-- PROJECTS (as experience) -->
   <div class="sec">
-    <div class="sec-title">Profile</div>
-    <p style="font-size:9pt;color:#333">
-      Self-taught cybersecurity practitioner with a home lab (pfSense, Active Directory, Kali Linux) and four documented security tools. I apply machine learning to network and host telemetry — anomaly detection, log analysis, and vulnerability scanning. Seeking a B.Sc. in Smart Security at Konyang University through the Global Korea Scholarship to gain the structured training and mentorship that self-study cannot provide.
-    </p>
+    <div class="sec-title">Project Experience</div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>OmniAudit — AI-Assisted Code Security Auditor</h3>
+      </div>
+      <div class="entry-sub">Creator &amp; Developer</div>
+      <div class="entry-desc">Local-first tool that scans code with Bandit and uses Gemini AI to classify vulnerabilities. Python 3.10, FastAPI, React 19.</div>
+      <ul>
+        <li><strong>Built</strong> an end-to-end security auditor that separates real vulnerabilities from false alarms using AI scoring.</li>
+        <li><strong>Designed</strong> a local-first architecture — code never leaves the user's machine unless they opt in.</li>
+        <li><strong>Integrated</strong> Google ADK, MCP protocol, and OSV database for comprehensive vulnerability coverage.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>IoT-Sentinel — Network Scanner for IoT Devices</h3>
+      </div>
+      <div class="entry-sub">Creator &amp; Developer</div>
+      <div class="entry-desc">Scans networks, identifies IoT devices, and checks firmware against CVE databases. Python 3.12, FastAPI, React, SQLite.</div>
+      <ul>
+        <li><strong>Developed</strong> automated IoT device discovery and vulnerability assessment across local networks.</li>
+        <li><strong>Achieved</strong> 67 passing tests with documented false-positive analysis for transparency.</li>
+        <li><strong>Implemented</strong> plain-language risk reporting so non-technical users can understand findings.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>ScanMesh — Security Tool Orchestrator</h3>
+      </div>
+      <div class="entry-sub">Creator &amp; Developer</div>
+      <div class="entry-desc">Chains five scanners (nmap, ZAP, sqlmap, tshark) into one deterministic pipeline. No AI — 100% rule-based.</div>
+      <ul>
+        <li><strong>Automated</strong> five-tool security pipeline that merges correlated findings into high-confidence results.</li>
+        <li><strong>Reduced</strong> manual pentesting workflow from five separate tool runs to one unified command.</li>
+        <li><strong>Validated</strong> with CI on every push — ZAP suspects SQL injection, sqlmap confirms, ScanMesh merges into one critical finding.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>LogMind — Security Log Anomaly Detector</h3>
+      </div>
+      <div class="entry-sub">Creator &amp; Developer</div>
+      <div class="entry-desc">Detects anomalies in security logs with MITRE ATT&amp;CK mapping and live monitoring. Python stdlib only.</div>
+      <ul>
+        <li><strong>Achieved</strong> 1.00 recall on 55 attack logs and macro F1 score of 0.89 across all detector categories.</li>
+        <li><strong>Built</strong> ten pure-function detectors with zero external dependencies — runs offline with no installs.</li>
+        <li><strong>Documented</strong> all 15 false positives with explanations, demonstrating honest evaluation over inflated claims.</li>
+      </ul>
+    </div>
   </div>
 
   <!-- EDUCATION -->
@@ -107,50 +192,16 @@ body{background:#fff}
     <div class="entry">
       <div class="entry-head">
         <h3>High School</h3>
-        <span class="date">Completed</span>
+        <span class="loc">Chishtian, Pakistan</span>
       </div>
-      <div class="entry-sub">Chishtian, Pakistan</div>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="sec">
-    <div class="sec-title">Projects</div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3>OmniAudit — AI-Assisted Code Security Auditor</h3>
-      </div>
-      <p>Local-first tool that scans code with Bandit and uses Gemini AI to separate real vulnerabilities from false alarms. Python 3.10, FastAPI, React 19. Code never leaves the user's machine.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3>IoT-Sentinel — Network Scanner for IoT Devices</h3>
-      </div>
-      <p>Scans networks, identifies IoT devices, checks firmware against CVE databases, and reports risk in plain language. Python 3.12, FastAPI, React, SQLite. 67 tests passing.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3>ScanMesh — Security Tool Orchestrator</h3>
-      </div>
-      <p>Chains five scanners (nmap, ZAP, sqlmap, tshark) into one automated pipeline. Merges correlated findings into high-confidence results. 100% deterministic, no AI.</p>
-    </div>
-
-    <div class="entry">
-      <div class="entry-head">
-        <h3>LogMind — Security Log Anomaly Detector</h3>
-      </div>
-      <p>Ten pure-function detectors with MITRE ATT&amp;CK mapping and live monitoring mode. Recall 1.00 on 55 attack logs, macro F1 0.89. Python stdlib only — no installs, no internet.</p>
     </div>
   </div>
 
   <!-- SKILLS -->
   <div class="sec">
-    <div class="sec-title">Skills</div>
+    <div class="sec-title">Technical Skills</div>
     <div class="skills-grid">
-      <div class="skill-group">
+      <div>
         <h4>Security</h4>
         <ul>
           <li>Vulnerability scanning</li>
@@ -159,7 +210,7 @@ body{background:#fff}
           <li>Incident response</li>
         </ul>
       </div>
-      <div class="skill-group">
+      <div>
         <h4>AI &amp; Machine Learning</h4>
         <ul>
           <li>Anomaly detection</li>
@@ -168,7 +219,7 @@ body{background:#fff}
           <li>Model evaluation</li>
         </ul>
       </div>
-      <div class="skill-group">
+      <div>
         <h4>Development</h4>
         <ul>
           <li>Python</li>
@@ -180,14 +231,6 @@ body{background:#fff}
     </div>
   </div>
 
-  <!-- HOME LAB -->
-  <div class="sec">
-    <div class="sec-title">Home Lab</div>
-    <p style="font-size:9pt;color:#333">
-      pfSense firewall, three-host Windows Active Directory domain, Kali Linux attack machine. I run penetration tests against my own network, collect the logs, and build detections from the defender's side. Tools used: Wireshark, Zeek, Wazuh, Sysmon, Nmap, Burp Suite.
-    </p>
-  </div>
-
 </div>
 
 <!-- ═══════ PAGE 2 ═══════ -->
@@ -197,86 +240,61 @@ body{background:#fff}
 
   <!-- CERTIFICATIONS -->
   <div class="sec" style="margin-top:0">
-    <div class="sec-title">Certifications &amp; Courses</div>
+    <div class="sec-title">Certifications</div>
     <div class="cert-grid">
-
       <div class="cert-item">
-          <span class="cert-name">Google Cybersecurity Certificate</span><br>
-          <span class="cert-org">Google · Coursera</span>
+        <div><span class="cert-name">Google Cybersecurity Certificate</span><br><span class="cert-org">Google · Coursera</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Intro to Cybersecurity &amp; Junior Analyst</span><br>
-          <span class="cert-org">Cisco Networking Academy</span>
+        <div><span class="cert-name">Intro to Cybersecurity &amp; Junior Analyst</span><br><span class="cert-org">Cisco Networking Academy</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Data Structure &amp; Analysis 1 &amp; 2</span><br>
-          <span class="cert-org">KAIST · Prof. Moon, Il-Chul</span>
+        <div><span class="cert-name">Data Structure &amp; Analysis 1 &amp; 2</span><br><span class="cert-org">KAIST · Prof. Moon, Il-Chul</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Microsoft Cybersecurity Analyst</span><br>
-          <span class="cert-org">Microsoft · Coursera · 9 courses</span>
+        <div><span class="cert-name">Microsoft Cybersecurity Analyst</span><br><span class="cert-org">Microsoft · Coursera · 9 courses</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Generative AI for Cybersecurity</span><br>
-          <span class="cert-org">IBM · Coursera · 3 courses</span>
+        <div><span class="cert-name">Generative AI for Cybersecurity</span><br><span class="cert-org">IBM · Coursera · 3 courses</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Agentic AI Foundations Associate</span><br>
-          <span class="cert-org">Oracle University</span>
+        <div><span class="cert-name">Agentic AI Foundations Associate</span><br><span class="cert-org">Oracle University</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Machine Learning with Python</span><br>
-          <span class="cert-org">freeCodeCamp · ~300 hours</span>
+        <div><span class="cert-name">Machine Learning with Python</span><br><span class="cert-org">freeCodeCamp · ~300 hours</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Python for Everybody</span><br>
-          <span class="cert-org">University of Michigan · Coursera · 5 courses</span>
+        <div><span class="cert-name">Python for Everybody</span><br><span class="cert-org">University of Michigan · Coursera · 5 courses</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Vulnerability Scanning with Nmap</span><br>
-          <span class="cert-org">Coursera</span>
+        <div><span class="cert-name">Vulnerability Scanning with Nmap</span><br><span class="cert-org">Coursera</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Cybersecurity Job Simulation</span><br>
-          <span class="cert-org">Mastercard · Forage</span>
+        <div><span class="cert-name">Cybersecurity Job Simulation</span><br><span class="cert-org">Mastercard · Forage</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">Critical Thinking in the AI Era</span><br>
-          <span class="cert-org">HP LIFE · HP Foundation</span>
+        <div><span class="cert-name">Critical Thinking in the AI Era</span><br><span class="cert-org">HP LIFE · HP Foundation</span></div>
       </div>
-
       <div class="cert-item">
-          <span class="cert-name">AI Seekho 2026 National Hackathon</span><br>
-          <span class="cert-org">Google for Developers · AI Seekho</span>
+        <div><span class="cert-name">AI Seekho 2026 National Hackathon</span><br><span class="cert-org">Google for Developers · AI Seekho</span></div>
       </div>
-
     </div>
   </div>
 
-  <!-- COMMUNITY & VOLUNTEER -->
+  <!-- COMMUNITY -->
   <div class="sec">
-    <div class="sec-title">Community &amp; Volunteer Work</div>
+    <div class="sec-title">Community &amp; Volunteer Experience</div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>Flood Relief Operations — District Bahawalnagar</h3>
         <span class="date">Aug – Oct 2025</span>
       </div>
-      <p>Alkhidmat Foundation Pakistan. Distributed ration packages, supported supply logistics, registered displaced families, and maintained beneficiary records across relief camps for 6 weeks.</p>
+      <p>Alkhidmat Foundation Pakistan. Distributed ration packages, registered displaced families, and maintained beneficiary records across relief camps for 6 weeks.</p>
     </div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>IT &amp; Computer Science Instructor</h3>
         <span class="date">2025</span>
       </div>
@@ -284,15 +302,15 @@ body{background:#fff}
     </div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>Thalassemia Patient Support — Blood Donor Drives</h3>
         <span class="date">Ongoing</span>
       </div>
-      <p>Patient Welfare Society Chishtian. Campus coordinator organizing high-school student donors for thalassemia patients.</p>
+      <p>Patient Welfare Society Chishtian. Campus coordinator organizing high-school student donors.</p>
     </div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>World Orphan Day Event</h3>
         <span class="date">Feb 2026</span>
       </div>
@@ -300,15 +318,15 @@ body{background:#fff}
     </div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>Education in Emergencies — Global Course</h3>
         <span class="date">Apr 2026</span>
       </div>
-      <p>UNICEF Agora. Completed global learning course on education in crisis and emergency contexts.</p>
+      <p>UNICEF Agora. Completed global course on education in crisis and emergency contexts.</p>
     </div>
 
     <div class="comm-item">
-      <div class="entry-head">
+      <div class="comm-head">
         <h3>Pakistan National Youth Foundation</h3>
         <span class="date">Active member</span>
       </div>
@@ -330,8 +348,8 @@ body{background:#fff}
   <!-- REFERENCES -->
   <div class="sec">
     <div class="sec-title">References</div>
-    <p style="font-size:8.5pt;color:#666">Available upon request. Full certificate PDFs and project source code linked at portfolio:
-      <a href="https://muhammadwaseem5131.github.io/portfolio/" style="color:#c8161d">muhammadwaseem5131.github.io/portfolio</a></p>
+    <p style="font-size:8.5pt;color:#555">Available upon request. Full certificate PDFs and project source code at
+      <a href="https://muhammadwaseem5131.github.io/portfolio/" style="color:#0a66c2">muhammadwaseem5131.github.io/portfolio</a></p>
   </div>
 
 </div>
