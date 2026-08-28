@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Muhammad Waseem — Curriculum Vitae</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:11pt;font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;line-height:1.45}
+body{background:#fff}
+
+@page{size:A4;margin:18mm 20mm 16mm 20mm}
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{box-shadow:none;margin:0;padding:0;width:auto;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  a{text-decoration:none;color:inherit}
+}
+
+.page{
+  max-width:210mm;min-height:297mm;margin:0 auto;
+  padding:18mm 20mm 16mm 20mm;
+  box-shadow:0 0 12px rgba(0,0,0,.08);
+  background:#fff;
+}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2.5px solid #c8161d;padding-bottom:10pt;margin-bottom:12pt}
+.header h1{font-size:20pt;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
+.header .subtitle{font-size:9.5pt;color:#c8161d;font-weight:600;margin-top:2pt}
+.contact-row{text-align:right;font-size:8pt;line-height:1.6;color:#444}
+.contact-row a{color:#444;text-decoration:none}
+
+/* Section */
+.sec{margin-top:13pt}
+.sec-title{font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#c8161d;border-bottom:1px solid #ddd;padding-bottom:3pt;margin-bottom:7pt}
+
+/* Entry blocks */
+.entry{margin-bottom:8pt}
+.entry-head{display:flex;justify-content:space-between;align-items:baseline}
+.entry-head h3{font-size:10pt;font-weight:600}
+.entry-head .date{font-size:8.5pt;color:#666;white-space:nowrap}
+.entry-sub{font-size:8.5pt;color:#555;margin-top:1pt}
+.entry p,.entry ul{font-size:9pt;margin-top:3pt;color:#333}
+.entry ul{padding-left:14pt}
+.entry li{margin-bottom:1pt}
+
+/* Skills grid */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6pt 16pt;margin-top:4pt}
+.skill-group h4{font-size:8.5pt;font-weight:700;color:#1a1a1a;margin-bottom:2pt}
+.skill-group ul{list-style:none;padding:0;font-size:8.5pt;color:#444}
+.skill-group li{margin-bottom:1pt}
+
+/* Cert grid */
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:3pt 20pt}
+.cert-item{font-size:8.5pt;display:flex;justify-content:space-between;padding:1.5pt 0;border-bottom:1px solid #f0f0f0}
+.cert-item .cert-name{color:#1a1a1a;font-weight:500}
+.cert-item .cert-org{color:#888;font-size:7.5pt}
+
+/* Community */
+.comm-item{margin-bottom:5pt}
+.comm-item h3{font-size:9pt;font-weight:600}
+.comm-item p{font-size:8.5pt;color:#555;margin-top:1pt}
+
+/* Page 2 continuation header */
+.cont-header{font-size:8pt;color:#999;text-align:right;margin-bottom:10pt;padding-bottom:4pt;border-bottom:1px solid #eee}
+</style>
+</head>
+<body>
+
+<!-- ═══════ PAGE 1 ═══════ -->
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>Muhammad Waseem</h1>
+      <div class="subtitle">AI &amp; Cybersecurity · GKS Undergraduate Applicant 2027</div>
+    </div>
+    <div class="contact-row">
+      muhammad.waseem.study1@gmail.com<br>
+      <a href="https://github.com/Muhammadwaseem5131">github.com/Muhammadwaseem5131</a><br>
+      <a href="https://linkedin.com/in/muhammad-waseem-6361b4400">linkedin.com/in/muhammad-waseem</a><br>
+      Chishtian, Pakistan · 22 years old
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="sec">
+    <div class="sec-title">Profile</div>
+    <p style="font-size:9pt;color:#333">
+      Self-taught cybersecurity practitioner with a home lab (pfSense, Active Directory, Kali Linux) and four documented security tools. I apply machine learning to network and host telemetry — anomaly detection, log analysis, and vulnerability scanning. Seeking a B.Sc. in Smart Security at Konyang University through the Global Korea Scholarship to gain the structured training and mentorship that self-study cannot provide.
+    </p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="sec">
+    <div class="sec-title">Education (Planned)</div>
+    <div class="entry">
+      <div class="entry-head">
+        <h3>B.Sc. Smart Security (스마트보안학과)</h3>
+        <span class="date">2028 – 2032</span>
+      </div>
+      <div class="entry-sub">Konyang University, South Korea · GKS Undergraduate Program</div>
+      <p>Focus: AI-driven security engineering, anomaly detection on network/host telemetry.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Korean Language Program</h3>
+        <span class="date">2027</span>
+      </div>
+      <div class="entry-sub">Konyang University · TOPIK 3 target</div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Intermediate (FSc Pre-Engineering)</h3>
+        <span class="date">Completed</span>
+      </div>
+      <div class="entry-sub">Pakistan · Secondary education</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="sec">
+    <div class="sec-title">Projects</div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>OmniAudit — AI-Assisted Code Security Auditor</h3>
+        <span class="date">2026</span>
+      </div>
+      <p>Local-first tool that scans code with Bandit and uses Gemini AI to separate real vulnerabilities from false alarms. Python 3.10, FastAPI, React 19. Code never leaves the user's machine.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>IoT-Sentinel — Network Scanner for IoT Devices</h3>
+        <span class="date">2026</span>
+      </div>
+      <p>Scans networks, identifies IoT devices, checks firmware against CVE databases, and reports risk in plain language. Python 3.12, FastAPI, React, SQLite. 67 tests passing.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>ScanMesh — Security Tool Orchestrator</h3>
+        <span class="date">2026</span>
+      </div>
+      <p>Chains five scanners (nmap, ZAP, sqlmap, tshark) into one automated pipeline. Merges correlated findings into high-confidence results. 100% deterministic, no AI.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>LogMind — Security Log Anomaly Detector</h3>
+        <span class="date">2026</span>
+      </div>
+      <p>Ten pure-function detectors with MITRE ATT&amp;CK mapping and live monitoring mode. Recall 1.00 on 55 attack logs, macro F1 0.89. Python stdlib only — no installs, no internet.</p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="sec">
+    <div class="sec-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Security</h4>
+        <ul>
+          <li>Vulnerability scanning</li>
+          <li>Network defense</li>
+          <li>Log analysis</li>
+          <li>Incident response</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>AI &amp; Machine Learning</h4>
+        <ul>
+          <li>Anomaly detection</li>
+          <li>scikit-learn</li>
+          <li>Generative AI</li>
+          <li>Model evaluation</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Development</h4>
+        <ul>
+          <li>Python</li>
+          <li>FastAPI &amp; React</li>
+          <li>Linux &amp; networking</li>
+          <li>Data structures</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME LAB -->
+  <div class="sec">
+    <div class="sec-title">Home Lab</div>
+    <p style="font-size:9pt;color:#333">
+      pfSense firewall, three-host Windows Active Directory domain, Kali Linux attack machine. I run penetration tests against my own network, collect the logs, and build detections from the defender's side. Tools used: Wireshark, Zeek, Wazuh, Sysmon, Nmap, Burp Suite.
+    </p>
+  </div>
+
+</div>
+
+<!-- ═══════ PAGE 2 ═══════ -->
+<div class="page">
+
+  <div class="cont-header">Muhammad Waseem — Curriculum Vitae · Page 2</div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="sec" style="margin-top:0">
+    <div class="sec-title">Certifications &amp; Courses</div>
+    <div class="cert-grid">
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Google Cybersecurity Certificate</span><br>
+          <span class="cert-org">Google · Coursera</span>
+        </div>
+        <span class="date">2024</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Intro to Cybersecurity &amp; Junior Analyst</span><br>
+          <span class="cert-org">Cisco Networking Academy</span>
+        </div>
+        <span class="date">2025 – 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Data Structure &amp; Analysis 1 &amp; 2</span><br>
+          <span class="cert-org">KAIST · Prof. Moon, Il-Chul</span>
+        </div>
+        <span class="date">Jun – Jul 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Microsoft Cybersecurity Analyst</span><br>
+          <span class="cert-org">Microsoft · Coursera · 9 courses</span>
+        </div>
+        <span class="date">Jul 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Generative AI for Cybersecurity</span><br>
+          <span class="cert-org">IBM · Coursera · 3 courses</span>
+        </div>
+        <span class="date">Aug 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Agentic AI Foundations Associate</span><br>
+          <span class="cert-org">Oracle University</span>
+        </div>
+        <span class="date">Jul 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Machine Learning with Python</span><br>
+          <span class="cert-org">freeCodeCamp · ~300 hours</span>
+        </div>
+        <span class="date">Apr 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Python for Everybody</span><br>
+          <span class="cert-org">University of Michigan · Coursera · 5 courses</span>
+        </div>
+        <span class="date">Jul 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Vulnerability Scanning with Nmap</span><br>
+          <span class="cert-org">Coursera</span>
+        </div>
+        <span class="date">Aug 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Cybersecurity Job Simulation</span><br>
+          <span class="cert-org">Mastercard · Forage</span>
+        </div>
+        <span class="date">Apr 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">Critical Thinking in the AI Era</span><br>
+          <span class="cert-org">HP LIFE · HP Foundation</span>
+        </div>
+        <span class="date">Apr 2026</span>
+      </div>
+
+      <div class="cert-item">
+        <div>
+          <span class="cert-name">AI Seekho 2026 National Hackathon</span><br>
+          <span class="cert-org">Google for Developers · AI Seekho</span>
+        </div>
+        <span class="date">2026</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMMUNITY & VOLUNTEER -->
+  <div class="sec">
+    <div class="sec-title">Community &amp; Volunteer Work</div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>Flood Relief Operations — District Bahawalnagar</h3>
+        <span class="date">Aug – Oct 2025</span>
+      </div>
+      <p>Alkhidmat Foundation Pakistan. Distributed ration packages, supported supply logistics, registered displaced families, and maintained beneficiary records across relief camps for 6 weeks.</p>
+    </div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>IT &amp; Computer Science Instructor</h3>
+        <span class="date">2024 – present</span>
+      </div>
+      <p>Ghazali Education Foundation. Trained 50+ students in computer fundamentals, Office suite, and internet literacy.</p>
+    </div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>Thalassemia Patient Support — Blood Donor Drives</h3>
+        <span class="date">Ongoing</span>
+      </div>
+      <p>Patient Welfare Society Chishtian. Campus coordinator organizing high-school student donors for thalassemia patients.</p>
+    </div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>World Orphan Day Event</h3>
+        <span class="date">Feb 2026</span>
+      </div>
+      <p>Ghazali Education Foundation. Volunteer organizer.</p>
+    </div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>Education in Emergencies — Global Course</h3>
+        <span class="date">Apr 2026</span>
+      </div>
+      <p>UNICEF Agora. Completed global learning course on education in crisis and emergency contexts.</p>
+    </div>
+
+    <div class="comm-item">
+      <div class="entry-head">
+        <h3>Pakistan National Youth Foundation</h3>
+        <span class="date">Active member</span>
+      </div>
+      <p>PNYC — Project of LUMS. Youth empowerment, leadership, and UN SDG initiatives.</p>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="sec">
+    <div class="sec-title">Languages</div>
+    <p style="font-size:9pt;color:#333">
+      <strong>Urdu</strong> — Native &nbsp;·&nbsp;
+      <strong>English</strong> — Proficient &nbsp;·&nbsp;
+      <strong>Korean</strong> — Beginner (TOPIK 3 target by 2028) &nbsp;·&nbsp;
+      <strong>Punjabi</strong> — Native
+    </p>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="sec">
+    <div class="sec-title">References</div>
+    <p style="font-size:8.5pt;color:#666">Available upon request. Full certificate PDFs and project source code linked at portfolio:
+      <a href="https://muhammadwaseem5131.github.io/portfolio/" style="color:#c8161d">muhammadwaseem5131.github.io/portfolio</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>
