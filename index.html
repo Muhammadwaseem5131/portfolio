@@ -583,31 +583,27 @@ body.lit-pointer :is(.hero,#about,#work,#credentials,#skills,#research,#plan,#co
   text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--sp-3);
 }
 .tagline b{color:var(--jeok);font-weight:500}
-/* Small enough to read as a byline mark rather than a portrait. Deliberately
-   static: a pulsing halo round a face reads as a notification, and the hero
-   already has the canvas moving. */
-.tagline__me{
-  width:30px;height:30px;flex:none;border-radius:50%;
-  object-fit:cover;object-position:50% 18%;
-  border:1px solid var(--rule);
-  box-shadow:0 0 0 3px color-mix(in srgb, var(--jeok) 16%, transparent);
+.hero__grid{display:flex;flex-direction:column;gap:var(--sp-3)}
+@media(min-width:720px){
+  .hero__grid{flex-direction:row;align-items:center;gap:var(--sp-5)}
+  .hero__text{flex:1;min-width:0}
+  .hero__photo{flex:none;order:1}
 }
+.hero__portrait{
+  width:180px;height:220px;border-radius:12px;
+  object-fit:cover;object-position:50% 18%;
+  border:2px solid var(--rule);
+  box-shadow:0 4px 24px rgba(0,0,0,.35), 0 0 0 4px color-mix(in srgb, var(--jeok) 14%, transparent);
+}
+@media(min-width:720px){.hero__portrait{width:210px;height:260px}}
+@media(min-width:1024px){.hero__portrait{width:240px;height:300px}}
+.tagline__me{display:none}
 .tagline i{width:6px;height:6px;background:var(--jeok);display:block;flex:none;transform:rotate(45deg)}
 @media (prefers-reduced-motion:no-preference){.tagline i{animation:beat 3s var(--ease) infinite}}
 @keyframes beat{0%,100%{opacity:1}50%{opacity:.25}}
 
-h1.hero__h{font-size:var(--t-2xl);max-width:16ch;perspective:1000px}
-h1.hero__h .ln{display:block;overflow:hidden}
-h1.hero__h .ln > span{display:block;transform-origin:50% 100%}
+h1.hero__h{font-size:var(--t-xl);max-width:28ch;line-height:1.3}
 h1.hero__h em{font-style:normal;color:var(--jeok)}
-@media (prefers-reduced-motion:no-preference){
-  .js h1.hero__h .ln > span{
-    transform:translateY(103%) rotateX(-52deg);opacity:0;
-    transition:transform .95s var(--ease), opacity .7s var(--ease);
-    transition-delay:var(--d, 0ms);
-  }
-  .js h1.hero__h.lit .ln > span{transform:none;opacity:1}
-}
 .hero__lede{margin-top:var(--sp-2);max-width:50ch;font-size:var(--t-md);color:var(--ink-soft);line-height:1.55}
 .hero__ko{margin-top:.5rem;font-size:var(--t-base);color:var(--ink-soft);opacity:.85}
 
@@ -1602,32 +1598,30 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="shell hero__in">
 
-    <p class="tagline">
-      <!-- Identity marker, not a hero image: the canvas is the visual anchor
-           here, and a large portrait would compete with it. Falls back to the
-           pulsing diamond if the file is missing. -->
-      <img class="tagline__me" src="portrait.jpg" width="720" height="720"
-           alt="" aria-hidden="true" decoding="async"
-           onerror="this.replaceWith(Object.assign(document.createElement('i'),{ariaHidden:'true'}))">
-      AI &amp; Security <b>·</b> Global Korea Scholarship <b>·</b> Undergraduate 2027
-    </p>
+    <div class="hero__grid">
+      <div class="hero__text">
+        <h1 class="hero__h" id="h1">Cybersecurity <em>&amp;</em> AI</h1>
 
-    <!-- EDIT: keep it short. Each .ln is one animated line. -->
-    <h1 class="hero__h dsp" id="h1">
-      <span class="ln"><span>Teaching machines</span></span>
-      <span class="ln"><span>to notice what</span></span>
-      <span class="ln"><span><em>people miss.</em></span></span>
-    </h1>
+        <p class="tagline">
+          Global Korea Scholarship <b>·</b> Undergraduate 2027
+        </p>
 
-    <p class="hero__lede">
-      Muhammad Waseem — 22, from Pakistan. Cybersecurity practitioner with a home
-      lab and four shipped security tools. I am applying to study cybersecurity
-      in Korea, where I can deepen the AI side of defence.
-    </p>
-    <p class="hero__ko">
-      <!-- OPTIONAL: delete if you don't write Korean confidently. -->
-      한국에서 정보보안을 공부하고 싶습니다.
-    </p>
+        <p class="hero__lede">
+          Muhammad Waseem — 22, from Pakistan. Cybersecurity practitioner with a home
+          lab and four shipped security tools. I am applying to study cybersecurity
+          in Korea, where I can deepen the AI side of defence.
+        </p>
+        <p class="hero__ko">
+          한국에서 정보보안을 공부하고 싶습니다.
+        </p>
+      </div>
+
+      <div class="hero__photo">
+        <img class="hero__portrait" src="portrait.jpg" width="720" height="720"
+             alt="Muhammad Waseem" decoding="async"
+             onerror="this.closest('.hero__photo').style.display='none'">
+      </div>
+    </div>
 
     <div class="acts">
       <a class="act act--solid" href="#work">
@@ -1683,7 +1677,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </a>
 
     <dl class="ledger rise">
-      <div><b class="num" data-count="3">03</b><span>credentials</span></div>
+      <div><b class="num" data-count="13">13</b><span>credentials</span></div>
       <div><b class="num" data-count="4">04</b><span>documented projects</span></div>
       <div><b class="num" data-count="240">240</b><span>logged lab hours</span></div>
       <div><b class="num">Beginner</b><span>Korean level</span></div>
@@ -1701,42 +1695,6 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </div>
     <div class="two">
       <div class="rise">
-        <!-- Save your headshot as portrait.jpg beside this file.
-             If it is missing the figure removes itself, so a reviewer never
-             sees a broken-image icon. -->
-        <figure class="portrait" id="portrait">
-          <div class="portrait__frame">
-            <!-- Source order is narrowest-format-first: the browser takes the
-                 first type it understands and stops. AVIF is 54% smaller than
-                 the JPEG here, WebP 51%; the JPEG stays as the <img> src so
-                 anything that understands neither still gets a photograph
-                 rather than the alt text. -->
-            <!-- Rendered at 330 CSS px. 720 covers a 2x display exactly; the
-                 1080 entry is only fetched by 3x screens, so a phone gets a
-                 sharp image and a laptop never pays for one. -->
-            <picture>
-              <source type="image/avif"
-                      srcset="portrait.avif 720w, portrait@1080.avif 1080w"
-                      sizes="(max-width: 919px) 220px, 330px">
-              <source type="image/webp"
-                      srcset="portrait.webp 720w, portrait@1080.webp 1080w"
-                      sizes="(max-width: 919px) 220px, 330px">
-              <img src="portrait.jpg"
-                   srcset="portrait.jpg 720w, portrait@1080.jpg 1080w"
-                   sizes="(max-width: 919px) 220px, 330px"
-                   width="720" height="720" decoding="async"
-                   fetchpriority="high"
-                   alt="Portrait of Muhammad Waseem"
-                   onerror="this.closest('.portrait').dataset.failed='1';console.warn('portrait image did not load — save your headshot next to index.html')"
-                   onload="this.closest('.portrait').removeAttribute('data-failed')">
-            </picture>
-          </div>
-          <figcaption>
-            <b>Muhammad Waseem</b>
-            <span>Pakistan</span>
-          </figcaption>
-        </figure>
-
         <blockquote class="pull">
           Someone broke into the system at the NGO I work with — student records ended up exposed. I helped stop the damage. That is when security became serious for me.
         </blockquote>
@@ -1961,15 +1919,11 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
           Certificate
         </p>
-        <h3>Introduction to Cybersecurity</h3>
+        <h3>Intro to Cybersecurity &amp; Junior Analyst</h3>
         <p class="cred__issuer">Cisco Networking Academy</p>
         <dl class="cred__facts">
-          <div><dt>Completed</dt><dd>2025</dd></div>
-          <div><dt>Profile</dt><dd>[username]</dd></div>
+          <div><dt>Completed</dt><dd>2025 – Apr 2026</dd></div>
         </dl>
-        <a class="go" href="[profile URL]">
-          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
       </article>
 
       <article class="cred rise" style="--key:var(--cheong); --d:210ms">
@@ -1986,6 +1940,166 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         <dl class="cred__facts">
           <div><dt>Code</dt><dd>IE260</dd></div>
           <div><dt>Completed</dt><dd>Jun – Jul 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:280ms">
+        <a class="cred__link" href="certs/microsoft-cybersecurity-analyst.pdf" target="_blank" rel="noopener" aria-label="Open Microsoft Cybersecurity Analyst certificate"></a>
+        <a class="cred__badge" href="certs/microsoft-cybersecurity-analyst.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/microsoft.svg" alt="Microsoft" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Professional certificate
+        </p>
+        <h3>Microsoft Cybersecurity Analyst</h3>
+        <p class="cred__issuer">Microsoft · Coursera · 9 courses</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Jul 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:350ms">
+        <a class="cred__link" href="certs/ibm-genai-cybersecurity.pdf" target="_blank" rel="noopener" aria-label="Open IBM GenAI Cybersecurity certificate"></a>
+        <a class="cred__badge" href="certs/ibm-genai-cybersecurity.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/ibm.svg" alt="IBM" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Specialization
+        </p>
+        <h3>Generative AI for Cybersecurity</h3>
+        <p class="cred__issuer">IBM · Coursera · 3 courses</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Aug 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--key-tan); --d:420ms">
+        <a class="cred__link" href="certs/oracle-agentic-ai.pdf" target="_blank" rel="noopener" aria-label="Open Oracle Agentic AI certificate"></a>
+        <a class="cred__badge" href="certs/oracle-agentic-ai.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/oracle.svg" alt="Oracle" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Certification
+        </p>
+        <h3>Agentic AI Foundations Associate</h3>
+        <p class="cred__issuer">Oracle University</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Jul 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:490ms">
+        <a class="cred__link" href="certs/fcc-ml-python.pdf" target="_blank" rel="noopener" aria-label="Open freeCodeCamp ML certificate"></a>
+        <a class="cred__badge" href="certs/fcc-ml-python.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/freecodecamp.svg" alt="freeCodeCamp" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Developer certification
+        </p>
+        <h3>Machine Learning with Python</h3>
+        <p class="cred__issuer">freeCodeCamp · ~300 hours</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Apr 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:560ms">
+        <a class="cred__link" href="certs/python-for-everybody.pdf" target="_blank" rel="noopener" aria-label="Open Python for Everybody certificate"></a>
+        <a class="cred__badge" href="certs/python-for-everybody.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/umich.svg" alt="University of Michigan" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+          Specialization
+        </p>
+        <h3>Python for Everybody</h3>
+        <p class="cred__issuer">University of Michigan · Coursera · 5 courses</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Jul 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--key-tan); --d:630ms">
+        <a class="cred__link" href="certs/nmap-scanning.pdf" target="_blank" rel="noopener" aria-label="Open Nmap Scanning certificate"></a>
+        <a class="cred__badge" href="certs/nmap-scanning.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/coursera.svg" alt="Coursera" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Project certificate
+        </p>
+        <h3>Vulnerability Scanning with Nmap</h3>
+        <p class="cred__issuer">Coursera</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Aug 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:700ms">
+        <a class="cred__link" href="certs/mastercard-cybersec-sim.pdf" target="_blank" rel="noopener" aria-label="Open Mastercard Cybersecurity Simulation certificate"></a>
+        <a class="cred__badge" href="certs/mastercard-cybersec-sim.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/forage.svg" alt="Mastercard · Forage" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Job simulation
+        </p>
+        <h3>Cybersecurity Job Simulation</h3>
+        <p class="cred__issuer">Mastercard · Forage</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Apr 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--cheong); --d:770ms">
+        <a class="cred__link" href="certs/ai-seekho-hackathon.pdf" target="_blank" rel="noopener" aria-label="Open AI Seekho Hackathon certificate"></a>
+        <a class="cred__badge" href="certs/ai-seekho-hackathon.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/google.png" alt="Google" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Hackathon
+        </p>
+        <h3>AI Seekho 2026 National Hackathon</h3>
+        <p class="cred__issuer">Google for Developers · AI Seekho</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--key-tan); --d:840ms">
+        <a class="cred__link" href="certs/hp-critical-thinking-ai.pdf" target="_blank" rel="noopener" aria-label="Open HP LIFE certificate"></a>
+        <a class="cred__badge" href="certs/hp-critical-thinking-ai.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/hp.svg" alt="HP" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Course
+        </p>
+        <h3>Critical Thinking in the AI Era</h3>
+        <p class="cred__issuer">HP LIFE · HP Foundation</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Apr 2026</dd></div>
+        </dl>
+      </article>
+
+      <article class="cred rise" style="--key:var(--jeok); --d:910ms">
+        <a class="cred__link" href="certs/google-job-search-ai.pdf" target="_blank" rel="noopener" aria-label="Open Google Job Search AI certificate"></a>
+        <a class="cred__badge" href="certs/google-job-search-ai.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/google.png" alt="Google" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          Course
+        </p>
+        <h3>Accelerate Job Search with AI</h3>
+        <p class="cred__issuer">Google</p>
+        <dl class="cred__facts">
+          <div><dt>Completed</dt><dd>Jun 2026</dd></div>
         </dl>
       </article>
     </div>
@@ -2345,11 +2459,6 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   // switch to light has to extinguish the torch too — not just the button.
   matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => applyPointerLight());
-
-  /* ── hero lines ── */
-  const h1 = document.getElementById("h1");
-  h1.querySelectorAll(".ln > span").forEach((s, i) => s.style.setProperty("--d", 90 + i * 110 + "ms"));
-  requestAnimationFrame(() => h1.classList.add("lit"));
 
   /* ── scroll reveal, with a failsafe so the page is never blank ── */
   const rises = [...document.querySelectorAll(".rise")];
@@ -2944,16 +3053,26 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
     { id:"certs", t:"Certifications",
       k:["certification","certificate","credential","qualified","qualification",
-         "google","coursera","verify","verifiable","자격증","kaist"],
+         "google","coursera","verify","verifiable","자격증","kaist","microsoft",
+         "ibm","oracle","freecodecamp","nmap","mastercard","hp"],
       s:"#credentials",
       f:["What have you built?","What are you studying next?"],
-      a:`<p>Each one links to a record that can be checked independently:</p>
+      a:`<p>13 credentials, each linking to a verifiable record:</p>
          <ul>
            <li><strong>Google Cybersecurity Certificate</strong> — Coursera</li>
-           <li><strong>Introduction to Cybersecurity</strong> — Cisco Networking Academy</li>
+           <li><strong>Cisco Intro to Cybersecurity &amp; Junior Analyst</strong> — Cisco</li>
            <li><strong>Data Structure and Analysis 1 &amp; 2</strong> — KAIST Online</li>
-         </ul>
-         <p>I'd rather have credentials that survive verification than a longer list that doesn't.</p>` },
+           <li><strong>Microsoft Cybersecurity Analyst</strong> — 9 courses, Coursera</li>
+           <li><strong>IBM Generative AI for Cybersecurity</strong> — 3 courses, Coursera</li>
+           <li><strong>Oracle Agentic AI Foundations Associate</strong> — Oracle University</li>
+           <li><strong>Machine Learning with Python</strong> — freeCodeCamp, ~300 hours</li>
+           <li><strong>Python for Everybody</strong> — University of Michigan, 5 courses</li>
+           <li><strong>Vulnerability Scanning with Nmap</strong> — Coursera</li>
+           <li><strong>Mastercard Cybersecurity Job Simulation</strong> — Forage</li>
+           <li><strong>AI Seekho 2026 National Hackathon</strong> — Google for Developers</li>
+           <li><strong>Critical Thinking in the AI Era</strong> — HP LIFE</li>
+           <li><strong>Accelerate Job Search with AI</strong> — Google</li>
+         </ul>` },
 
     { id:"korea", t:"Why Korea",
       k:["why korea","korea","korean","why there","why study in korea","한국","왜 한국",
@@ -3108,12 +3227,14 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#research",
       f:["Where do you want to take this?","What would you bring to a lab?"],
       a:`<p>Department of <strong>Smart Security</strong> (스마트보안학과) at
-         <strong>Konyang University</strong>. It sits exactly where my own work already
-         runs — machine learning pointed at security telemetry, rather than at either
-         subject on its own.</p>
-         <p>[Name the specific lab, professor or research area that you want to work
-         with, and what of theirs you have actually read. This is the paragraph a
-         supervisor reads most closely, and a generic answer is worse than none.]</p>` },
+         <strong>Konyang University</strong>. The faculty are already working where I want
+         to learn — AI applied to real security problems.</p>
+         <p><strong>Prof. Jung Seung-Wook</strong> (department head) published a LangChain-based
+         malware detection framework and works on RAG for defense AI.
+         <strong>Prof. Lee Hoo-ki</strong> researches CNN-based malware classification and
+         deep-learning DGA-domain detection.
+         <strong>Prof. Kim Dong-won</strong> brings penetration testing and IoT security expertise.
+         Their research is exactly the intersection of AI and security I want to study.</p>` },
 
     { id:"contribute", t:"What I would bring to a lab",
       k:["what would you bring","contribute","contribution","value","why should we",
@@ -3201,10 +3322,13 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "stay in korea","long term","career plan","five years","future plan","귀국"],
       s:"#plan",
       f:["What role are you looking for?","Why Korea?"],
-      a:`<p>[What you intend to do after graduating, and how it connects back to Pakistan.
-         GKS panels weigh this heavily — the programme exists to build ties between Korea and
-         your country, so an answer ending in "stay in Korea permanently" is weaker than one
-         describing what you carry back.]</p>` },
+      a:`<p>After the degree I want to gain professional experience in Korea's security
+         industry — three or four years in a SOC or a detection-engineering team under
+         real operational load.</p>
+         <p>Then back to Pakistan. The tech sector at home is scaling fast — banks, telecom,
+         government systems — but the shortage is trained practitioners who can build
+         detections, run incident response, and secure production systems. I want to bring
+         back skills shaped by real operations, not theory from a textbook.</p>` },
   ];
 
   /* ── suggested questions offered before the conversation starts ── */
