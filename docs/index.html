@@ -1678,7 +1678,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
     <dl class="ledger rise">
       <div><b class="num" data-count="12">12</b><span>credentials</span></div>
-      <div><b class="num" data-count="4">04</b><span>documented projects</span></div>
+      <div><b class="num" data-count="5">05</b><span>documented projects</span></div>
       <div><b class="num">Beginner</b><span>Korean level</span></div>
     </dl>
 
@@ -1727,7 +1727,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   <div class="shell">
     <div class="head rise">
       <h2 class="dsp">Work</h2>
-      <p class="mono">04 records</p>
+      <p class="mono">05 records</p>
     </div>
     <p class="intro rise">
       Each record states what I set out to find, what I did, and what changed as a result.
@@ -1842,7 +1842,28 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         </a>
       </article>
 
-      <article class="rec rise" style="--key:var(--cheong); --d:240ms">
+      <article class="rec rise" style="--key:var(--key-tan); --d:240ms">
+        <p class="rec__id">GEF-Network <span>· 2026</span></p>
+        <h3>Enterprise network from scratch in Packet Tracer</h3>
+        <p class="rec__ctx">Full head-office network for Ghazali Education Foundation — designed,
+           configured and tested entirely in Cisco Packet Tracer 9.0.</p>
+        <dl class="pao">
+          <div><dt>Problem</dt><dd>A real office needs segmented departments, redundant internet, firewall rules and centralised servers — but no budget for physical gear to practise on.</dd></div>
+          <div><dt>Method</dt><dd>9 VLANs, ASA 5505 firewall with ACLs, 4 ISP uplinks, inter-VLAN routing on a 3560 L3 switch, DHCP/DNS servers in a DMZ, port security and Rapid PVST+.</dd></div>
+          <div><dt>Result</dt><dd>All connectivity tests pass across every VLAN and through the firewall. Full config exports and topology docs included.</dd></div>
+        </dl>
+        <ul class="chips">
+          <li class="chip chip--role">Network Engineering</li>
+          <li class="chip">Cisco Packet Tracer</li><li class="chip">ASA 5505</li>
+          <li class="chip">VLAN</li><li class="chip">ACL</li><li class="chip">Inter-VLAN Routing</li>
+        </ul>
+        <a class="go" href="https://github.com/Muhammadwaseem5131/GEF-HeadOffice-Network">
+          Source on GitHub
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
+      <article class="rec rise" style="--key:var(--cheong); --d:320ms">
         <p class="rec__id">LogMind <span>· 2026</span></p>
         <h3>Explaining security-log anomalies in plain language</h3>
         <p class="rec__ctx">Detects unusual patterns in security logs and explains them with a risk
@@ -1871,8 +1892,8 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 <div class="strip" aria-hidden="true">
   <div class="strip__row">
     
-    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
-    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
+    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Cisco Packet Tracer</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
+    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Cisco Packet Tracer</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
   </div>
 </div>
 
@@ -2905,7 +2926,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "experience","done","records","show me","built","achievements","프로젝트"],
       s:"#work",
       f:["Tell me about ScanMesh","What is LogMind?","How does OmniAudit work?"],
-      a:`<p>Four documented records, each written as question → method → result:</p>
+      a:`<p>Five documented records, each written as question → method → result:</p>
          <ul>
            <li><strong>OmniAudit</strong> — an AI-assisted code security auditor that separates
                real vulnerabilities from false alarms</li>
@@ -2913,6 +2934,8 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
                risk in plain language</li>
            <li><strong>ScanMesh</strong> — a rule-based orchestrator that chains five security
                scanners and correlates their output into one de-duplicated report</li>
+           <li><strong>GEF-Network</strong> — enterprise network design in Cisco Packet Tracer
+               with 9 VLANs, ASA 5505 firewall, and multi-ISP redundancy</li>
            <li><strong>LogMind</strong> — detects anomalies in security logs and explains them
                in plain language with MITRE ATT&CK mapping</li>
          </ul>
@@ -2968,6 +2991,18 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          alarms on hard-ambiguous benign cases — each documented with why the log alone cannot
          separate them from the real thing. Python standard library only, no installs.</p>` },
 
+    { id:"p5", t:"GEF-Network — enterprise network design",
+      k:["gef","network","packet tracer","cisco","vlan","firewall","asa","enterprise","topology",
+         "routing","switch","isp","acl","dhcp","dns","infrastructure"],
+      s:"#work",
+      f:["Tell me about OmniAudit","What defensive skills do you have?"],
+      a:`<p>The head office where I work — Ghazali Education Foundation — needed a proper network
+         design. I built the full thing in Cisco Packet Tracer as a simulation.</p>
+         <p>9 VLANs for department segmentation, an ASA 5505 firewall with ACLs, 4 ISP uplinks for
+         redundancy, inter-VLAN routing on a 3560 L3 switch, and a server DMZ with DHCP/DNS.
+         <strong>All connectivity tests pass across every VLAN and through the firewall.</strong></p>
+         <p>Complete device configs, topology diagrams and a project report are in the repo.</p>` },
+
     { id:"ml", t:"Machine learning",
       k:["machine learning","ml","ai","artificial intelligence","model","models","data science",
          "scikit","sklearn","feature engineering","statistics","python ml","deep learning",
@@ -2994,7 +3029,8 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       a:`<p>Vulnerability scanning, network defense, log analysis and incident response — backed
          by my Google, Cisco, Microsoft and Nmap certifications plus the IoT-Sentinel project.</p>
          <p>I attack my own network so I can build what catches it. LogMind is a pure defensive
-         tool — ten detectors, MITRE ATT&CK mapping, and live monitoring.</p>` },
+         tool — ten detectors, MITRE ATT&CK mapping, and live monitoring. The GEF-Network project
+         shows I can design and configure enterprise infrastructure end to end.</p>` },
 
     { id:"dev", t:"Development skills",
       k:["development","dev","programming","python","fastapi","react","linux","networking",
