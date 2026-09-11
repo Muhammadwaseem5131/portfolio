@@ -1139,7 +1139,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 .ask__hints{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
 .hint{
   font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.03em;
-  min-height:32px;padding:.3rem .65rem;cursor:pointer;
+  min-height:32px;padding:.3rem .65rem;cursor:pointer;touch-action:manipulation;
   background:none;color:var(--ink-soft);
   border:1px solid var(--rule);border-radius:20px;
   transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease),
@@ -1404,7 +1404,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 /* while dragging, a chip must not swallow the gesture as a click */
 .chat__chips[data-drag="1"] .hint{pointer-events:none}
 .chat__chips::-webkit-scrollbar{display:none}
-.chat__chips .hint{white-space:nowrap;flex:none}
+.chat__chips .hint{white-space:nowrap;flex:none;touch-action:manipulation}
 .chat__bar{display:flex;align-items:flex-end;gap:.5rem;padding:.6rem var(--sp-2)
   calc(.6rem + env(safe-area-inset-bottom))}
 .chat__in{
