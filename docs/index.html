@@ -3702,6 +3702,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     list.slice(0, 4).forEach(q => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "hint"; b.textContent = q; b.dataset.q = q;
+      b.addEventListener("touchend", (e) => { e.preventDefault(); e.stopPropagation(); ask(q); }, {passive:false});
       chips.appendChild(b);
     });
   };
