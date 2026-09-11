@@ -3923,17 +3923,19 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   // chip still fires its question, above it the click is suppressed so
   // pulling the row never asks something by accident.
   document.querySelectorAll(".chat__chips").forEach(row => {
-    let down = false, startX = 0, startLeft = 0, moved = 0;
+    let down = false, startX = 0, startLeft = 0, moved = 0, pid = 0;
     row.addEventListener("pointerdown", (ev) => {
       if (ev.pointerType !== "mouse") return;
-      down = true; moved = 0;
+      down = true; moved = 0; pid = ev.pointerId;
       startX = ev.clientX; startLeft = row.scrollLeft;
-      row.setPointerCapture(ev.pointerId);
     });
     row.addEventListener("pointermove", (ev) => {
       if (!down) return;
       const dx = ev.clientX - startX;
-      if (Math.abs(dx) > 6) { moved = Math.abs(dx); row.dataset.drag = "1"; }
+      if (Math.abs(dx) > 6 && !row.dataset.drag) {
+        moved = Math.abs(dx); row.dataset.drag = "1";
+        try { row.setPointerCapture(pid); } catch(e) {}
+      }
       if (row.dataset.drag === "1") row.scrollLeft = startLeft - dx;
     });
     const end = (ev) => {
