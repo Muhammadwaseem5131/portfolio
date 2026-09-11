@@ -2984,6 +2984,118 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          </ul>
          <p>These are exercises, not built tools — the distinction matters. Everything is documented with screenshots on GitHub.</p>` },
 
+    { id:"nmap", t:"nmap & network scanning",
+      k:["nmap","port scan","port scanning","host discovery","syn scan","service version",
+         "aggressive scan","nse","nmap script","traceroute","arp","sn","sv","ping sweep",
+         "open port","filtered","closed","half open","stealth scan","os detection","-a flag",
+         "network scan","banner grab"],
+      s:"#labs",
+      f:["Do you know web attacks?","What is a CVE?"],
+      a:`<p>Covered across Labs 2–6. Key concepts:</p>
+         <ul>
+           <li><strong>-sn (ping sweep)</strong>: discovers live hosts without scanning ports. Uses ARP on local networks — more reliable than ICMP which firewalls can block.</li>
+           <li><strong>-sV (version detection)</strong>: connects to open ports and probes for exact software version. Critical because each version has known CVEs.</li>
+           <li><strong>-A (aggressive)</strong>: combines OS detection, version detection, default NSE scripts, and traceroute in one pass.</li>
+           <li><strong>SYN scan (half-open)</strong>: sends SYN, gets SYN-ACK if open, replies RST without completing the handshake. Stealthier than a full connect scan.</li>
+           <li><strong>Port states</strong>: Open (service listening), Closed (reachable, nothing there), Filtered (firewall dropping packets, no response).</li>
+           <li><strong>NSE scripts</strong>: Lua scripts built into nmap. <code>--script vuln</code> checks for known vulnerabilities; <code>smb-os-discovery</code> enumerates Windows info.</li>
+         </ul>
+         <p>Findings from my lab: 3 live hosts, SMB on 445 (signing not required — relay risk), VMware management on 902/912, Windows 10 OS fingerprinted.</p>` },
+
+    { id:"web-attacks", t:"Web attacks — SQLi & XSS",
+      k:["sql injection","sqli","sql","xss","cross site scripting","reflected","stored","dvwa",
+         "union select","payload","or 1=1","script alert","session cookie","web attack",
+         "web security","web exploitation","inject","input validation","prepared statement",
+         "htmlspecialchars","parameterised","csrf"],
+      s:"#labs",
+      f:["What is session hijacking?","How do you prevent XSS?"],
+      a:`<p><strong>SQL Injection (Lab 9):</strong> user input inserted directly into a SQL query lets you rewrite query logic.</p>
+         <ul>
+           <li>Payload <code>1' OR '1'='1</code>: the apostrophe closes the string, the OR condition is always true, so every row matches — dumps all users.</li>
+           <li><code>UNION SELECT user(), version()</code>: appends a second query to extract database credentials and version.</li>
+           <li><strong>Prevention</strong>: prepared statements (parameterised queries). Never concatenate user input into SQL. In PHP: <code>$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?")</code>.</li>
+           <li>In-band SQLi: results visible on page. Blind SQLi: no output — you infer data from true/false responses or time delays.</li>
+         </ul>
+         <p><strong>XSS (Lab 10):</strong> malicious JavaScript injected into a page runs in other users' browsers.</p>
+         <ul>
+           <li>Reflected: payload in URL, only affects users who click that link. Stored: saved to the database, executes for everyone who views the page — far more dangerous.</li>
+           <li>Payload: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></li>
+           <li>Real damage: steal session cookies (<code>document.cookie</code>), account takeover, keylogging, phishing redirects.</li>
+           <li><strong>Prevention</strong>: HTML-encode all output (<code>htmlspecialchars()</code> in PHP), Content-Security-Policy headers, never trust user input in HTML context.</li>
+         </ul>` },
+
+    { id:"session-hijack", t:"Session hijacking & cookies",
+      k:["session","cookie","hijack","session hijacking","phpsessid","httponly","secure flag",
+         "cookie theft","token","authentication","session token","cookie flag","steal cookie"],
+      s:"#labs",
+      f:["What is XSS?","What is SQL injection?"],
+      a:`<p>Covered in Lab 13.</p>
+         <ul>
+           <li><strong>Session cookie</strong>: a token (e.g. PHPSESSID) the server gives your browser after login. Whoever holds this cookie is you to the server — no password needed.</li>
+           <li><strong>Session hijacking</strong>: stealing that cookie via XSS (<code>document.cookie</code>), network sniffing on HTTP, or man-in-the-middle.</li>
+           <li><strong>HttpOnly flag</strong>: cookie inaccessible to JavaScript — blocks XSS theft.</li>
+           <li><strong>Secure flag</strong>: cookie only sent over HTTPS — blocks network sniffing.</li>
+           <li>Both flags should always be set on authentication cookies.</li>
+         </ul>` },
+
+    { id:"malware-analysis", t:"Malware analysis",
+      k:["malware","static analysis","dynamic analysis","strings","xxd","file command","mz header",
+         "c2","command and control","pe executable","base64","yara","virus","reverse","obfuscation",
+         "ioc","indicator","persistence","suid","volatility","sandbox","virustotal"],
+      s:"#labs",
+      f:["What is forensics?","What are IOCs?"],
+      a:`<p><strong>Static analysis (Lab 17)</strong> — examining a file without running it:</p>
+         <ul>
+           <li><code>file</code>: identifies type by magic bytes, not extension. MZ header (4D 5A) = Windows PE executable.</li>
+           <li><code>strings</code>: extracts readable text from binaries — reveals URLs, IP addresses, API calls, commands hidden inside.</li>
+           <li><code>xxd</code>: hex dump for inspecting raw bytes and headers.</li>
+           <li>I found in my sample: C2 URL (<code>http://10.10.10.100/payload.bin</code>), Windows API calls (<code>CreateProcess</code>, <code>VirtualAlloc</code>), and <code>cmd.exe /c whoami</code>.</li>
+         </ul>
+         <p><strong>Behavioural analysis (Lab 18)</strong> — examining a live system for malware activity:</p>
+         <ul>
+           <li><code>ss -tulnp</code>: all listening ports with process names — spots unknown backdoors.</li>
+           <li><strong>Persistence</strong>: how malware survives reboots — cron jobs, systemd services, modified .bashrc, SUID binaries.</li>
+           <li><strong>IOCs</strong>: Indicators of Compromise — malicious IPs, file hashes, unusual processes, unexpected registry keys.</li>
+           <li>Deeper tooling: Volatility (memory), Wireshark (network), YARA (signatures), VirusTotal (hash lookup), sandbox (safe execution).</li>
+         </ul>` },
+
+    { id:"forensics-hashing", t:"Digital forensics & log analysis",
+      k:["forensics","hashing","hash","md5","sha256","sha1","file integrity","log","journalctl",
+         "log inspection","incident response","tamper","integrity monitoring","aide","tripwire",
+         "syslog","brute force log","authentication log","failed password","tracks","ufw","hardening",
+         "firewall","iptables","least privilege","sshd","root login","ssh hardening"],
+      s:"#labs",
+      f:["What is malware analysis?","What are IOCs?"],
+      a:`<p><strong>File integrity & hashing (Lab 14):</strong></p>
+         <ul>
+           <li>MD5 = 128-bit (broken, collisions known). SHA-1 = 160-bit (also broken). SHA-256 = 256-bit — current standard, no known collisions.</li>
+           <li>Any single byte change produces a completely different hash — tamper detection is absolute.</li>
+           <li><code>md5sum -c</code>: verifies files against saved hashes. Tools like AIDE/Tripwire automate this continuously.</li>
+         </ul>
+         <p><strong>Log inspection (Lab 15):</strong></p>
+         <ul>
+           <li><code>journalctl</code>: systemd's unified log viewer — kernel messages, auth logs, service logs, all in one place.</li>
+           <li>"Failed password for" in logs = brute force. Multiple failures from the same IP = active attack.</li>
+           <li>Attackers hide tracks by deleting logs with <code>shred</code> or disabling logging — send logs to a remote syslog server to prevent this.</li>
+         </ul>
+         <p><strong>Hardening (Lab 16):</strong> UFW default-deny incoming, disable root SSH, key-only auth, <code>MaxAuthTries 3</code>, find and audit SUID binaries.</p>` },
+
+    { id:"security-concepts", t:"Core security concepts",
+      k:["cia","cia triad","confidentiality","integrity","availability","cvss","cve","vulnerability",
+         "exploit","penetration test","pentest","ethical hacking","cvss score","critical","high",
+         "medium","low","severity","why kali","kali linux why","authorized","legal","eternalblue",
+         "ms17-010","wannacry","smb","mirai","default credentials","brute force","wordlist",
+         "rockyou","dictionary attack","password hash","bcrypt","mfa"],
+      s:"#labs",
+      f:["What is SQL injection?","What is nmap?"],
+      a:`<p><strong>CIA Triad:</strong> Confidentiality (data accessible only to authorized people), Integrity (data hasn't been tampered with), Availability (systems accessible when needed). Every security control maps to one of these.</p>
+         <p><strong>Vulnerability vs Exploit:</strong> A vulnerability is the weakness. An exploit is the code or technique that weaponises it.</p>
+         <p><strong>CVE &amp; CVSS:</strong> CVE is a standardised ID for a known flaw (e.g. CVE-2017-0144 = EternalBlue). CVSS scores severity 0–10: Critical 9–10, High 7–8.9, Medium 4–6.9, Low 0.1–3.9.</p>
+         <p><strong>EternalBlue (MS17-010):</strong> critical SMB vulnerability allowing remote code execution with no authentication. Used by WannaCry in 2017, infected 200,000+ machines in 150 countries.</p>
+         <p><strong>Mirai botnet:</strong> infected 600,000+ IoT devices in 2016 using default credentials (admin/admin). Used them for the largest DDoS attacks at the time.</p>
+         <p><strong>Penetration testing:</strong> authorized simulated attack — recon, scanning, exploitation, reporting. The word "authorized" is what separates it from hacking. My lab was entirely on my own isolated VirtualBox NAT network, no real systems involved.</p>
+         <p><strong>Brute force / wordlists:</strong> rockyou.txt — 14 million real passwords leaked from a 2009 breach, the standard wordlist on Kali. Defence: account lockout, rate limiting, MFA, strong hashing (bcrypt over MD5).</p>` },
+
     { id:"work", t:"The projects",
       k:["what have you built","what did you build","projects","project","work","portfolio",
          "experience","done","records","show me","built","achievements","프로젝트"],
