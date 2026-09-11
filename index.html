@@ -3912,6 +3912,17 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     }
   });
 
+  // Direct listener on chips — fallback for mobile browsers that swallow
+  // clicks on buttons inside overflow-x:auto containers.
+  chips.addEventListener("touchend", (e) => {
+    const hint = e.target.closest(".hint");
+    if (hint) { e.preventDefault(); ask(hint.dataset.q || hint.textContent); }
+  }, { passive: false });
+  chips.addEventListener("click", (e) => {
+    const hint = e.target.closest(".hint");
+    if (hint) ask(hint.dataset.q || hint.textContent);
+  });
+
   // ── grab-to-scroll the suggested questions ────────────────────────────
   // Touch already has native momentum scrolling, so this is pointer-only.
   // The 6px threshold is what separates a drag from a tap: below it the
