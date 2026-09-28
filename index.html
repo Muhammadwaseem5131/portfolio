@@ -1705,12 +1705,15 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       </div>
       <div class="prose rise" style="--d:90ms">
         <p>
-          I am 22 years old, from Chishtian, Pakistan. I taught myself cybersecurity by
-          building a home lab in my bedroom — a <strong>pfSense</strong> firewall, a
-          three-host <strong>Windows Active Directory</strong> domain, and a
-          <strong>Kali Linux</strong> machine I use to attack my own network. I run
-          penetration tests, collect the logs, and then try to detect my own attacks
-          from the defender's side. That loop — attack, detect, fix — is how I learn.
+          I am 22 years old, from Chishtian, Pakistan. I taught myself cybersecurity in a
+          small home lab I use for learning — a <strong>Kali Linux</strong> system and a
+          second computer. On them I run virtual machines in VirtualBox, where I have used
+          <strong>pfSense</strong> and <strong>Windows Active Directory</strong> to learn
+          networking, firewalls, and how a Windows domain works. I started with networking
+          because nearly every security problem I have worked on — exposed IoT devices, web
+          attacks, suspicious logs — travels over a network. I practise on deliberately vulnerable targets, read the logs my practice
+          leaves behind, and learn how the defender would spot it. That loop — try,
+          observe, fix — is how I learn.
         </p>
         <p>
           The lab taught me that existing security tools give you too much raw data
@@ -1886,12 +1889,12 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            configured and tested entirely in Cisco Packet Tracer 9.0.</p>
         <dl class="pao">
           <div><dt>Problem</dt><dd>A real office needs segmented departments, redundant internet, firewall rules and centralised servers — but no budget for physical gear to practise on.</dd></div>
-          <div><dt>Method</dt><dd>9 VLANs, ASA 5505 firewall with ACLs, 4 ISP uplinks, inter-VLAN routing on a 3560 L3 switch, DHCP/DNS servers in a DMZ, port security and Rapid PVST+.</dd></div>
+          <div><dt>Method</dt><dd>8 VLANs, ASA 5505 firewall with ACLs, 4 ISP uplinks, inter-VLAN routing on a 3560 L3 switch, DHCP/DNS servers in a DMZ, port security and Rapid PVST+.</dd></div>
           <div><dt>Result</dt><dd>All connectivity tests pass across every VLAN and through the firewall. Full config exports and topology docs included.</dd></div>
         </dl>
         <div class="shots">
         <button class="shot" type="button" data-full="shots/gef-topology@full.webp"
-                data-cap="GEF Network — topology diagram: 9 VLANs, ASA 5505, multi-ISP">
+                data-cap="GEF Network — topology diagram: 8 VLANs, ASA 5505, multi-ISP">
           <img src="shots/gef-topology.webp" alt="GEF Network — topology diagram" loading="lazy" decoding="async"
                width="560" height="314">
         </button>
@@ -1932,7 +1935,11 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
           <li class="chip">Python</li><li class="chip">MITRE ATT&CK</li>
           <li class="chip">Log Analysis</li><li class="chip">Anomaly Detection</li>
         </ul>
-        <a class="go" href="https://github.com/Muhammadwaseem5131/logmind">
+        <a class="go" href="https://muhammadwaseem5131.github.io/logmind/">
+          Live demo
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="go" href="https://github.com/Muhammadwaseem5131/logmind" style="margin-left:var(--sp-2)">
           Source on GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
@@ -1954,7 +1961,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </p>
     <div class="rec rise" style="--key:var(--jeok);margin-top:var(--sp-3);display:block">
       <p class="rec__id">Security Labs <span>· Nov 2025</span></p>
-      <p style="margin-top:.5rem">18 Kali Linux labs across 5 levels: network reconnaissance, web exploitation (SQLi &amp; XSS via DVWA), IoT exposure assessment, digital forensics, and static malware analysis. Environment: VirtualBox NAT on Windows 10.</p>
+      <p style="margin-top:.5rem">18 Kali Linux labs across 5 levels: network reconnaissance, web exploitation (SQLi &amp; XSS via DVWA), IoT exposure assessment, digital forensics, and static malware inspection. Environment: VirtualBox NAT on Windows 10.</p>
       <ul class="chips" style="margin-top:var(--sp-2)">
         <li class="chip chip--role">Blue Team</li>
         <li class="chip">Kali Linux</li><li class="chip">nmap</li>
@@ -1983,9 +1990,9 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   <div class="shell">
     <div class="head rise">
       <h2 class="dsp">Credentials</h2>
-      <p class="mono">Each one is verifiable</p>
+      <p class="mono">Checkable records</p>
     </div>
-    <p class="intro rise">Every entry links to a record that can be checked independently.</p>
+    <p class="intro rise">Every online certificate links to a record that can be checked independently. The NVQF is a paper certificate, available on request.</p>
 
     <div class="certs" style="margin-top:var(--sp-4)">
       <article class="cred rise" style="--key:var(--jeok)">
@@ -2017,10 +2024,10 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="m9 12 2 2 4-4"/></svg>
           Certificate
         </p>
-        <h3>Intro to Cybersecurity &amp; Junior Analyst</h3>
+        <h3>Junior Cybersecurity Analyst Career Path</h3>
         <p class="cred__issuer">Cisco Networking Academy</p>
         <dl class="cred__facts">
-          <div><dt>Completed</dt><dd>2025 – Apr 2026</dd></div>
+          <div><dt>Completed</dt><dd>Apr 2026</dd></div>
         </dl>
       </article>
 
@@ -2031,10 +2038,10 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         </a>
         <p class="cred__kicker">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
-          University course
+          Online course
         </p>
         <h3>Data Structure and Analysis 1 &amp; 2</h3>
-        <p class="cred__issuer">KAIST Online · Prof. Moon, Il-Chul</p>
+        <p class="cred__issuer">KAIST Online · Prof. Moon, Il-Chul · 13 hours</p>
         <dl class="cred__facts">
           <div><dt>Code</dt><dd>IE260</dd></div>
           <div><dt>Completed</dt><dd>Jun – Jul 2026</dd></div>
@@ -2944,9 +2951,9 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#about",
       f:["What have you built?","Why Korea?","What is in your home lab?"],
       a:`<p>I'm <strong>Muhammad Waseem</strong> — 22, from Chishtian, Pakistan. I'm a
-         self-taught cybersecurity practitioner with a home lab and four shipped
-         security tools.</p>
-         <p>I run penetration tests on my own network, collect the logs, and then build
+         self-taught cybersecurity practitioner with a home lab, four shipped security
+         tools, and a job as Assistant IT Officer at an education NGO.</p>
+         <p>I learn hands-on in a small home lab, read the logs my practice leaves, and build
          tools that make sense of them. I'm applying to study cybersecurity in Korea
          on the Global Korea Scholarship, where I can deepen the AI side of defence.</p>` },
 
@@ -2964,24 +2971,24 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          first-hand.</p>` },
 
     { id:"lab", t:"The home lab",
-      k:["home lab","homelab","your lab","setup","rig","hardware","pfsense","kali","domain",
-         "network","environment","infrastructure","what do you run","machines"],
-      s:"#work",
+      k:["home lab","homelab","your lab","setup","rig","hardware","kali","pfsense",
+         "active directory","network","environment","infrastructure","what do you run","machines"],
+      s:"#labs",
       f:["What have you built?","What tools do you use?"],
-      a:`<p>Modest, and entirely mine to break:</p>
+      a:`<p>A small home lab I use for learning — two machines:</p>
          <ul>
-           <li><strong>pfSense</strong> at the edge, so I control routing and can watch traffic
-               leave</li>
-           <li>A three-host <strong>Windows domain</strong> — DC, member server, workstation</li>
-           <li>A <strong>Kali</strong> box I use to attack the domain</li>
-           <li><strong>Zeek</strong>, <strong>Sysmon</strong> and <strong>Wazuh</strong> recording
-               everything, which is the part that actually matters</li>
+           <li>A <strong>Kali Linux</strong> system (in VirtualBox) for security practice</li>
+           <li>A second computer for my other work and hands-on learning</li>
+           <li>Virtual machines in <strong>VirtualBox</strong>, where I have used <strong>pfSense</strong>
+               and <strong>Windows Active Directory</strong> to learn networking, firewalls, and how
+               a Windows domain works</li>
          </ul>
-         <p>The point isn't the hardware. It's that every attack I run leaves evidence I then
-         have to go and find.</p>
+         <p>I practise only on deliberately vulnerable apps like <strong>DVWA</strong>, on an
+         isolated VirtualBox network — nothing outside it. The point isn't the hardware; it's
+         learning by doing, then checking the logs to see what my practice left behind.</p>
          <p>I also completed <strong>18 structured Kali Linux labs</strong> in November 2025 —
          network scanning, SQLi/XSS exploitation on DVWA, digital forensics, and static malware
-         analysis. All documented on GitHub.</p>` },
+         inspection. All documented on GitHub.</p>` },
 
     { id:"labs", t:"Security labs",
       k:["lab","labs","kali","hands-on","practical","dvwa","18 labs","security labs",
@@ -2994,7 +3001,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            <li><strong>Level 2 — Web Security</strong>: SQLi and XSS on DVWA, full aggressive scans, risk assessment</li>
            <li><strong>Level 3 — IoT Exposure</strong>: exposure checklist, default service risk cataloguing</li>
            <li><strong>Level 4 — Digital Forensics</strong>: file hashing, log inspection with journalctl, incident documentation</li>
-           <li><strong>Level 5 — Malware Analysis</strong>: static file inspection (strings, xxd, base64), system baseline</li>
+           <li><strong>Level 5 — Malware Awareness</strong>: static file inspection (strings, xxd, base64), system baseline</li>
          </ul>
          <p>These are exercises, not built tools — the distinction matters. Everything is documented with screenshots on GitHub.</p>` },
 
@@ -3026,7 +3033,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       a:`<p><strong>SQL Injection (Lab 9):</strong> user input inserted directly into a SQL query lets you rewrite query logic.</p>
          <ul>
            <li>Payload <code>1' OR '1'='1</code>: the apostrophe closes the string, the OR condition is always true, so every row matches — dumps all users.</li>
-           <li><code>UNION SELECT user(), version()</code>: appends a second query to extract database credentials and version.</li>
+           <li><code>UNION SELECT user(), version()</code>: appends a second query — in my lab it revealed the database user (<code>root@localhost</code>) and the MySQL version.</li>
            <li><strong>Prevention</strong>: prepared statements (parameterised queries). Never concatenate user input into SQL. In PHP: <code>$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?")</code>.</li>
            <li>In-band SQLi: results visible on page. Blind SQLi: no output — you infer data from true/false responses or time delays.</li>
          </ul>
@@ -3043,7 +3050,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "cookie theft","token","authentication","session token","cookie flag","steal cookie"],
       s:"#labs",
       f:["What is XSS?","What is SQL injection?"],
-      a:`<p>Covered in Lab 13.</p>
+      a:`<p>Concepts I studied alongside the web-security labs:</p>
          <ul>
            <li><strong>Session cookie</strong>: a token (e.g. PHPSESSID) the server gives your browser after login. Whoever holds this cookie is you to the server — no password needed.</li>
            <li><strong>Session hijacking</strong>: stealing that cookie via XSS (<code>document.cookie</code>), network sniffing on HTTP, or man-in-the-middle.</li>
@@ -3063,7 +3070,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            <li><code>file</code>: identifies type by magic bytes, not extension. MZ header (4D 5A) = Windows PE executable.</li>
            <li><code>strings</code>: extracts readable text from binaries — reveals URLs, IP addresses, API calls, commands hidden inside.</li>
            <li><code>xxd</code>: hex dump for inspecting raw bytes and headers.</li>
-           <li>I found in my sample: C2 URL (<code>http://10.10.10.100/payload.bin</code>), Windows API calls (<code>CreateProcess</code>, <code>VirtualAlloc</code>), and <code>cmd.exe /c whoami</code>.</li>
+           <li>In my lab I used a test file I created: <code>file</code> and <code>xxd</code> identified the MZ header (<code>4D 5A</code>), I decoded a base64-hidden command, and listed SUID binaries with <code>find /usr/bin -perm -4000</code>.</li>
          </ul>
          <p><strong>Behavioural analysis (Lab 18)</strong> — examining a live system for malware activity:</p>
          <ul>
@@ -3092,7 +3099,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            <li>"Failed password for" in logs = brute force. Multiple failures from the same IP = active attack.</li>
            <li>Attackers hide tracks by deleting logs with <code>shred</code> or disabling logging — send logs to a remote syslog server to prevent this.</li>
          </ul>
-         <p><strong>Hardening (Lab 16):</strong> UFW default-deny incoming, disable root SSH, key-only auth, <code>MaxAuthTries 3</code>, find and audit SUID binaries.</p>` },
+         <p><strong>Incident note (Lab 16):</strong> I wrote up the lab findings as an incident — timeline, root cause (default credentials, no input validation) and recommended fixes.</p>` },
 
     { id:"security-concepts", t:"Core security concepts",
       k:["cia","cia triad","confidentiality","integrity","availability","cvss","cve","vulnerability",
@@ -3124,7 +3131,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            <li><strong>ScanMesh</strong> — a rule-based orchestrator that chains four security
                scanners and correlates their output into one de-duplicated report</li>
            <li><strong>GEF-Network</strong> — enterprise network design in Cisco Packet Tracer
-               with 9 VLANs, ASA 5505 firewall, and multi-ISP redundancy</li>
+               with 8 VLANs, ASA 5505 firewall, and multi-ISP redundancy</li>
            <li><strong>LogMind</strong> — detects anomalies in security logs and explains them
                in plain language with MITRE ATT&CK mapping</li>
          </ul>
@@ -3190,7 +3197,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       f:["Tell me about OmniAudit","What defensive skills do you have?"],
       a:`<p>The head office where I work — Ghazali Education Foundation — needed a proper network
          design. I built the full thing in Cisco Packet Tracer as a simulation.</p>
-         <p>9 VLANs for department segmentation, an ASA 5505 firewall with ACLs, 4 ISP uplinks for
+         <p>8 VLANs for department segmentation, an ASA 5505 firewall with ACLs, 4 ISP uplinks for
          redundancy, inter-VLAN routing on a 3560 L3 switch, and a server DMZ with DHCP/DNS.
          <strong>All connectivity tests pass across every VLAN and through the firewall.</strong></p>
          <p>Complete device configs, topology diagrams and a project report are in the repo.</p>` },
@@ -3241,14 +3248,14 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "ibm","oracle","freecodecamp","yonsei"],
       s:"#credentials",
       f:["What have you built?","What are you studying next?"],
-      a:`<p>10 credentials, each linking to a verifiable record:</p>
+      a:`<p>10 credentials — the online ones link to verifiable records:</p>
          <ul>
            <li><strong>NVQF Level 2 in IT</strong> — Punjab Vocational Training Council (first prize, won laptop)</li>
            <li><strong>Microsoft Cybersecurity Analyst</strong> — 9 courses, Coursera</li>
-           <li><strong>Cisco Intro to Cybersecurity &amp; Junior Analyst</strong> — Cisco</li>
+           <li><strong>Cisco Junior Cybersecurity Analyst Career Path</strong> — Cisco Networking Academy</li>
            <li><strong>Google IT Support Certificate</strong> — Coursera</li>
            <li><strong>IBM Generative AI for Cybersecurity</strong> — 3 courses, Coursera</li>
-           <li><strong>Oracle Agentic AI Foundations Associate</strong> — Oracle University (proctored)</li>
+           <li><strong>Oracle Agentic AI Foundations Associate</strong> — Oracle University</li>
            <li><strong>Data Structure and Analysis 1 &amp; 2</strong> — KAIST Online</li>
            <li><strong>Machine Learning with Python</strong> — freeCodeCamp, ~300 hours</li>
            <li><strong>Python for Everybody</strong> — University of Michigan, 5 courses</li>
@@ -3300,7 +3307,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       a:`<p>Learning, and not yet where I need to be — I'd rather say that than inflate it.
          Started in June 2026: self-taught Hangul, completed Yonsei University's foundational
          Korean course, and now studying through the Online King Sejong Institute.</p>
-         <p>Both target departments require <strong>TOPIK 3</strong> for admission after the
+         <p>Konyang's Smart Security department requires <strong>TOPIK 3</strong> for admission after the
          language year, so that's the concrete target the first year is built around.</p>` },
 
     { id:"after", t:"After graduating",
@@ -3309,7 +3316,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#plan",
       f:["What role are you looking for?","Why Korea?"],
       a:`<p>Three or four years in a SOC somewhere under genuine load — long enough to learn what
-         detection actually costs at scale, rather than what it costs in a bedroom lab.</p>
+         detection actually costs at scale, rather than what it costs in a small home lab.</p>
          <p>Then back to Pakistan to launch <strong>TechRise Pakistan</strong> — practical AI
          and cybersecurity training starting inside Ghazali Education Foundation (where I
          already work) and growing outward. The goal: turn theory-only graduates into
@@ -3402,21 +3409,14 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "intermediate","matric","성적","학력"],
       s:"#about",
       f:["What are you studying next?","Which universities?"],
-      a:`<p>[Your current or most recent qualification, the institution, and the year
-         you finished or expect to finish.]</p>
-         <p>[Your CGPA on its original scale — GKS requires 80% on a 100-point scale, or
-         top 20% of your class, or 2.64/4.0. State the number and the scale.]</p>` },
-
-    { id:"english", t:"English proficiency",
-      k:["english","ielts","toefl","english level","language proficiency","english test",
-         "speak english","english score","영어"],
-      s:"#plan",
-      f:["Do you speak Korean?","Which universities?"],
-      a:`<p>[Your IELTS or TOEFL score and test date, or say plainly that you have not sat
-         one yet and when you plan to.]</p>
-         <p>Both departments I am applying to teach entirely in Korean, so Korean is the
-         binding requirement rather than English — but an English score still carries
-         points in the GKS evaluation.</p>` },
+      a:`<ul>
+           <li><strong>Intermediate (FSc)</strong> — Govt. Graduate College, Chishtian, 2019–2021:
+               A+, 888/1100 (<strong>80.7%</strong>)</li>
+           <li><strong>Matriculation (Science)</strong> — Govt. High School No. 2, Chishtian,
+               2017–2019: A+, 1007/1100 (91.5%)</li>
+         </ul>
+         <p>Both from the Board of Intermediate &amp; Secondary Education, Bahawalpur. GKS asks for
+         at least 80% — my FSc result meets it.</p>` },
 
     { id:"fit", t:"Why this department",
       k:["why this department","why this university","why this lab","fit","supervisor",
@@ -3424,14 +3424,13 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#research",
       f:["Where do you want to take this?","What would you bring to a lab?"],
       a:`<p>Department of <strong>Smart Security</strong> (스마트보안학과) at
-         <strong>Konyang University</strong>. The faculty are already working where I want
-         to learn — AI applied to real security problems.</p>
-         <p><strong>Prof. Jung Seung-Wook</strong> (department head) published a LangChain-based
-         malware detection framework and works on RAG for defense AI.
-         <strong>Prof. Lee Hoo-ki</strong> researches CNN-based malware classification and
-         deep-learning DGA-domain detection.
-         <strong>Prof. Kim Dong-won</strong> brings penetration testing and IoT security expertise.
-         Their research is exactly the intersection of AI and security I want to study.</p>` },
+         <strong>Konyang University</strong>. Its curriculum runs from penetration testing,
+         forensics and malware analysis to AI Security Management — the path I want to follow.</p>
+         <p>The faculty cover the areas I care about: <strong>Prof. Lee Hoo-ki</strong> works on
+         forensics, security monitoring and malware analysis; <strong>Prof. Kim Dong-won</strong>
+         on penetration testing and medical-device security testbeds; and
+         <strong>Prof. Jung Seung-Wook</strong>, the department head, comes from blockchain
+         security.</p>` },
 
     { id:"contribute", t:"What I would bring to a lab",
       k:["what would you bring","contribute","contribution","value","why should we",
@@ -3454,7 +3453,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          work, or told me LogMind's false alarms were ambiguous edge cases — I found that
          by documenting each one and asking why the log alone could not separate them from
          a real attack.</p>
-         <p>The limit I have hit is not motivation, it is scale: one bedroom network, no peer
+         <p>The limit I have hit is not motivation, it is scale: one small home lab, no peer
          review, and no adversary who is not me. That is what I am applying for.</p>` },
 
     { id:"ethics", t:"Ethics and scope",
@@ -3476,30 +3475,18 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       f:["What is GKS?","When can you start?"],
       a:`<p>I am applying through the <strong>Global Korea Scholarship</strong>, which covers
          tuition, a monthly allowance, airfare and medical insurance, plus a funded year of
-         Korean language study before the degree begins.</p>
-         <p>[If you are also applying for other funding, or would consider self-funding, say
-         so here. If GKS is your only route, say that plainly — it is not a weakness.]</p>` },
+         Korean language study before the degree begins.</p>` },
 
     { id:"start", t:"Start date and timeline",
       k:["when can you start","start date","available","availability","intake","semester",
          "when would you","timeline","begin","입학"],
       s:"#plan",
       f:["What is GKS?","Do you speak Korean?"],
-      a:`<p>Both target departments admit for the <strong>March intake</strong>. The GKS route
-         is one funded year of Korean language study first, then four years of the degree —
-         five years in total.</p>
-         <p>Neither department allows skipping the language year, so the degree itself would
-         begin the March after the language programme finishes.</p>` },
-
-    { id:"reading", t:"What I read in the field",
-      k:["what do you read","papers","research papers","reading","books","follow","keep up",
-         "blogs","sources","literature","논문"],
-      s:"#research",
-      f:["Where do you want to take this?","How do you use AI?"],
-      a:`<p>[Name two or three papers, books or researchers you have actually read, and one
-         sentence on what each changed in how you work. A professor asks this to find out
-         whether you read the field or only the tools — and they will follow up. Do not list
-         anything you cannot discuss.]</p>` },
+      a:`<p>Konyang's Department of Smart Security admits for the <strong>March intake</strong>.
+         The GKS route is one funded year of Korean language study first, then four years of
+         the degree — five years in total.</p>
+         <p>The language year comes first, so the degree itself would begin the March after the
+         language programme finishes.</p>` },
 
     { id:"gaps2", t:"What I cannot do yet",
       k:["weakness","weaknesses","gaps","cannot do","limitations","not good at","struggle",
@@ -3509,7 +3496,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       a:`<p>Named honestly, because a supervisor will find them anyway.</p>
          <p><strong>Scale.</strong> Everything I have tested ran on three hosts. I do not know
          how my assumptions hold at real traffic volume.<br>
-         <strong>Adversarial ML.</strong> My models catch attacks I wrote myself. They have
+         <strong>Evasion.</strong> My detectors catch attacks I wrote myself. They have
          never faced someone trying to evade them on purpose.<br>
          <strong>Formal method.</strong> I learned by building. I have not been taught to
          design an experiment properly, and it showed in how I used to evaluate.</p>` },
@@ -3540,7 +3527,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
   const SYN = { uni:"university", unis:"university", college:"university", cert:"certification",
     certs:"certification", certificate:"certification", certificates:"certification",
-    ml:"machine learning", ai:"artificial intelligence", thm:"tryhackme", ad:"active directory",
+    ml:"machine learning", ai:"artificial intelligence", thm:"tryhackme",
     ir:"incident response", ctf:"lab", resume:"cv", job:"role", jobs:"role", uni_:"university",
     korea:"korea", pentest:"penetration testing", infosec:"security", cybersec:"security",
     secplus:"security plus", homelab:"home lab", grad:"graduate",

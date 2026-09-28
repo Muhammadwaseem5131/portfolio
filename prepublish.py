@@ -61,6 +61,8 @@ out = re.sub(r"<!--(.*?)-->", scrub, src, flags=re.S)
 
 # ── 2. refuse to publish visible placeholders ─────────────────────────────
 visible = re.sub(r"<script.*?</script>|<style.*?</style>", "", out, flags=re.S)
+# chat answers live in a:`...` strings inside <script>, and are shown to visitors too
+visible += "\n".join(re.findall(r"a:`(.*?)`", out, flags=re.S))
 holes = sorted(set(re.findall(r"\[[A-Za-z][^\]\n<]{3,60}\]", visible)))
 
 print("author-facing comments removed : %d" % removed)
