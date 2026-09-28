@@ -27,7 +27,7 @@ ASSETS = [
     "portrait.jpg", "portrait.webp", "portrait.avif",
     "portrait@1080.jpg", "portrait@1080.webp", "portrait@1080.avif",
     "favicon.svg", "apple-touch-icon.png", "og.png",
-    "research.html",
+    "research.html", "cv.pdf",
 ]
 
 # whole folders copied as-is

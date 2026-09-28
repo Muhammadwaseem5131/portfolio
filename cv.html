@@ -11,14 +11,6 @@ html{font-size:10.5pt;font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;lin
 body{background:#fff}
 
 @page{size:A4;margin:14mm 18mm 12mm 18mm}
-@media print{
-  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .page{box-shadow:none;margin:0;padding:0;width:auto;page-break-after:always}
-  .page:last-child{page-break-after:auto}
-  a{text-decoration:none;color:inherit}
-  .dl-bar{display:none}
-  .dl-bar+.page{margin-top:0}
-}
 
 .page{max-width:210mm;min-height:297mm;margin:0 auto;padding:14mm 18mm 12mm 18mm;box-shadow:0 0 12px rgba(0,0,0,.08);background:#fff}
 
@@ -78,6 +70,16 @@ body{background:#fff}
 
 /* Page 2 */
 .cont-header{font-size:8pt;color:#999;text-align:right;margin-bottom:8pt;padding-bottom:4pt;border-bottom:1px solid #eee}
+
+/* Must stay last: overrides the screen rules for .page and .dl-bar above. */
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{box-shadow:none;margin:0;padding:0;width:auto;min-height:0;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  a{text-decoration:none;color:inherit}
+  .dl-bar{display:none}
+  .dl-bar+.page{margin-top:0}
+}
 </style>
 </head>
 <body>
@@ -104,10 +106,10 @@ body{background:#fff}
     <div class="sec-title">Professional Summary</div>
     <p class="summary">
       Self-taught cybersecurity practitioner with a home security lab and four shipped security tools.
-      Applied machine learning to vulnerability scanning, log anomaly detection, and code security auditing.
-      Built end-to-end Python/FastAPI/React applications with documented results and open-source code.
-      Seeking a B.Sc. in Smart Security at Konyang University to gain structured training in AI-driven
-      defense that self-study cannot provide.
+      Assistant IT Officer at an education NGO since 2024. Built tools for vulnerability scanning, log analysis
+      and code security auditing, using an LLM (Gemini) where it helps. Every project has documented results and open-source code.
+      Applying to the Department of Smart Security at Konyang University for the structured training that
+      self-study cannot provide.
     </p>
   </div>
 
@@ -116,10 +118,9 @@ body{background:#fff}
     <div class="sec-title">Core Strengths</div>
     <div class="strengths">
       <span>Vulnerability Scanning</span>
-      <span>Anomaly Detection</span>
       <span>Log Analysis</span>
       <span>Incident Response</span>
-      <span>Machine Learning</span>
+      <span>IT Support</span>
       <span>Generative AI</span>
       <span>Python</span>
       <span>FastAPI</span>
@@ -127,6 +128,22 @@ body{background:#fff}
       <span>Network Security</span>
       <span>MITRE ATT&amp;CK</span>
       <span>Linux</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">Work Experience</div>
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Assistant IT Officer — Ghazali Education Foundation</h3>
+        <span class="loc">2024 – present</span>
+      </div>
+      <div class="entry-sub">Education NGO, Pakistan</div>
+      <ul>
+        <li>Network and system troubleshooting, network maintenance, installing systems and software, and user support for staff.</li>
+        <li>Assist with server administration and run regular backups.</li>
+        <li>Helped respond when a break-in exposed student records.</li>
+      </ul>
     </div>
   </div>
 
@@ -165,10 +182,10 @@ body{background:#fff}
         <h3>ScanMesh — Security Tool Orchestrator</h3>
       </div>
       <div class="entry-sub">Creator &amp; Developer</div>
-      <div class="entry-desc">Chains five scanners (nmap, ZAP, sqlmap, tshark) into one deterministic pipeline. No AI — 100% rule-based.</div>
+      <div class="entry-desc">Chains four tools (nmap, ZAP, sqlmap, tshark) into one deterministic pipeline. No AI — 100% rule-based.</div>
       <ul>
-        <li><strong>Automated</strong> five-tool security pipeline that merges correlated findings into high-confidence results.</li>
-        <li><strong>Reduced</strong> manual pentesting workflow from five separate tool runs to one unified command.</li>
+        <li><strong>Automated</strong> four-tool security pipeline that merges correlated findings into high-confidence results.</li>
+        <li><strong>Reduced</strong> manual pentesting workflow from four separate tool runs to one unified command.</li>
         <li><strong>Validated</strong> with CI on every push — ZAP suspects SQL injection, sqlmap confirms, ScanMesh merges into one critical finding.</li>
       </ul>
     </div>
@@ -198,6 +215,19 @@ body{background:#fff}
         <li><strong>Achieved</strong> full connectivity across all VLANs and through the firewall — all tests passing.</li>
       </ul>
     </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Security Labs — 18 Hands-on Labs</h3>
+        <span class="loc">Nov 2025</span>
+      </div>
+      <div class="entry-sub">Kali Linux on VirtualBox · 5 levels</div>
+      <ul>
+        <li><strong>Completed</strong> labs in network reconnaissance, vulnerability assessment, web exploitation (SQL injection, XSS on DVWA) and IoT exposure.</li>
+        <li><strong>Practised</strong> digital forensics (file hashing, log inspection, incident notes) and static malware inspection.</li>
+        <li><strong>Documented</strong> every lab with a written report and screenshots, all on GitHub.</li>
+      </ul>
+    </div>
   </div>
 
   <!-- EDUCATION -->
@@ -225,12 +255,12 @@ body{background:#fff}
         </ul>
       </div>
       <div>
-        <h4>AI &amp; Machine Learning</h4>
+        <h4>Applied AI</h4>
         <ul>
-          <li>Anomaly detection</li>
-          <li>scikit-learn</li>
-          <li>Generative AI</li>
-          <li>Model evaluation</li>
+          <li>LLM integration (Gemini)</li>
+          <li>AI agents (Google ADK)</li>
+          <li>Generative AI for security</li>
+          <li>Rule-based anomaly detection</li>
         </ul>
       </div>
       <div>
@@ -250,14 +280,14 @@ body{background:#fff}
 <!-- ═══════ PAGE 2 ═══════ -->
 <div class="page">
 
-  <div class="cont-header">Muhammad Waseem — Curriculum Vitae · Page 2</div>
+  <div class="cont-header">Muhammad Waseem — Curriculum Vitae</div>
 
   <!-- CERTIFICATIONS -->
   <div class="sec" style="margin-top:0">
     <div class="sec-title">Certifications</div>
     <div class="cert-grid">
       <div class="cert-item">
-        <div><span class="cert-name">Google Cybersecurity Certificate</span><br><span class="cert-org">Google · Coursera</span></div>
+        <div><span class="cert-name">Google IT Support Certificate</span><br><span class="cert-org">Google · Coursera</span></div>
       </div>
       <div class="cert-item">
         <div><span class="cert-name">Intro to Cybersecurity &amp; Junior Analyst</span><br><span class="cert-org">Cisco Networking Academy</span></div>
@@ -281,16 +311,7 @@ body{background:#fff}
         <div><span class="cert-name">Python for Everybody</span><br><span class="cert-org">University of Michigan · Coursera · 5 courses</span></div>
       </div>
       <div class="cert-item">
-        <div><span class="cert-name">Vulnerability Scanning with Nmap</span><br><span class="cert-org">Coursera</span></div>
-      </div>
-      <div class="cert-item">
-        <div><span class="cert-name">Cybersecurity Job Simulation</span><br><span class="cert-org">Mastercard · Forage</span></div>
-      </div>
-      <div class="cert-item">
-        <div><span class="cert-name">Critical Thinking in the AI Era</span><br><span class="cert-org">HP LIFE · HP Foundation</span></div>
-      </div>
-      <div class="cert-item">
-        <div><span class="cert-name">AI Seekho 2026 National Hackathon</span><br><span class="cert-org">Google for Developers · AI Seekho</span></div>
+        <div><span class="cert-name">NVQF Level 2 — Information Technology</span><br><span class="cert-org">Punjab Vocational Training Council · First prize</span></div>
       </div>
     </div>
   </div>
@@ -312,7 +333,7 @@ body{background:#fff}
         <h3>IT &amp; Computer Science Instructor</h3>
         <span class="date">2025</span>
       </div>
-      <p>Ghazali Education Foundation. Trained 50+ students in computer fundamentals, Office suite, and internet literacy.</p>
+      <p>Ghazali Education Foundation. Trained 50 students in computer fundamentals, Office suite, and internet literacy.</p>
     </div>
 
     <div class="comm-item">

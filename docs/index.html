@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Muhammad Waseem — AI &amp; Security Portfolio</title>
-<meta name="description" content="AI and cybersecurity portfolio of Muhammad Waseem. Documented lab work, verifiable certifications, and a study plan. Applicant, Global Korea Scholarship (Undergraduate).">
+<title>Muhammad Waseem — Cybersecurity Portfolio</title>
+<meta name="description" content="Cybersecurity portfolio of Muhammad Waseem. Documented lab work, verifiable certifications, and a study plan. Applicant, Global Korea Scholarship (Undergraduate).">
 
 <!-- ══ SOCIAL ══
      og:image must be an ABSOLUTE url — Facebook and LinkedIn will not resolve
@@ -12,8 +12,8 @@
      grey box. Replace https://muhammadwaseem5131.github.io/portfolio with wherever this ends up, e.g.
      https://muhammadwaseem.github.io/portfolio — no trailing slash. -->
 <link rel="canonical" href="https://muhammadwaseem5131.github.io/portfolio/">
-<meta property="og:title" content="Muhammad Waseem — AI &amp; Security Portfolio">
-<meta property="og:description" content="Machine learning applied to security. Documented lab work, verifiable certifications, and a study plan. GKS Undergraduate applicant.">
+<meta property="og:title" content="Muhammad Waseem — Cybersecurity Portfolio">
+<meta property="og:description" content="Cybersecurity tools I built, with AI where it helps. Documented lab work, verifiable certifications, and a study plan. GKS Undergraduate applicant.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://muhammadwaseem5131.github.io/portfolio/">
 <meta property="og:image" content="https://muhammadwaseem5131.github.io/portfolio/og.png">
@@ -24,8 +24,8 @@
 <meta property="profile:first_name" content="Muhammad">
 <meta property="profile:last_name" content="Waseem">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Muhammad Waseem — AI &amp; Security Portfolio">
-<meta name="twitter:description" content="Machine learning applied to security. Documented lab work, verifiable certifications, and a study plan.">
+<meta name="twitter:title" content="Muhammad Waseem — Cybersecurity Portfolio">
+<meta name="twitter:description" content="Cybersecurity tools I built, with AI where it helps. Documented lab work, verifiable certifications, and a study plan.">
 <meta name="twitter:image" content="https://muhammadwaseem5131.github.io/portfolio/og.png">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="author" content="Muhammad Waseem">
@@ -974,7 +974,9 @@ section{padding-block:var(--sp-6);position:relative}
 /* ═══════════════════════════════════════════════════════════════════════
    SKILLS
    ═══════════════════════════════════════════════════════════════════════ */
-.cols{display:grid;gap:var(--sp-2);grid-template-columns:repeat(auto-fit, minmax(min(100%, 210px), 1fr))}
+.cols{display:grid;gap:var(--sp-2);grid-template-columns:1fr}
+@media (min-width:560px){.cols{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.cols{grid-template-columns:repeat(4,1fr)}}
 .col{border-top:4px solid var(--key, var(--cheong));border-radius:0 0 14px 14px;
   padding:var(--sp-3)}
 .col h3{font-family:var(--f-mono);font-size:var(--t-xs);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
@@ -1513,16 +1515,16 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     "https://linkedin.com/in/muhammad-waseem-6361b4400"
   ],
   "nationality": { "@type": "Country", "name": "Pakistan" },
-  "description": "AI and cyber security student from Pakistan. Runs a home security lab and applies machine learning to the telemetry it produces. Applicant, Global Korea Scholarship (Undergraduate, 2027).",
+  "description": "Cybersecurity student from Pakistan. Builds security tools for scanning, pentesting and log analysis, and uses LLMs where they help. Applicant, Global Korea Scholarship (Undergraduate, 2027).",
   "knowsAbout": [
-    "Anomaly detection",
-    "Security information and event management",
-    "Threat hunting",
-    "Network traffic analysis",
-    "Active Directory security",
-    "Incident response",
-    "Machine learning",
-    "Linux administration"
+    "Vulnerability scanning",
+    "Web application security testing",
+    "Log analysis",
+    "Network security",
+    "Digital forensics",
+    "IT support and troubleshooting",
+    "Applied AI and LLMs",
+    "Linux"
   ],
   "knowsLanguage": [
     { "@type": "Language", "name": "Urdu" },
@@ -1531,7 +1533,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   ],
   "seeks": {
     "@type": "Demand",
-    "name": "Undergraduate study in AI and cyber security in South Korea"
+    "name": "Undergraduate study in smart security in South Korea"
   },
   "hasCredential": [
     {
@@ -1565,6 +1567,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     <a class="sig" href="#top">Muhammad Waseem<span>.</span></a>
     <nav class="menu" aria-label="Sections">
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#work">Work</a>
       <a href="#credentials">Credentials</a>
       <a href="#skills">Skills</a>
@@ -1580,6 +1583,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
   </div>
   <nav class="mnav" aria-label="Sections">
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#work">Work</a>
     <a href="#credentials">Credentials</a>
     <a href="#skills">Skills</a>
@@ -1677,7 +1681,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     </a>
 
     <dl class="ledger rise">
-      <div><b class="num" data-count="9">09</b><span>credentials</span></div>
+      <div><b class="num" data-count="10">10</b><span>credentials</span></div>
       <div><b class="num" data-count="5">05</b><span>documented projects</span></div>
       <div><b class="num" data-count="18">18</b><span>security labs</span></div>
       <div><b class="num">Beginner</b><span>Korean level</span></div>
@@ -1711,15 +1715,42 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         <p>
           The lab taught me that existing security tools give you too much raw data
           and not enough clear answers. So I started building my own:
-          <strong>ScanMesh</strong> runs five scanners and merges their output into
+          <strong>ScanMesh</strong> runs four security tools and merges their output into
           one report. <strong>LogMind</strong> reads security logs and tells you what
           happened in plain language. <strong>OmniAudit</strong> checks code for real
-          vulnerabilities and filters out the false alarms. I use machine learning where
+          vulnerabilities and uses an LLM to filter out the false alarms. I use AI where
           it helps — but the core of everything I build is
           <strong>cybersecurity</strong>. That is what I want to study in Korea.
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ EXPERIENCE ══════════════════════ -->
+<section id="experience">
+  <div class="shell">
+    <div class="head rise">
+      <h2 class="dsp">Where I work</h2>
+      <p class="mono">Experience</p>
+    </div>
+    <article class="rec rise" style="--key:var(--key-tan);margin-top:var(--sp-3)">
+      <p class="rec__id">Ghazali Education Foundation <span>· 2024 – present</span></p>
+      <h3>Assistant IT Officer</h3>
+      <p class="rec__ctx">An education NGO in Pakistan. I help keep the office's computers,
+         network and data working for staff and students.</p>
+      <dl class="pao">
+        <div><dt>Day to day</dt><dd>Network and system troubleshooting, network maintenance, installing systems and software, and user support for staff.</dd></div>
+        <div><dt>Servers &amp; data</dt><dd>Assist with server administration and run regular backups.</dd></div>
+        <div><dt>Security</dt><dd>Helped respond when a break-in exposed student records — the moment I decided to study cybersecurity properly.</dd></div>
+        <div><dt>Beyond the role</dt><dd>Designed a head-office network in Packet Tracer (GEF-Network) and trained 50 students in IT basics.</dd></div>
+      </dl>
+      <ul class="chips">
+        <li class="chip chip--role">IT Support</li>
+        <li class="chip">Troubleshooting</li><li class="chip">Network maintenance</li>
+        <li class="chip">Server administration</li><li class="chip">Backups</li>
+      </ul>
+    </article>
   </div>
 </section>
 
@@ -1826,12 +1857,12 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 
       <article class="rec rise" style="--key:var(--hwang); --d:160ms">
         <p class="rec__id">ScanMesh <span>· 2026</span></p>
-        <h3>Five scanners, one correlated report</h3>
+        <h3>Four security tools, one correlated report</h3>
         <p class="rec__ctx">A rule-based security-tool orchestrator. Chains nmap, ZAP, sqlmap
            and tshark into one automated pipeline — no AI, 100% deterministic.</p>
         <dl class="pao">
-          <div><dt>Problem</dt><dd>A pentester runs each tool by hand, copies output between them, and manually writes up five separate dumps into one report.</dd></div>
-          <div><dt>Method</dt><dd>One target in, five tools chained by a rule engine. Findings on the same endpoint and vuln family merge — two tools agreeing = one high-confidence result.</dd></div>
+          <div><dt>Problem</dt><dd>A pentester runs each tool by hand, copies output between them, and manually writes up four separate dumps into one report.</dd></div>
+          <div><dt>Method</dt><dd>One target in, four tools chained by a rule engine. Findings on the same endpoint and vuln family merge — two tools agreeing = one high-confidence result.</dd></div>
           <div><dt>Result</dt><dd>ZAP suspects SQL injection, sqlmap confirms it, ScanMesh merges them into one critical finding. Unit tests + CI on every push.</dd></div>
         </dl>
         <ul class="chips">
@@ -1939,8 +1970,8 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
 <div class="strip" aria-hidden="true">
   <div class="strip__row">
     
-    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Cisco Packet Tracer</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
-    <ul><li>Python</li><li>FastAPI</li><li>React</li><li>scikit-learn</li><li>Nmap</li><li>Cisco Packet Tracer</li><li>Linux</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
+    <ul><li>Python</li><li>Kali Linux</li><li>Nmap</li><li>OWASP ZAP</li><li>sqlmap</li><li>Bandit</li><li>FastAPI</li><li>React</li><li>Gemini</li><li>Cisco Packet Tracer</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
+    <ul><li>Python</li><li>Kali Linux</li><li>Nmap</li><li>OWASP ZAP</li><li>sqlmap</li><li>Bandit</li><li>FastAPI</li><li>React</li><li>Gemini</li><li>Cisco Packet Tracer</li><li>SQLite</li><li>MITRE ATT&amp;CK</li></ul>
   </div>
 </div>
 
@@ -2100,6 +2131,26 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
         </dl>
       </article>
 
+      <article class="cred rise" style="--key:var(--cheong); --d:700ms">
+        <a class="cred__link" href="certs/yonsei-first-step-korean.pdf" target="_blank" rel="noopener" aria-label="Open Yonsei First Step Korean certificate"></a>
+        <a class="cred__badge" href="certs/yonsei-first-step-korean.pdf" target="_blank" rel="noopener" title="View certificate">
+          <img src="logos/yonsei.png" alt="Yonsei University" width="48" height="48">
+        </a>
+        <p class="cred__kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+          Language course
+        </p>
+        <h3>First Step Korean</h3>
+        <p class="cred__issuer">Yonsei University · Coursera</p>
+        <dl class="cred__facts">
+          <div><dt>Issued</dt><dd>Sep 2026</dd></div>
+          <div><dt>Credential ID</dt><dd>5HPZ3EJEAW0N</dd></div>
+        </dl>
+        <a class="go" href="https://coursera.org/verify/5HPZ3EJEAW0N" target="_blank" rel="noopener">
+          Verify <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </article>
+
     </div>
   </div>
 </section>
@@ -2114,11 +2165,15 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     <div class="cols">
       <div class="col rise" style="--key:var(--jeok)">
         <h3>Security</h3>
-        <ul><li>Vulnerability scanning</li><li>Network defense</li><li>Log analysis</li><li>Incident response</li></ul>
+        <ul><li>Vulnerability scanning</li><li>Web app testing (SQLi, XSS)</li><li>Log analysis &amp; anomaly detection</li><li>Firewall &amp; network segmentation</li><li>Digital forensics basics</li></ul>
       </div>
       <div class="col rise" style="--key:var(--cheong); --d:70ms">
-        <h3>AI &amp; ML</h3>
-        <ul><li>Anomaly detection</li><li>scikit-learn</li><li>Generative AI</li><li>Model evaluation</li></ul>
+        <h3>Applied AI</h3>
+        <ul><li>LLM integration (Gemini)</li><li>AI agents (Google ADK)</li><li>AI-assisted development (Antigravity)</li></ul>
+      </div>
+      <div class="col rise" style="--key:var(--key-tan); --d:105ms">
+        <h3>IT Operations</h3>
+        <ul><li>Network &amp; system troubleshooting</li><li>Server administration (assist)</li><li>Backups &amp; user support</li></ul>
       </div>
       <div class="col rise" style="--key:var(--hwang); --d:140ms">
         <h3>Development</h3>
@@ -3059,7 +3114,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
                real vulnerabilities from false alarms</li>
            <li><strong>IoT-Sentinel</strong> — a network scanner for IoT devices that reports
                risk in plain language</li>
-           <li><strong>ScanMesh</strong> — a rule-based orchestrator that chains five security
+           <li><strong>ScanMesh</strong> — a rule-based orchestrator that chains four security
                scanners and correlates their output into one de-duplicated report</li>
            <li><strong>GEF-Network</strong> — enterprise network design in Cisco Packet Tracer
                with 9 VLANs, ASA 5505 firewall, and multi-ISP redundancy</li>
@@ -3101,7 +3156,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       s:"#work",
       f:["What is LogMind?","How does OmniAudit work?"],
       a:`<p>The problem: a pentester runs each tool by hand, copies output between them, and
-         writes up five separate tool dumps into one report.</p>
+         writes up four separate tool dumps into one report.</p>
          <p>ScanMesh chains nmap, ZAP, sqlmap and tshark into one automated pipeline. A rule
          engine decides which tool runs next based on prior results. Findings on the same
          endpoint and vulnerability family merge — <strong>two tools agreeing = one
@@ -3133,31 +3188,32 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          <strong>All connectivity tests pass across every VLAN and through the firewall.</strong></p>
          <p>Complete device configs, topology diagrams and a project report are in the repo.</p>` },
 
-    { id:"ml", t:"Machine learning",
+    { id:"ml", t:"AI in my work",
       k:["machine learning","ml","ai","artificial intelligence","model","models","data science",
-         "scikit","sklearn","feature engineering","statistics","python ml","deep learning",
+         "llm","gemini","agent","agents","generative","deep learning",
          "인공지능","머신러닝"],
       s:"#skills",
-      f:["How do you evaluate a model?","What have you built?"],
-      a:`<p>Applied rather than theoretical, and pointed at one problem: <strong>detection</strong>.</p>
+      f:["What have you built?","What are you studying next?"],
+      a:`<p>I use AI as a tool inside security work — I haven't trained my own models yet.</p>
          <ul>
-           <li>Anomaly detection — Isolation Forest, and why unsupervised is the honest choice
-               when you have no labels</li>
-           <li>Feature engineering on logs, which is most of the actual work</li>
-           <li>scikit-learn, pandas, numpy</li>
-           <li>Model evaluation at a realistic base rate, not a balanced test split</li>
+           <li><strong>OmniAudit</strong> — Gemini, through Google ADK agents, labels which
+               scanner findings are real and which are noise. The AI can label, never delete.</li>
+           <li><strong>LogMind</strong> — deliberately rule-based: ten detectors, MITRE ATT&CK
+               mapping, no model at all, so every alert can be explained.</li>
+           <li>ML fundamentals from freeCodeCamp's Machine Learning with Python coursework.</li>
          </ul>
-         <p>I'm not going to claim depth I don't have. I want the degree precisely because the
-         theory underneath this is where I'm thinnest.</p>` },
+         <p>Training and evaluating my own detection models is exactly what I want to learn at
+         Konyang — it's the gap I'm applying to close, not one I'm hiding.</p>` },
 
     { id:"sec", t:"Security skills",
       k:["security","defensive","blue team","soc","defence","defense","detection","log analysis",
          "vulnerability","incident response","network defense","monitoring","analyst",
          "offensive","pentest","wireshark","방어"],
       s:"#skills",
-      f:["What projects back these up?","What AI and ML can you do?"],
-      a:`<p>Vulnerability scanning, network defense, log analysis and incident response — backed
-         by my Google, Cisco, Microsoft and Nmap certifications plus the IoT-Sentinel project.</p>
+      f:["What projects back these up?","How do you use AI?"],
+      a:`<p>Vulnerability scanning, web app testing (SQL injection, XSS), log analysis, firewall and
+         network segmentation, and digital forensics basics — backed by my 18 labs, my Google, Cisco
+         and Microsoft certifications, and the IoT-Sentinel and ScanMesh projects.</p>
          <p>I attack my own network so I can build what catches it. LogMind is a pure defensive
          tool — ten detectors, MITRE ATT&CK mapping, and live monitoring. The GEF-Network project
          shows I can design and configure enterprise infrastructure end to end.</p>` },
@@ -3167,7 +3223,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          "tcp","tcp/ip","bash","code","languages","data structures","sql","tools","stack",
          "software","technologies","tech"],
       s:"#skills",
-      f:["What tools do you use?","What machine learning can you do?"],
+      f:["What tools do you use?","How do you use AI?"],
       a:`<p>Python, FastAPI and React for building tools. Linux and TCP/IP networking underneath.
          Data structures from my KAIST coursework. Every project runs on this stack — OmniAudit,
          IoT-Sentinel, ScanMesh and LogMind.</p>` },
@@ -3175,10 +3231,10 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
     { id:"certs", t:"Certifications",
       k:["certification","certificate","credential","qualified","qualification",
          "google","coursera","verify","verifiable","자격증","kaist","microsoft",
-         "ibm","oracle","freecodecamp","nmap","mastercard","hp"],
+         "ibm","oracle","freecodecamp","yonsei"],
       s:"#credentials",
       f:["What have you built?","What are you studying next?"],
-      a:`<p>9 credentials, each linking to a verifiable record:</p>
+      a:`<p>10 credentials, each linking to a verifiable record:</p>
          <ul>
            <li><strong>NVQF Level 2 in IT</strong> — Punjab Vocational Training Council (first prize, won laptop)</li>
            <li><strong>Microsoft Cybersecurity Analyst</strong> — 9 courses, Coursera</li>
@@ -3189,6 +3245,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
            <li><strong>Data Structure and Analysis 1 &amp; 2</strong> — KAIST Online</li>
            <li><strong>Machine Learning with Python</strong> — freeCodeCamp, ~300 hours</li>
            <li><strong>Python for Everybody</strong> — University of Michigan, 5 courses</li>
+           <li><strong>First Step Korean</strong> — Yonsei University, Coursera</li>
          </ul>` },
 
     { id:"korea", t:"Why Korea",
@@ -3252,6 +3309,21 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
          practitioners who can defend real systems. Pakistan has the talent; it needs
          trained practitioners.</p>` },
 
+    { id:"exp", t:"Work experience",
+      k:["experience","work experience","where do you work","current job","your job","employed",
+         "assistant it officer","it officer","ghazali","ghazali education foundation","workplace"],
+      s:"#experience",
+      f:["What have you built?","Why cybersecurity?"],
+      a:`<p><strong>Assistant IT Officer</strong> at Ghazali Education Foundation, an education
+         NGO in Pakistan, since 2024.</p>
+         <ul>
+           <li>Network and system troubleshooting, network maintenance, installing systems</li>
+           <li>User support for staff</li>
+           <li>Assisting with server administration and running regular backups</li>
+         </ul>
+         <p>When a break-in exposed student records, I helped respond — that is what made me
+         decide to study cybersecurity properly.</p>` },
+
     { id:"role", t:"The role I want",
       k:["role","job","position","hire","hiring","looking for","want to be","career path",
          "soc analyst","detection engineer","internship","intern","work for","employ"],
@@ -3259,19 +3331,18 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       f:["What defensive skills do you have?","What have you built?"],
       a:`<p>Detection-side. SOC analyst first, detection engineer after — the work where you own
          both the telemetry and the rules written on top of it.</p>
-         <p>The machine learning is in service of that, not separate from it. I'm not looking to
+         <p>The AI is in service of that, not separate from it. I'm not looking to
          be a data scientist who happens to work on security data.</p>` },
 
     { id:"strength", t:"Strengths and gaps",
       k:["strength","strengths","weakness","weaknesses","good at","bad at","struggle","limitation",
          "honest","gap","gaps","improve","learning","gets you"],
       s:"#work",
-      f:["What machine learning can you do?","What have you built?"],
-      a:`<p>What I'm good at: not stopping at the fix. Every one of the four projects ends in
-         something I got wrong and then chased down — a false positive, a missing log source, a
-         metric that flattered the model.</p>
-         <p>Where I'm thin: the theory under the machine learning. I can fit a model and
-         evaluate it honestly; I can't yet derive why one converges and another doesn't.
+      f:["How do you use AI?","What have you built?"],
+      a:`<p>What I'm good at: not stopping at the fix. Every project documents what it gets
+         wrong — false positives, missing log sources, limits I chose not to hide.</p>
+         <p>Where I'm thin: machine learning itself. I can put an LLM to work inside a security
+         tool, but I haven't yet trained and evaluated my own detection model.
          <strong>That gap is the reason I'm applying, not something I'm hiding from the
          panel.</strong></p>` },
 
@@ -3359,7 +3430,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       k:["what would you bring","contribute","contribution","value","why should we",
          "what can you do for","add to the lab","useful","offer"],
       s:"#work",
-      f:["What have you built?","How do you evaluate a model?"],
+      f:["What have you built?","How do you use AI?"],
       a:`<p>Four security tools I designed, built and shipped without supervision — including
          the parts that didn't work. I own a question end to end: find the problem, build the
          tool, test it, document the results honestly.</p>
@@ -3417,7 +3488,7 @@ footer{border-top:1px solid var(--rule);padding-block:var(--sp-3);
       k:["what do you read","papers","research papers","reading","books","follow","keep up",
          "blogs","sources","literature","논문"],
       s:"#research",
-      f:["Where do you want to take this?","What machine learning can you do?"],
+      f:["Where do you want to take this?","How do you use AI?"],
       a:`<p>[Name two or three papers, books or researchers you have actually read, and one
          sentence on what each changed in how you work. A professor asks this to find out
          whether you read the field or only the tools — and they will follow up. Do not list
